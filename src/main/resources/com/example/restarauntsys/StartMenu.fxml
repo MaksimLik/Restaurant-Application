@@ -15,8 +15,8 @@
          <children>
             <AnchorPane layoutY="62.0" prefHeight="338.0" prefWidth="600.0" style="-fx-background-color: #FFEBCD;">
                <children>
-                  <TextField layoutX="385.0" layoutY="102.0" promptText="Your nick name" />
-                  <TextField layoutX="385.0" layoutY="157.0" promptText="Your password" />
+                  <TextField fx:id="nick_name" layoutX="385.0" layoutY="102.0" promptText="Your nick name" />
+                  <TextField fx:id="password" layoutX="385.0" layoutY="157.0" promptText="Your password" />
                   <Text layoutX="407.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in">
                      <font>
                         <Font name="Sitka Text" size="36.0" />
