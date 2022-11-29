@@ -25,28 +25,18 @@ public class Customers extends DB_Handler {
         this.nick_name = nick_name;
     }
 
-  /*  public int getID() {
+    public int getID() throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
         Statement stmt = null;
         String selectquery = "SELECT max(id_user) FROM users";
-        System.out.println("dsfsdfsdf");
 
-        try {
-            stmt = getDbConnection().createStatement();
-            rs = stmt.executeQuery(selectquery);
-            rs.next();
-            int currentUserId;
-            currentUserId = Integer.parseInt(rs.getString(1));
+        stmt = getDbConnection().createStatement();
+        rs = stmt.executeQuery(selectquery);
+        rs.next();
+        int currentUserId;
+        currentUserId = Integer.parseInt(rs.getString(1));
 
-            System.out.println(currentUserId);
-
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println("selectoin error");
-        }
-        System.out.println(currentUserId);
+        System.out.println(currentUserId + "proba");
         return currentUserId;
-
-    } */
-
+    }
 }

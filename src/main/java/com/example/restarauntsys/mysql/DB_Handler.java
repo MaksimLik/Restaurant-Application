@@ -43,26 +43,7 @@ public class DB_Handler extends Configurations {
 
     }
 
-    public void registrationCustomer(Customers customers) throws SQLException, ClassNotFoundException {
-        ResultSet rs = null;
-        Statement stmt = null;
-        String selectquery = "SELECT max(id_user) FROM users";
-        System.out.println("dsfsdfsdf");
-
-        try {
-            stmt = getDbConnection().createStatement();
-            rs = stmt.executeQuery(selectquery);
-            rs.next();
-            int currentUserId;
-            currentUserId = Integer.parseInt(rs.getString(1));
-
-            System.out.println(currentUserId);
-
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println("selectoin error");
-        }
-
+    public void registrationCustomer(Customers customers) {
 
         String insert = "INSERT INTO " + Constants.CUSTOMERS_TABLE + "(" +
                 Constants.USER_NICK_NAME + "," +
@@ -80,20 +61,6 @@ public class DB_Handler extends Configurations {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-    public int getID() throws SQLException, ClassNotFoundException {
-        ResultSet rs = null;
-        Statement stmt = null;
-        String selectquery = "SELECT max(id_user) FROM users";
-
-        stmt = getDbConnection().createStatement();
-        rs = stmt.executeQuery(selectquery);
-        rs.next();
-        int currentUserId;
-        currentUserId = Integer.parseInt(rs.getString(1));
-
-        System.out.println(currentUserId + "proba");
-        return currentUserId;
     }
     public ResultSet getUser(User user) {
 
