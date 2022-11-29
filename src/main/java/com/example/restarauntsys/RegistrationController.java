@@ -52,6 +52,9 @@ public class RegistrationController {
     @FXML
     void initialize() {
         registrationButtonTwo.setOnAction(event -> {
+
+
+
             signUPnewUser();
             successRegistration();
         });

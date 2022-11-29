@@ -25,6 +25,29 @@ public class DB_Handler extends Configurations {
                 Constants.USER_PASSWORD + ")" +
                 "VALUES(?, ?, ?, ?)";
 
+///
+
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectquery = "SELECT max(id_user) FROM users";
+        System.out.println("dsfsdfsdf");
+        int currentUserId;
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectquery);
+
+            currentUserId = Integer.parseInt(String.valueOf(rs.next())); // id elegancko
+
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("selectoin error");
+        }
+
+        ///
+
+
+
+
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, user.getName());
@@ -34,9 +57,7 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e){
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
