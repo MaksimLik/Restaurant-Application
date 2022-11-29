@@ -2,9 +2,11 @@ package com.example.restarauntsys;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
+import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,7 +56,14 @@ public class RegistrationController {
         registrationButtonTwo.setOnAction(event -> {
 
             signUPnewUser();
-            successRegistration();
+
+            try {
+                signUPnewCustomer();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            //   successRegistration();
         });
     }
 
@@ -68,6 +77,14 @@ public class RegistrationController {
         User user = new User(name, surname, nick_name, password);
 
         db_handler.registrationUsers(user);
+    }
+
+    private void signUPnewCustomer() throws SQLException, ClassNotFoundException {
+        DB_Handler db_handler = new DB_Handler();
+        String nick_name = signUPnick_name.getText();
+        Customers customers = new Customers(nick_name);
+
+        db_handler.registrationCustomer(customers);
     }
 
     private void successRegistration(){
