@@ -35,8 +35,10 @@ public class DB_Handler extends Configurations {
         try {
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(selectquery);
+            rs.next();
+            currentUserId = Integer.parseInt(rs.getString(1));
 
-            currentUserId = Integer.parseInt(String.valueOf(rs.next())); // id elegancko
+            System.out.println(currentUserId);
 
 
         } catch (SQLException | ClassNotFoundException ex) {

@@ -53,8 +53,6 @@ public class RegistrationController {
     void initialize() {
         registrationButtonTwo.setOnAction(event -> {
 
-
-
             signUPnewUser();
             successRegistration();
         });
