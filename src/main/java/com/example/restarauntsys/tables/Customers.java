@@ -36,6 +36,9 @@ public class Customers extends DB_Handler {
         int currentUserId;
         currentUserId = Integer.parseInt(rs.getString(1));
 
+        rs.close();
+        stmt.close();
+
         System.out.println(currentUserId + "proba");
         return currentUserId;
     }
