@@ -9,12 +9,9 @@ import java.sql.Statement;
 public class Customers extends DB_Handler {
     private String nick_name;
 
-    int currentUserId;
+    protected int currentUserId;
     public Customers(String nick_name) {
         this.nick_name = nick_name;
-    }
-
-    public Customers() {
     }
 
     public String getNick_name() {
@@ -25,19 +22,25 @@ public class Customers extends DB_Handler {
         this.nick_name = nick_name;
     }
 
-    public int getID() throws SQLException, ClassNotFoundException {
+    public int getID()  {
         ResultSet rs = null;
         Statement stmt = null;
-        String selectquery = "SELECT max(id_user) FROM users";
+        String selectQuery = "SELECT max(id_user) FROM users";
 
-        stmt = getDbConnection().createStatement();
-        rs = stmt.executeQuery(selectquery);
-        rs.next();
-        int currentUserId;
-        currentUserId = Integer.parseInt(rs.getString(1));
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            rs.next();
 
-        rs.close();
-        stmt.close();
+            currentUserId = Integer.parseInt(rs.getString(1));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
 
         System.out.println(currentUserId + "proba");
         return currentUserId;

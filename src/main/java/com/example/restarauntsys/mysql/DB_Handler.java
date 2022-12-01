@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class DB_Handler extends Configurations {
     Connection dbConnection;
-    int currentUserId;
+
 
     public Connection getDbConnection()
             throws ClassNotFoundException, SQLException {
@@ -37,6 +37,10 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+            preparedStatement.close();
+
+
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -58,6 +62,8 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+            preparedStatement.close();
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -76,10 +82,10 @@ public class DB_Handler extends Configurations {
 
             resultSet = preparedStatement.executeQuery();
 
+            preparedStatement.close();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e){
+
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return resultSet;

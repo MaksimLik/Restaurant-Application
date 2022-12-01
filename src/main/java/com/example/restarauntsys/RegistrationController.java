@@ -56,14 +56,8 @@ public class RegistrationController {
         registrationButtonTwo.setOnAction(event -> {
 
             signUPnewUser();
-
-            try {
-                signUPnewCustomer();
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-
-            //   successRegistration();
+            signUPnewCustomer();
+            successRegistration();
         });
     }
 
@@ -79,8 +73,9 @@ public class RegistrationController {
         db_handler.registrationUsers(user);
     }
 
-    private void signUPnewCustomer() throws SQLException, ClassNotFoundException {
+    private void signUPnewCustomer() {
         DB_Handler db_handler = new DB_Handler();
+
         String nick_name = signUPnick_name.getText();
         Customers customers = new Customers(nick_name);
 

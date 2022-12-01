@@ -7,6 +7,7 @@ module com.example.restarauntsys {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires mysql.connector.java;
 
     opens com.example.restarauntsys to javafx.fxml;
     exports com.example.restarauntsys;
