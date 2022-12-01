@@ -1,18 +1,31 @@
 package com.example.restarauntsys.tables;
 
-import java.sql.Date;
+import com.example.restarauntsys.mysql.Constants;
+import com.example.restarauntsys.mysql.DB_Handler;
 
-public class User {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class User extends DB_Handler {
     private String name;
     private String surname;
     private String nick_name;
     private String password;
+    public int currentUserId;
 
     public User(String name, String surname, String nick_name, String password) {
         this.name = name;
         this.surname = surname;
         this.nick_name = nick_name;
         this.password = password;
+    }
+
+    public User(String nick_name) {
+        this.nick_name = nick_name;
+    }
+
+    public User() {
     }
 
     public String getName() {
@@ -45,5 +58,28 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public int getID()  {
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "SELECT max(" + Constants.USER_ID + ") from " + Constants.USER_TABLE;
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            rs.next();
+
+            currentUserId = Integer.parseInt(rs.getString(1));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        System.out.println(currentUserId + "proba");
+        return currentUserId;
     }
 }

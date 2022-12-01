@@ -51,7 +51,7 @@ public class DB_Handler extends Configurations {
 
         String insert = "INSERT INTO " + Constants.CUSTOMERS_TABLE + "(" +
                 Constants.USER_NICK_NAME + "," +
-                "Users_ID_user" + ")" +
+                Constants.CUSTOMER_ID_USER + ")" +
                 "VALUES(?, ?)";
         System.out.println(insert);
 
