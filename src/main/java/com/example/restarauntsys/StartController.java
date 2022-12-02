@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.User;
 import javafx.event.ActionEvent;
@@ -16,10 +18,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class StartController {
+public class StartController extends DB_Handler{
+    @FXML
+    private CheckBox checkButton;
 
     @FXML
     private ResourceBundle resources;
@@ -36,6 +41,7 @@ public class StartController {
     private Scene secondScene;
     @FXML
     private Button registrationFirstButton;
+    private String chk_nick;
 
     public void setSecondScene(Scene scene) {
         secondScene = scene;
@@ -49,8 +55,13 @@ public class StartController {
     @FXML
     void initialize() {
         loginButton.setOnAction(event -> {
-            String loginText = nick_name.getText().trim();
-            String loginPassword = password.getText().trim();
+          //  findEmployees();
+
+           String loginText = nick_name.getText().trim();
+           String loginPassword = password.getText().trim();
+
+            System.out.println(loginText +"  "+ loginPassword);
+
             if(!loginText.equals("") && !loginPassword.equals(""))
                 loginUser(loginText, loginPassword);
 
@@ -59,6 +70,35 @@ public class StartController {
         });
 
     }
+
+
+    public String findEmployees() {
+        if (checkButton.isSelected()){
+            ResultSet rs = null;
+            Statement stmt = null;
+            String loginText2 = nick_name.getText().trim();
+            String selectQuery = "select * from employees where nick_name ='" + loginText2 +"'";
+            System.out.println(selectQuery);
+            try {
+                stmt = getDbConnection().createStatement();
+                rs = stmt.executeQuery(selectQuery);
+                rs.next();
+
+                chk_nick = (rs.getString(1));
+
+                rs.close();
+                stmt.close();
+
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            System.out.println(chk_nick);
+        }
+        return chk_nick;
+    }
+
+
 
     private void alertWarning() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -89,6 +129,8 @@ public class StartController {
         }
 
     }
+
+
     private void openNewScene(String window) {
 
         FXMLLoader loader = new FXMLLoader();

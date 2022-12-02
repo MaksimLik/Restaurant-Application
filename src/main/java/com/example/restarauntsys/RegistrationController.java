@@ -58,8 +58,11 @@ public class RegistrationController {
             signUPnewUser();
             signUPnewCustomer();
             successRegistration();
+            String nick_name = signUPnick_name.getText();
+            System.out.println(nick_name);
         });
     }
+
 
     private void signUPnewUser(){
         DB_Handler db_handler = new DB_Handler();

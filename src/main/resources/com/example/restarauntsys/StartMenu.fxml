@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -41,16 +42,17 @@
                         </Text>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="loginButton" layoutX="415.0" layoutY="198.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="login">
+                  <Button fx:id="loginButton" layoutX="385.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="login">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="registrationFirstButton" layoutX="399.0" layoutY="254.0" mnemonicParsing="false" onAction="#openSecondScene" prefHeight="36.0" prefWidth="122.0" text="Registration">
+                  <Button fx:id="registrationFirstButton" layoutX="385.0" layoutY="271.0" mnemonicParsing="false" onAction="#openSecondScene" prefHeight="36.0" prefWidth="122.0" text="Registration">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
+                  <CheckBox fx:id="checkButton" layoutX="406.0" layoutY="193.0" mnemonicParsing="false" text="Are you an employee?" />
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="69.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

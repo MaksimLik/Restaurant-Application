@@ -1,6 +1,7 @@
 package com.example.restarauntsys.mysql;
 
 import com.example.restarauntsys.tables.Customers;
+import com.example.restarauntsys.tables.Employees;
 import com.example.restarauntsys.tables.User;
 
 import java.sql.*;
@@ -76,9 +77,28 @@ public class DB_Handler extends Configurations {
                 Constants.USER_PASSWORD + "=?";
 
         try {
+
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.setString(1, user.getNick_name());
             preparedStatement.setString(2, user.getPassword());
+
+            resultSet = preparedStatement.executeQuery();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+ /*   public ResultSet getEmployees(Employees employees) {
+
+        ResultSet resultSet = null;
+        String select = "SELECT * from " + Constants.EMPLOYEES_TABLE +
+                " WHERE " + Constants.USER_NICK_NAME + "=?";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+            preparedStatement.setString(1, employees.getNick_name());
 
             resultSet = preparedStatement.executeQuery();
 
@@ -89,5 +109,5 @@ public class DB_Handler extends Configurations {
             e.printStackTrace();
         }
         return resultSet;
-    }
+    } */
 }
