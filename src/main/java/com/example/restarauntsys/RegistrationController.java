@@ -52,12 +52,7 @@ public class RegistrationController {
     @FXML
     void initialize() {
         registrationButtonTwo.setOnAction(event -> {
-
             signUPnewUser();
-            signUPnewCustomer();
-            successRegistration();
-            String nick_name = signUPnick_name.getText();
-            System.out.println(nick_name);
         });
     }
 
@@ -69,9 +64,17 @@ public class RegistrationController {
         String surname = singUPsurname.getText();
         String nick_name = signUPnick_name.getText();
         String password = signUPpassword.getText();
-        User user = new User(name, surname, nick_name, password);
+        
 
-        db_handler.registrationUsers(user);
+        if (!name.equals("") && !surname.equals("") && !nick_name.equals("") && !password.equals("")) {
+            User user = new User(name, surname, nick_name, password);
+            db_handler.registrationUsers(user);
+            signUPnewCustomer();
+            successRegistration();
+        } else {
+            warningRegistration();
+        }
+
     }
 
     private void signUPnewCustomer() {
@@ -88,6 +91,13 @@ public class RegistrationController {
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Successfully.");
         alert.setContentText("You have been registered successfully.");
+        alert.showAndWait();
+    }
+    private void warningRegistration(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("WARNING!");
+        alert.setContentText("Please check information in all fields, this information is mandatory");
         alert.showAndWait();
     }
 

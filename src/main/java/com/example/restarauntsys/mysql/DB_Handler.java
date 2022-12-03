@@ -63,7 +63,7 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
-            preparedStatement.close();
+    //        preparedStatement.close();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
