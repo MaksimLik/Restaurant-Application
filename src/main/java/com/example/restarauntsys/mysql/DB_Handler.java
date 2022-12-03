@@ -72,9 +72,9 @@ public class DB_Handler extends Configurations {
     public ResultSet getCustomer(Customers customers) {
 
         ResultSet resultSet = null;
-        String select = "SELECT * from " + Constants.USER_TABLE +
-                " WHERE " + Constants.USER_NICK_NAME + "=? AND " +
-                Constants.USER_PASSWORD + "=?";
+        String select = "select " + Constants.USER_NICK_NAME + ", " + Constants.USER_PASSWORD + " from " +
+                Constants.CUSTOMERS_TABLE + " natural join " + Constants.USER_TABLE +
+                " WHERE " + Constants.USER_NICK_NAME + "=? AND " + Constants.USER_PASSWORD + "=?";
 
         try {
 
@@ -91,23 +91,24 @@ public class DB_Handler extends Configurations {
     }
 
     public ResultSet getEmployees(Employees employees) {
-
         ResultSet resultSet = null;
-        String select = "SELECT * from " + Constants.EMPLOYEES_TABLE +
-                " WHERE " + Constants.USER_NICK_NAME + "=?";
+        String select = "select " + Constants.USER_NICK_NAME + ", " + Constants.USER_PASSWORD + " from " +
+                Constants.EMPLOYEES_TABLE + " natural join " + Constants.USER_TABLE +
+                " WHERE " + Constants.USER_NICK_NAME + "=? AND " + Constants.USER_PASSWORD + "=?";
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.setString(1, employees.getNick_name());
+            preparedStatement.setString(2, employees.getPassword());
 
             resultSet = preparedStatement.executeQuery();
-
          //   preparedStatement.close(); if we use this - allowed error
 
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         return resultSet;
     }
 }

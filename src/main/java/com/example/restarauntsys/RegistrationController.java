@@ -1,8 +1,6 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
-import java.sql.Date;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;

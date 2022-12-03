@@ -57,23 +57,11 @@ public class StartController extends DB_Handler{
     @FXML
     void initialize() {
         loginButton.setOnAction(event -> {
-          //  findEmployees();
-            chkmethod ();
-       /*   String loginText = nick_name.getText().trim();
-           String loginPassword = password.getText().trim();
-
-           System.out.println(loginText +"  "+ loginPassword);
-
-           if(!loginText.equals("") && !loginPassword.equals(""))
-               loginCustomer(loginText, loginPassword);
-
-           else
-               alertWarning(); */
+            authorization();
         });
-
     }
 
-    public void chkmethod (){
+    private void authorization() {
         String loginText = nick_name.getText().trim();
         String loginPassword = password.getText().trim();
 
@@ -91,33 +79,6 @@ public class StartController extends DB_Handler{
 
         }
     }
-    public String findEmployees() {
-        if (checkButton.isSelected()){
-            ResultSet rs = null;
-            Statement stmt = null;
-            String loginText2 = nick_name.getText().trim();
-            String selectQuery = "select * from employees where nick_name ='" + loginText2 +"'";
-            System.out.println(selectQuery);
-            try {
-                stmt = getDbConnection().createStatement();
-                rs = stmt.executeQuery(selectQuery);
-                rs.next();
-
-                chk_nick = (rs.getString(1));
-
-                rs.close();
-                stmt.close();
-
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-
-            System.out.println(chk_nick);
-        }
-        return chk_nick;
-    }
-
-
 
     private void alertWarning() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -128,7 +89,6 @@ public class StartController extends DB_Handler{
     }
     private void loginCustomer(String loginText, String loginPassword) {
         DB_Handler db_handler = new DB_Handler();
-   //     User user = new User();
         Customers customers = new Customers();
         customers.setNick_name(loginText);
         customers.setPassword(loginPassword);
@@ -146,6 +106,8 @@ public class StartController extends DB_Handler{
         }
         if(counter >= 1){
             openNewScene("CustomerStartMenu.fxml");
+        } else {
+            alertLOGIN();
         }
 
     }
@@ -169,7 +131,17 @@ public class StartController extends DB_Handler{
         }
         if(counter >= 1){
             openNewScene("EmployeesStartMenu.fxml");
+        } else {
+            alertLOGIN();
         }
+
+    }
+    private void alertLOGIN(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Not found information about your account!");
+        alert.setContentText("Please, check your nick-name and password.");
+        alert.showAndWait();
     }
 
 
