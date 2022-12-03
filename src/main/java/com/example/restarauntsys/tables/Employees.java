@@ -11,4 +11,7 @@ public class Employees extends User {
     public Employees(String role) {
         this.role = role;
     }
+
+    public Employees() {
+    }
 }

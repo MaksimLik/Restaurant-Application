@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
+import com.example.restarauntsys.tables.Customers;
+import com.example.restarauntsys.tables.Employees;
 import com.example.restarauntsys.tables.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,22 +58,39 @@ public class StartController extends DB_Handler{
     void initialize() {
         loginButton.setOnAction(event -> {
           //  findEmployees();
-
-           String loginText = nick_name.getText().trim();
+            chkmethod ();
+       /*   String loginText = nick_name.getText().trim();
            String loginPassword = password.getText().trim();
 
-            System.out.println(loginText +"  "+ loginPassword);
+           System.out.println(loginText +"  "+ loginPassword);
 
-            if(!loginText.equals("") && !loginPassword.equals(""))
-                loginUser(loginText, loginPassword);
+           if(!loginText.equals("") && !loginPassword.equals(""))
+               loginCustomer(loginText, loginPassword);
 
-            else
-                alertWarning();
+           else
+               alertWarning(); */
         });
 
     }
 
+    public void chkmethod (){
+        String loginText = nick_name.getText().trim();
+        String loginPassword = password.getText().trim();
 
+        if (checkButton.isSelected()) {
+            if (!loginText.equals("") && !loginPassword.equals("")) {
+                loginEmployees(loginText, loginPassword);
+            } else
+                alertWarning();
+
+        } else  {
+            if (!loginText.equals("") && !loginPassword.equals("")) {
+                loginCustomer(loginText, loginPassword);
+            } else
+                alertWarning();
+
+        }
+    }
     public String findEmployees() {
         if (checkButton.isSelected()){
             ResultSet rs = null;
@@ -107,12 +126,13 @@ public class StartController extends DB_Handler{
         alert.setContentText("Maybe you are not registered.");
         alert.showAndWait();
     }
-    private void loginUser(String loginText, String loginPassword) {
+    private void loginCustomer(String loginText, String loginPassword) {
         DB_Handler db_handler = new DB_Handler();
-        User user = new User();
-        user.setNick_name(loginText);
-        user.setPassword(loginPassword);
-        ResultSet resultSet = db_handler.getUser(user);
+   //     User user = new User();
+        Customers customers = new Customers();
+        customers.setNick_name(loginText);
+        customers.setPassword(loginPassword);
+        ResultSet resultSet = db_handler.getCustomer(customers);
 
         int counter = 0;
 
@@ -128,6 +148,28 @@ public class StartController extends DB_Handler{
             openNewScene("CustomerStartMenu.fxml");
         }
 
+    }
+
+    private void loginEmployees(String loginText, String loginPassword){
+        DB_Handler db_handler = new DB_Handler();
+        Employees employees = new Employees();
+        employees.setNick_name(loginText);
+        employees.setPassword(loginPassword);
+        ResultSet resultSet = db_handler.getEmployees(employees);
+
+        int counter = 0;
+
+        while(true) {
+            try {
+                if (!resultSet.next()) break;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            counter++;
+        }
+        if(counter >= 1){
+            openNewScene("EmployeesStartMenu.fxml");
+        }
     }
 
 

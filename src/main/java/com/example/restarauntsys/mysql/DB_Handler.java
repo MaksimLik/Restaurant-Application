@@ -69,7 +69,7 @@ public class DB_Handler extends Configurations {
             e.printStackTrace();
         }
     }
-    public ResultSet getUser(User user) {
+    public ResultSet getCustomer(Customers customers) {
 
         ResultSet resultSet = null;
         String select = "SELECT * from " + Constants.USER_TABLE +
@@ -79,8 +79,8 @@ public class DB_Handler extends Configurations {
         try {
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
-            preparedStatement.setString(1, user.getNick_name());
-            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(1, customers.getNick_name());
+            preparedStatement.setString(2, customers.getPassword());
 
             resultSet = preparedStatement.executeQuery();
 
@@ -90,7 +90,7 @@ public class DB_Handler extends Configurations {
         return resultSet;
     }
 
- /*   public ResultSet getEmployees(Employees employees) {
+    public ResultSet getEmployees(Employees employees) {
 
         ResultSet resultSet = null;
         String select = "SELECT * from " + Constants.EMPLOYEES_TABLE +
@@ -102,12 +102,12 @@ public class DB_Handler extends Configurations {
 
             resultSet = preparedStatement.executeQuery();
 
-            preparedStatement.close();
+         //   preparedStatement.close(); if we use this - allowed error
 
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return resultSet;
-    } */
+    }
 }
