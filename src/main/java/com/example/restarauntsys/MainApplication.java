@@ -20,9 +20,9 @@ public class MainApplication extends Application {
         Parent secondPane = secondPageLoader.load();
         Scene secondScene = new Scene(secondPane, 600, 400);
 
-      /*  FXMLLoader thirdPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomersStartMenu.fxml"));
-        Parent thirdPane = secondPageLoader.load();
-        Scene thirdScene = new Scene(secondPane, 600, 400); */
+     /*   FXMLLoader thirdPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomersStartMenu.fxml"));
+        Parent thirdPane = thirdPageLoader.load();
+        Scene thirdScene = new Scene(thirdPane, 600, 400); */
 
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);

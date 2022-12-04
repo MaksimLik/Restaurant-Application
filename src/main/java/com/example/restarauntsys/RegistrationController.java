@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -42,17 +41,14 @@ public class RegistrationController {
     public void setFirstScene(Scene scene) {
         firstScene = scene;
     }
-
-    @FXML
-    void openFirstScene(ActionEvent event) {
-        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        primaryStage.setScene(firstScene);
-    }
-
     @FXML
     void initialize() {
         registrationButtonTwo.setOnAction(event -> {
             signUPnewUser();
+        });
+        logout_ButtonFirst.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(firstScene);
         });
     }
 
@@ -64,13 +60,14 @@ public class RegistrationController {
         String surname = singUPsurname.getText();
         String nick_name = signUPnick_name.getText();
         String password = signUPpassword.getText();
-        
+
 
         if (!name.equals("") && !surname.equals("") && !nick_name.equals("") && !password.equals("")) {
             User user = new User(name, surname, nick_name, password);
             db_handler.registrationUsers(user);
             signUPnewCustomer();
             successRegistration();
+            clearField();
         } else {
             warningRegistration();
         }
@@ -99,6 +96,13 @@ public class RegistrationController {
         alert.setHeaderText("WARNING!");
         alert.setContentText("Please check information in all fields, this information is mandatory");
         alert.showAndWait();
+    }
+
+    private void clearField() {
+        signUPname.clear();
+        singUPsurname.clear();
+        signUPnick_name.clear();
+        signUPpassword.clear();
     }
 
 }

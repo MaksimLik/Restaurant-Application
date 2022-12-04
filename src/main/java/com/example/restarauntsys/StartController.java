@@ -4,15 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
-import com.example.restarauntsys.tables.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -43,21 +39,19 @@ public class StartController extends DB_Handler{
     private Scene secondScene;
     @FXML
     private Button registrationFirstButton;
-    private String chk_nick;
-
     public void setSecondScene(Scene scene) {
         secondScene = scene;
     }
     @FXML
-    void openSecondScene(ActionEvent event) {
-        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        primaryStage.setScene(secondScene);
-    }
-
-    @FXML
     void initialize() {
         loginButton.setOnAction(event -> {
             authorization();
+            nick_name.clear();
+            password.clear();
+        });
+        registrationFirstButton.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(secondScene);
         });
     }
 
@@ -149,7 +143,6 @@ public class StartController extends DB_Handler{
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
-
         try {
             loader.load();
         } catch (IOException e) {
