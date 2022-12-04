@@ -47,11 +47,11 @@ public class StartController extends DB_Handler{
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
     }
+
     @FXML
     void initialize() {
         loginButton.setOnAction(event -> {
             authorization();
-
         });
 
         registrationFirstButton.setOnAction(event -> {
@@ -105,7 +105,7 @@ public class StartController extends DB_Handler{
         }
         if(counter >= 1){
             openNewScene("CustomerStartMenu.fxml");
-          //  openNewWindow();
+            //openNewWindow();
         } else {
             alertLOGIN();
         }
@@ -143,12 +143,11 @@ public class StartController extends DB_Handler{
         alert.setContentText("Please, check your nick-name and password.");
         alert.showAndWait();
     }
-
-    private void openNewWindow() {
-        ActionEvent event = new ActionEvent();
+    /*public void openNewWindow() {
+      //  ActionEvent event = new ActionEvent();
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         primaryStage.setScene(thirdScene);
-    }
+    } */
 
     private void openNewScene(String window) {
 
