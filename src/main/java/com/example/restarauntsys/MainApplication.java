@@ -20,15 +20,18 @@ public class MainApplication extends Application {
         Parent secondPane = secondPageLoader.load();
         Scene secondScene = new Scene(secondPane, 600, 400);
 
-     /*   FXMLLoader thirdPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomersStartMenu.fxml"));
+        FXMLLoader thirdPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerStartMenu.fxml"));
         Parent thirdPane = thirdPageLoader.load();
-        Scene thirdScene = new Scene(thirdPane, 600, 400); */
+        Scene thirdScene = new Scene(thirdPane, 600, 400);
 
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);
+        firstPaneController.setThirdScene(thirdScene);
 
         RegistrationController secondPaneController = (RegistrationController) secondPageLoader.getController();
         secondPaneController.setFirstScene(firstscene);
+
+
 
 
 

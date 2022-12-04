@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -37,18 +38,22 @@ public class StartController extends DB_Handler{
     @FXML
     private Button loginButton;
     private Scene secondScene;
+    private Scene thirdScene;
     @FXML
     private Button registrationFirstButton;
     public void setSecondScene(Scene scene) {
         secondScene = scene;
     }
+    public void setThirdScene(Scene scene) {
+        thirdScene = scene;
+    }
     @FXML
     void initialize() {
         loginButton.setOnAction(event -> {
             authorization();
-            nick_name.clear();
-            password.clear();
+
         });
+
         registrationFirstButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(secondScene);
@@ -100,6 +105,7 @@ public class StartController extends DB_Handler{
         }
         if(counter >= 1){
             openNewScene("CustomerStartMenu.fxml");
+          //  openNewWindow();
         } else {
             alertLOGIN();
         }
@@ -138,6 +144,11 @@ public class StartController extends DB_Handler{
         alert.showAndWait();
     }
 
+    private void openNewWindow() {
+        ActionEvent event = new ActionEvent();
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(thirdScene);
+    }
 
     private void openNewScene(String window) {
 
@@ -156,5 +167,4 @@ public class StartController extends DB_Handler{
         stage.setResizable(false);
         stage.showAndWait();
     }
-
 }
