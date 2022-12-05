@@ -19,14 +19,9 @@
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Text>
-                  <Button fx:id="showOrderButton" layoutX="392.0" layoutY="82.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Show orders">
+                  <Button fx:id="changesPanelButton" layoutX="392.0" layoutY="170.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="130.0" text="Changes menu">
                      <font>
                         <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="showDivileryButton" layoutX="392.0" layoutY="212.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Show divilery">
-                     <font>
-                        <Font size="13.0" />
                      </font>
                   </Button>
                   <ImageView fitHeight="204.0" fitWidth="203.0" layoutX="43.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +29,7 @@
                         <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="changesButton" layoutX="392.0" layoutY="147.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Add product">
+                  <Button fx:id="addButton" layoutX="392.0" layoutY="89.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="130.0" text="Add product">
                      <font>
                         <Font size="15.0" />
                      </font>

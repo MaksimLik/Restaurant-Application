@@ -1,11 +1,14 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import com.example.restarauntsys.mysql.DB_Handler;
+import com.example.restarauntsys.tables.Menu;
+import com.example.restarauntsys.tables.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 public class ChangesMenuController {
 
@@ -14,7 +17,12 @@ public class ChangesMenuController {
 
     @FXML
     private URL location;
-
+    @FXML
+    private TextField price_field;
+    @FXML
+    private TextField name_field;
+    @FXML
+    private TextField kcal_field;
     @FXML
     private Button addButton;
 
@@ -22,34 +30,54 @@ public class ChangesMenuController {
     private Button deleteButton;
 
     @FXML
-    private TableColumn<?, ?> id_table;
-
-    @FXML
-    private TableColumn<?, ?> kcal_table;
-
-    @FXML
-    private TableColumn<?, ?> name_table;
-
-    @FXML
-    private TableColumn<?, ?> price_table;
-
-    @FXML
-    private TableView<?> table_menu;
-
-    @FXML
     private Button updateButton;
+    @FXML
+    private TableView<Menu> table_menu;
+    @FXML
+    private TableColumn<Menu, Integer> id_table;
+
+    @FXML
+    private TableColumn<Menu, Float> kcal_table;
+
+    @FXML
+    private TableColumn<Menu, String> name_table;
+
+    @FXML
+    private TableColumn<Menu, Float> price_table;
 
     @FXML
     void initialize() {
-        assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert id_table != null : "fx:id=\"id_table\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert kcal_table != null : "fx:id=\"kcal_table\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert name_table != null : "fx:id=\"name_table\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert price_table != null : "fx:id=\"price_table\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert table_menu != null : "fx:id=\"table_menu\" was not injected: check your FXML file 'changesMenu.fxml'.";
-        assert updateButton != null : "fx:id=\"updateButton\" was not injected: check your FXML file 'changesMenu.fxml'.";
+        addButton.setOnAction(event -> {
+            addNewProduct();
+        });
 
     }
+    private void addNewProduct() {
+        DB_Handler db_handler = new DB_Handler();
+
+        try {
+            String name = name_field.getText();
+            float kcal = Float.parseFloat(kcal_field.getText());
+            float price = Float.parseFloat(price_field.getText());
+            if (!name.equals("")) {
+                Menu menu = new Menu(name, kcal, price);
+                db_handler.registrationProduct(menu);
+            } else {
+                errorAlarm();
+            }
+        } catch (NumberFormatException e) {
+            errorAlarm();
+        }
+
+    }
+
+    private void errorAlarm () {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("Field with name, price or kcal is empty!");
+        alert.setContentText("Please, write all information about product");
+        alert.showAndWait();
+    }
+
 
 }

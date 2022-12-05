@@ -2,6 +2,7 @@ package com.example.restarauntsys.mysql;
 
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
+import com.example.restarauntsys.tables.Menu;
 import com.example.restarauntsys.tables.User;
 
 import java.sql.*;
@@ -63,7 +64,25 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
-    //        preparedStatement.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void registrationProduct(Menu menu) {
+        String insert = "INSERT INTO " + Constants.MENU_TABLE + "(" +
+                Constants.MENU_NAME + "," +
+                Constants.MENU_KCAL + "," +
+                Constants.MENU_PRICE + ")" +
+                "VALUES(?, ?, ?)";
+        System.out.println(insert);
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, menu.getName());
+            preparedStatement.setFloat(2, menu.getKcal());
+            preparedStatement.setFloat(3, menu.getPrice());
+
+            preparedStatement.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

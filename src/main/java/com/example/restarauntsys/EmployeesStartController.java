@@ -3,7 +3,10 @@ package com.example.restarauntsys;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class EmployeesStartController {
 
@@ -14,18 +17,21 @@ public class EmployeesStartController {
     private URL location;
 
     @FXML
-    private Button changesButton;
-
+    private Button addButton;
     @FXML
-    private Button showDivileryButton;
+    private Button changesPanelButton;
 
-    @FXML
-    private Button showOrderButton;
+    private Scene fiveScene;
+    public void setFiveScene(Scene scene) {
+        fiveScene = scene;
+    }
+
 
     @FXML
     void initialize() {
-        changesButton.setOnAction(event -> {
-
+        changesPanelButton.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(fiveScene);
         });
 
     }

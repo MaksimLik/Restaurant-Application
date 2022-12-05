@@ -90,7 +90,7 @@ public class RegistrationController {
         alert.setContentText("You have been registered successfully.");
         alert.showAndWait();
     }
-    private void warningRegistration(){
+    public void warningRegistration(){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("WARNING");
         alert.setHeaderText("WARNING!");

@@ -28,6 +28,10 @@ public class MainApplication extends Application {
         Parent fourPane = fourPageLoader.load();
         Scene fourScene = new Scene(fourPane, 600, 400);
 
+        FXMLLoader fivePageLoader  = new FXMLLoader(MainApplication.class.getResource("changesMenu.fxml"));
+        Parent fivePane = fivePageLoader.load();
+        Scene fiveScene = new Scene(fivePane, 600, 400);
+
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);
         firstPaneController.setThirdScene(thirdScene);
@@ -38,6 +42,9 @@ public class MainApplication extends Application {
 
         CustomerStartController thirdPaneController = (CustomerStartController) thirdPageLoader.getController();
         thirdPaneController.setFirstScene(firstscene);
+
+        EmployeesStartController fourPaneController = (EmployeesStartController) fourPageLoader.getController();
+        fourPaneController.setFiveScene(fiveScene);
 
         stage.setTitle("Restaurant Application");
         stage.setScene(firstscene);

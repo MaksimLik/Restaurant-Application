@@ -10,4 +10,9 @@ public class Constants {
     public  static final String USER_SURNAME = "surname";
     public  static final String USER_NICK_NAME = "nick_name";
     public  static final String USER_PASSWORD = "password";
+
+    public  static final String MENU_TABLE = "menu";
+    public  static final String MENU_KCAL = "kcal";
+    public  static final String MENU_PRICE = "price";
+    public  static final String MENU_NAME = "name_food";
 }
