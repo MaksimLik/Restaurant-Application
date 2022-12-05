@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -39,6 +38,7 @@ public class StartController extends DB_Handler{
     private Button loginButton;
     private Scene secondScene;
     private Scene thirdScene;
+    private Scene fourScene;
     @FXML
     private Button registrationFirstButton;
     public void setSecondScene(Scene scene) {
@@ -46,6 +46,9 @@ public class StartController extends DB_Handler{
     }
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
+    }
+    public void setFourScene(Scene scene) {
+        fourScene = scene;
     }
 
     @FXML
@@ -104,8 +107,8 @@ public class StartController extends DB_Handler{
             counter++;
         }
         if(counter >= 1){
-            openNewScene("CustomerStartMenu.fxml");
-            //openNewWindow();
+            //openNewScene("CustomerStartMenu.fxml");
+            openCustomerWindow();
         } else {
             alertLOGIN();
         }
@@ -130,7 +133,8 @@ public class StartController extends DB_Handler{
             counter++;
         }
         if(counter >= 1){
-            openNewScene("EmployeesStartMenu.fxml");
+            openEmployeeWindow();
+            //openNewScene("EmployeesStartMenu.fxml");
         } else {
             alertLOGIN();
         }
@@ -143,11 +147,19 @@ public class StartController extends DB_Handler{
         alert.setContentText("Please, check your nick-name and password.");
         alert.showAndWait();
     }
-    /*public void openNewWindow() {
-      //  ActionEvent event = new ActionEvent();
-        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        primaryStage.setScene(thirdScene);
-    } */
+    private void openCustomerWindow() {
+        loginButton.setOnMouseClicked(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(thirdScene);
+        });
+    }
+
+    private void openEmployeeWindow() {
+        loginButton.setOnMouseClicked(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(fourScene);
+        });
+    }
 
     private void openNewScene(String window) {
 

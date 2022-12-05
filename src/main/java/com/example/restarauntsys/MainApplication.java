@@ -24,17 +24,18 @@ public class MainApplication extends Application {
         Parent thirdPane = thirdPageLoader.load();
         Scene thirdScene = new Scene(thirdPane, 600, 400);
 
+        FXMLLoader fourPageLoader  = new FXMLLoader(MainApplication.class.getResource("EmployeesStartMenu.fxml"));
+        Parent fourPane = fourPageLoader.load();
+        Scene fourScene = new Scene(fourPane, 600, 400);
+
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);
         firstPaneController.setThirdScene(thirdScene);
+        firstPaneController.setFourScene(fourScene);
 
         RegistrationController secondPaneController = (RegistrationController) secondPageLoader.getController();
         secondPaneController.setFirstScene(firstscene);
-
-
-
-
-
+        
         stage.setTitle("Restaurant Application");
         stage.setScene(firstscene);
         stage.setResizable(false);
