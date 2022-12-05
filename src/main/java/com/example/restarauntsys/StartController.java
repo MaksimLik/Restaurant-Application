@@ -67,6 +67,9 @@ public class StartController extends DB_Handler{
         String loginText = nick_name.getText().trim();
         String loginPassword = password.getText().trim();
 
+        nick_name.clear();
+        password.clear();
+
         if (checkButton.isSelected()) {
             if (!loginText.equals("") && !loginPassword.equals("")) {
                 loginEmployees(loginText, loginPassword);

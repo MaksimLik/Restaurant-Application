@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -32,11 +34,16 @@
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Text>
-                  <Button fx:id="logoutButton" layoutX="234.0" layoutY="240.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Logout">
+                  <Button fx:id="logoutButton" layoutX="63.0" layoutY="240.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Logout">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <ImageView fitHeight="189.0" fitWidth="224.0" layoutX="35.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
+                     </image>
+                  </ImageView>
                </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

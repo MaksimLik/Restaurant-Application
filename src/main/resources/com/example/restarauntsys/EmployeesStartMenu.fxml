@@ -19,12 +19,12 @@
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Text>
-                  <Button layoutX="392.0" layoutY="82.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Show orders">
+                  <Button fx:id="showOrderButton" layoutX="392.0" layoutY="82.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Show orders">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="392.0" layoutY="212.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Show divilery">
+                  <Button fx:id="showDivileryButton" layoutX="392.0" layoutY="212.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Show divilery">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -34,7 +34,7 @@
                         <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="392.0" layoutY="147.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Add product">
+                  <Button fx:id="changesButton" layoutX="392.0" layoutY="147.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Add product">
                      <font>
                         <Font size="15.0" />
                      </font>

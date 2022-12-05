@@ -35,7 +35,10 @@ public class MainApplication extends Application {
 
         RegistrationController secondPaneController = (RegistrationController) secondPageLoader.getController();
         secondPaneController.setFirstScene(firstscene);
-        
+
+        CustomerStartController thirdPaneController = (CustomerStartController) thirdPageLoader.getController();
+        thirdPaneController.setFirstScene(firstscene);
+
         stage.setTitle("Restaurant Application");
         stage.setScene(firstscene);
         stage.setResizable(false);
