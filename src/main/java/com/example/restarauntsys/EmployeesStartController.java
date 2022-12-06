@@ -29,11 +29,19 @@ public class EmployeesStartController {
 
     @FXML
     void initialize() {
+
         changesPanelButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(fiveScene);
+            openNewWindow();
         });
 
+    }
+
+    private void openNewWindow () {
+        changesPanelButton.setOnMouseClicked(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(fiveScene);
+            }
+        );
     }
 
 }

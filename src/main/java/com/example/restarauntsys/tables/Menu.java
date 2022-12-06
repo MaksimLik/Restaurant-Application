@@ -1,40 +1,36 @@
 package com.example.restarauntsys.tables;
 
 public class Menu {
+    private int id;
     private String name;
     private float kcal;
     private float price;
 
+    public Menu(int id, String name, float kcal, float price) {
+        this.id = id;
+        this.name = name;
+        this.kcal = kcal;
+        this.price = price;
+    }
     public Menu(String name, float kcal, float price) {
         this.name = name;
         this.kcal = kcal;
         this.price = price;
     }
 
-    public Menu() {
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public float getKcal() {
+    public Float getKcal() {
         return kcal;
     }
 
-    public void setKcal(float kcal) {
-        this.kcal = kcal;
-    }
-
-    public float getPrice() {
+    public Float getPrice() {
         return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
     }
 }
