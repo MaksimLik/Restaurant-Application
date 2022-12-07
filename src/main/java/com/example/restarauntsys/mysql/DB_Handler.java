@@ -124,8 +124,6 @@ public class DB_Handler extends Configurations {
                 list.add(new Menu(rs.getInt("ID_food"), rs.getString("name_food"),
                         rs.getDouble("kcal"), rs.getDouble("price")));
             }
-            System.out.println("chuj");
-
 
             rs.close();
             stmt.close();
@@ -148,9 +146,6 @@ public class DB_Handler extends Configurations {
             preparedStatement.setString(2, employees.getPassword());
 
             resultSet = preparedStatement.executeQuery();
-         //   preparedStatement.close(); if we use this - allowed error
-
-
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

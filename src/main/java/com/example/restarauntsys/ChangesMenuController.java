@@ -76,15 +76,7 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
         table_menu.setItems(listM);
     }
 
- /*   @FXML
-    void initialize() {
-        addButton.setOnAction(event -> {
-            addNewProduct();
-        });
-
-    } */
-
-    private void informationTable () {
+/*    private void informationTable () {
         ResultSet rs = null;
         Statement stmt = null;
         String selectQuery = "select * from menu";
@@ -96,8 +88,6 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
                 System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " +
                         rs.getFloat(3) + " " +  rs.getFloat(4));
             }
-            System.out.println("chuj");
-
 
             rs.close();
             stmt.close();
@@ -105,7 +95,7 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
+    } */
 
     private void addNewProduct() {
         DB_Handler db_handler = new DB_Handler();

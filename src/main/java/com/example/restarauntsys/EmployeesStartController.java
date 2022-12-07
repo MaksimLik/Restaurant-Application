@@ -3,12 +3,13 @@ package com.example.restarauntsys;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class EmployeesStartController {
+public class EmployeesStartController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -27,9 +28,8 @@ public class EmployeesStartController {
     }
 
 
-    @FXML
-    void initialize() {
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         changesPanelButton.setOnAction(event -> {
             openNewWindow();
         });

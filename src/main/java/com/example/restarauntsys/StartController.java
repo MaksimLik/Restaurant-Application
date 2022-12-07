@@ -11,6 +11,7 @@ import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +21,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class StartController extends DB_Handler{
+public class StartController extends DB_Handler implements Initializable {
     @FXML
     private CheckBox checkButton;
 
@@ -51,8 +52,8 @@ public class StartController extends DB_Handler{
         fourScene = scene;
     }
 
-    @FXML
-    void initialize() {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         loginButton.setOnAction(event -> {
             authorization();
         });
