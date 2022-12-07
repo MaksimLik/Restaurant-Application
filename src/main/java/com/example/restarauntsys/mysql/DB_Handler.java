@@ -79,8 +79,8 @@ public class DB_Handler extends Configurations {
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, menu.getName());
-            preparedStatement.setFloat(2, menu.getKcal());
-            preparedStatement.setFloat(3, menu.getPrice());
+            preparedStatement.setDouble(2, menu.getKcal());
+            preparedStatement.setDouble(3, menu.getPrice());
 
             preparedStatement.executeUpdate();
 

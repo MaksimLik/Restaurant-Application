@@ -10,5 +10,9 @@ module com.example.restarauntsys {
     requires mysql.connector.java;
 
     opens com.example.restarauntsys to javafx.fxml;
+    opens com.example.restarauntsys.tables to javafx.fxml;
+
     exports com.example.restarauntsys;
+    exports com.example.restarauntsys.tables;
+
 }

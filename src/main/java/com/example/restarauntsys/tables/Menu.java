@@ -3,22 +3,22 @@ package com.example.restarauntsys.tables;
 public class Menu {
     private int id;
     private String name;
-    private float kcal;
-    private float price;
+    private double kcal;
+    private double price;
 
-    public Menu(int id, String name, float kcal, float price) {
+    public Menu(int id, String name, double kcal, double price) {
         this.id = id;
         this.name = name;
         this.kcal = kcal;
         this.price = price;
     }
-    public Menu(String name, float kcal, float price) {
+    public Menu(String name, double kcal, double price) {
         this.name = name;
         this.kcal = kcal;
         this.price = price;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -26,11 +26,11 @@ public class Menu {
         return name;
     }
 
-    public Float getKcal() {
+    public double getKcal() {
         return kcal;
     }
 
-    public Float getPrice() {
+    public double getPrice() {
         return price;
     }
 }
