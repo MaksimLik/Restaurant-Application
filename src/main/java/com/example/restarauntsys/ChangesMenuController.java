@@ -1,9 +1,7 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
@@ -45,24 +43,26 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
     @FXML
     private TableColumn<Menu, Double> kcal_table;
     @FXML
-    private TableColumn<Menu, String> name_table;
-    @FXML
     private TableColumn<Menu, Double> price_table;
+    @FXML
+    private TableColumn<Menu, String> name_table;
 
-    ObservableList<Menu> list = FXCollections.observableArrayList(
-            new Menu(1, "Kanapka", 231.2, 22.3),
-            new Menu(2, "Murzyn", 31.2, 122.3),
-            new Menu(3, "Zyd", 21.2, 122.3)
-    );
+
+    ObservableList<Menu> listM;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        id_table.setCellValueFactory(new PropertyValueFactory<>("id"));
-        name_table.setCellValueFactory(new PropertyValueFactory<>("name"));
-        kcal_table.setCellValueFactory(new PropertyValueFactory<>("kcal"));
-        price_table.setCellValueFactory(new PropertyValueFactory<>("price"));
+        DB_Handler db_handler = new DB_Handler();
 
-        table_menu.setItems(list);
+        id_table.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("id"));
+        name_table.setCellValueFactory(new PropertyValueFactory<Menu, String>("name"));
+        kcal_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("kcal"));
+        price_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("price"));
+
+
+        listM = db_handler.getMenu();
+        table_menu.setItems(listM);
     }
 /*    @FXML
     public void initialize() {
