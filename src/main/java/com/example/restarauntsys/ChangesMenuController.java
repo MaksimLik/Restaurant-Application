@@ -53,6 +53,17 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initData();
+        addButton.setOnAction(event -> {
+            addNewProduct();
+            initData();
+            name_field.clear();
+            price_field.clear();
+            kcal_field.clear();
+        });
+    }
+
+    private void initData() {
         DB_Handler db_handler = new DB_Handler();
 
         id_table.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("id"));
@@ -63,22 +74,6 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
         listM = db_handler.getMenu();
         table_menu.setItems(listM);
-    }
-/*    @FXML
-    public void initialize() {
-        initData();
-//        informationTable();
-//        System.out.println(list);
-//        id_table.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("id"));
-//        name_table.setCellValueFactory(new PropertyValueFactory<Menu, String>("name"));
-//        kcal_table.setCellValueFactory(new PropertyValueFactory<Menu, Float>("kcal"));
-//        price_table.setCellValueFactory(new PropertyValueFactory<Menu, Float>("price"));
-//
-//        table_menu.setItems(list);
-    } */
-
-    private void initData() {
-
     }
 
  /*   @FXML
@@ -117,8 +112,8 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
         try {
             String name = name_field.getText();
-            float kcal = Float.parseFloat(kcal_field.getText());
-            float price = Float.parseFloat(price_field.getText());
+            double kcal = Double.parseDouble(kcal_field.getText());
+            double price = Double.parseDouble(price_field.getText());
             if (!name.equals("")) {
                 Menu menu = new Menu(name, kcal, price);
                 db_handler.registrationProduct(menu);
