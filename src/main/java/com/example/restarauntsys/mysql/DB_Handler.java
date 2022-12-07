@@ -4,6 +4,8 @@ import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
 import com.example.restarauntsys.tables.Menu;
 import com.example.restarauntsys.tables.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 
@@ -79,8 +81,8 @@ public class DB_Handler extends Configurations {
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, menu.getName());
-            preparedStatement.setFloat(2, menu.getKcal());
-            preparedStatement.setFloat(3, menu.getPrice());
+            preparedStatement.setDouble(2, menu.getKcal());
+            preparedStatement.setDouble(3, menu.getPrice());
 
             preparedStatement.executeUpdate();
 
@@ -107,6 +109,31 @@ public class DB_Handler extends Configurations {
             e.printStackTrace();
         }
         return resultSet;
+    }
+
+    public ObservableList<Menu> getMenu() {
+        ObservableList<Menu> list = FXCollections.observableArrayList();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select * from menu";
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            while (rs.next()) {
+                list.add(new Menu(rs.getInt("ID_food"), rs.getString("name_food"),
+                        rs.getDouble("kcal"), rs.getDouble("price")));
+            }
+            System.out.println("chuj");
+
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
     }
 
     public ResultSet getEmployees(Employees employees) {

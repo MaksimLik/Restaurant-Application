@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -24,11 +25,14 @@
                         <TextField fx:id="price_field" layoutX="68.0" layoutY="214.0" promptText="Price" />
                      </children>
                   </AnchorPane>
-                  <ScrollPane layoutX="284.0" prefHeight="331.0" prefWidth="317.0">
-                     <content>
-                        <VBox fx:id="item_list" prefHeight="329.0" prefWidth="315.0" />
-                     </content>
-                  </ScrollPane>
+                  <TableView fx:id="table_menu" layoutX="284.0" prefHeight="332.0" prefWidth="316.0">
+                    <columns>
+                      <TableColumn fx:id="id_table" prefWidth="46.0" text="id" />
+                      <TableColumn fx:id="name_table" prefWidth="109.0" text="name" />
+                        <TableColumn fx:id="kcal_table" prefWidth="78.0" text="kcal" />
+                        <TableColumn fx:id="price_table" prefWidth="82.0" text="price" />
+                    </columns>
+                  </TableView>
                </children>
                 </AnchorPane>
                 <Text layoutX="69.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

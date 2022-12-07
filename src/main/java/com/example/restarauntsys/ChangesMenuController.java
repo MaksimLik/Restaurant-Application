@@ -1,27 +1,20 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.*;
 import java.util.ResourceBundle;
 
-import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
-import com.example.restarauntsys.tables.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ChangesMenuController extends DB_Handler {
+public class ChangesMenuController extends DB_Handler implements Initializable {
     @FXML
     private VBox item_list;
     @FXML
@@ -47,20 +40,31 @@ public class ChangesMenuController extends DB_Handler {
     private TableView<Menu> table_menu;
     @FXML
     private TableColumn<Menu, Integer> id_table;
-
     @FXML
-    private TableColumn<Menu, Float> kcal_table;
-
+    private TableColumn<Menu, Double> kcal_table;
+    @FXML
+    private TableColumn<Menu, Double> price_table;
     @FXML
     private TableColumn<Menu, String> name_table;
 
-    @FXML
-    private TableColumn<Menu, Float> price_table;
 
-    ObservableList<Menu> list = FXCollections.observableArrayList();
+    ObservableList<Menu> listM;
 
-    ArrayList<Menu> lista = new ArrayList<Menu>();
-    @FXML
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DB_Handler db_handler = new DB_Handler();
+
+        id_table.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("id"));
+        name_table.setCellValueFactory(new PropertyValueFactory<Menu, String>("name"));
+        kcal_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("kcal"));
+        price_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("price"));
+
+
+        listM = db_handler.getMenu();
+        table_menu.setItems(listM);
+    }
+/*    @FXML
     public void initialize() {
         initData();
 //        informationTable();
@@ -71,53 +75,10 @@ public class ChangesMenuController extends DB_Handler {
 //        price_table.setCellValueFactory(new PropertyValueFactory<Menu, Float>("price"));
 //
 //        table_menu.setItems(list);
-    }
+    } */
 
     private void initData() {
 
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(1,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(2,"Amanoc", (float) 12.12345, (float) 13.3));
-        lista.add(new Menu(3,"Bambook", (float) 12.12345, (float) 13.3));
-        lista.forEach(item -> {
-            Label id = new Label(item.getId().toString());
-            Label nazwa = new Label(item.getName().toString());
-            HBox hbox = new HBox();
-            hbox.getChildren().add(id);
-            hbox.getChildren().add(nazwa);
-
-            item_list.getChildren().add(hbox);
-        });
-       // lista.a
-
-
-//        item_list.getChildren().add(b);
     }
 
  /*   @FXML
