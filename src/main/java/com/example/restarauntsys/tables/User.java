@@ -78,8 +78,6 @@ public class User extends DB_Handler {
             throw new RuntimeException(e);
         }
 
-
-        System.out.println(currentUserId + "proba");
         return currentUserId;
     }
 }

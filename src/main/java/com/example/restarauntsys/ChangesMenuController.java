@@ -4,9 +4,9 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -49,7 +49,7 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
 
     ObservableList<Menu> listM;
-
+    private Menu menu;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,6 +61,27 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
             price_field.clear();
             kcal_field.clear();
         });
+
+        deleteButton.setOnAction(event -> {
+            deleteProduct();
+        });
+    }
+    private void deleteProduct() {
+        ObservableList<Menu> allMenu, singleMenu;
+        allMenu = table_menu.getItems();
+        singleMenu = table_menu.getSelectionModel().getSelectedItems();
+        singleMenu.forEach(allMenu::remove);
+
+        try {
+            menu = table_menu.getSelectionModel().getSelectedItem();
+            String select = "delete from menu where id_food = " + menu.getId();
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+            preparedStatement.execute();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initData() {
@@ -75,27 +96,6 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
         listM = db_handler.getMenu();
         table_menu.setItems(listM);
     }
-
-/*    private void informationTable () {
-        ResultSet rs = null;
-        Statement stmt = null;
-        String selectQuery = "select * from menu";
-
-        try {
-            stmt = getDbConnection().createStatement();
-            rs = stmt.executeQuery(selectQuery);
-            while (rs.next()) {
-                System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " +
-                        rs.getFloat(3) + " " +  rs.getFloat(4));
-            }
-
-            rs.close();
-            stmt.close();
-
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    } */
 
     private void addNewProduct() {
         DB_Handler db_handler = new DB_Handler();
