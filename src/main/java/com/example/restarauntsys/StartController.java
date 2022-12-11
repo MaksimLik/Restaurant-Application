@@ -21,7 +21,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class StartController extends DB_Handler implements Initializable {
+public class StartController implements Initializable {
     @FXML
     private CheckBox checkButton;
 
@@ -70,6 +70,7 @@ public class StartController extends DB_Handler implements Initializable {
 
         nick_name.clear();
         password.clear();
+        checkButton.isDisabled();
 
         if (checkButton.isSelected()) {
             if (!loginText.equals("") && !loginPassword.equals("")) {
@@ -165,7 +166,7 @@ public class StartController extends DB_Handler implements Initializable {
         });
     }
 
-    private void openNewScene(String window) {
+/*    private void openNewScene(String window) {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
@@ -181,5 +182,5 @@ public class StartController extends DB_Handler implements Initializable {
         stage.setTitle("Restaurant customer");
         stage.setResizable(false);
         stage.showAndWait();
-    }
+    } */
 }
