@@ -21,9 +21,18 @@
                         <Button fx:id="addButton" layoutX="14.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
                         <Button fx:id="deleteButton" layoutX="192.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Delete" />
                         <Button fx:id="updateButton" layoutX="99.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: orange;" text="Update" />
-                        <TextField fx:id="name_field" layoutX="28.0" layoutY="62.0" prefHeight="37.0" prefWidth="155.0" promptText="Name" />
-                        <TextField fx:id="kcal_field" layoutX="28.0" layoutY="120.0" prefHeight="37.0" prefWidth="155.0" promptText="Kcal" />
-                        <TextField fx:id="price_field" layoutX="28.0" layoutY="172.0" prefHeight="37.0" prefWidth="155.0" promptText="Price" />
+                        <TextField fx:id="name_field" layoutX="28.0" layoutY="62.0" prefHeight="37.0" prefWidth="155.0" promptText="Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="kcal_field" layoutX="28.0" layoutY="120.0" prefHeight="37.0" prefWidth="155.0" promptText="Kcal">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="price_field" layoutX="28.0" layoutY="172.0" prefHeight="37.0" prefWidth="155.0" promptText="Price">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
                         <TextArea fx:id="about_product" layoutX="28.0" layoutY="234.0" prefHeight="100.0" prefWidth="229.0" promptText="The little discription about product and ">
                            <font>
                               <Font size="15.0" />
@@ -35,7 +44,7 @@
                     <columns>
                       <TableColumn fx:id="id_table" prefWidth="38.0" text="id" />
                       <TableColumn fx:id="name_table" prefWidth="68.0" text="name" />
-                        <TableColumn fx:id="kcal_table" prefWidth="57.0" text="kcal" />
+                        <TableColumn fx:id="kcal_table" minWidth="12.0" prefWidth="58.0" text="kcal" />
                         <TableColumn fx:id="price_table" prefWidth="58.0" text="price" />
                         <TableColumn fx:id="table_description" prefWidth="384.0" text="description" />
                     </columns>

@@ -14,17 +14,12 @@
             <children>
                 <AnchorPane layoutY="83.0" prefHeight="317.0" prefWidth="600.0" style="-fx-background-color: #BDB76B;">
                <children>
-                  <Button layoutX="424.0" layoutY="80.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Menu">
+                  <Button fx:id="order_button" layoutX="424.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="To order">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="424.0" layoutY="159.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="To order">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="424.0" layoutY="240.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Your basket">
+                  <Button layoutX="424.0" layoutY="159.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Your basket">
                      <font>
                         <Font size="20.0" />
                      </font>

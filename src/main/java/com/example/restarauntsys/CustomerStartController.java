@@ -16,7 +16,8 @@ public class CustomerStartController implements Initializable {
 
     @FXML
     private URL location;
-
+    @FXML
+    private Button order_button;
     @FXML
     private Button logoutButton;
     private Scene firstScene;
