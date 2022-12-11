@@ -15,4 +15,5 @@ public class Constants {
     public  static final String MENU_KCAL = "kcal";
     public  static final String MENU_PRICE = "price";
     public  static final String MENU_NAME = "name_food";
+    public  static final String MENU_DESCRIPTION = "description";
 }

@@ -30,7 +30,7 @@ public class MainApplication extends Application {
 
         FXMLLoader fivePageLoader  = new FXMLLoader(MainApplication.class.getResource("changesMenu.fxml"));
         Parent fivePane = fivePageLoader.load();
-        Scene fiveScene = new Scene(fivePane, 600, 400);
+        Scene fiveScene = new Scene(fivePane, 900, 550);
 
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);

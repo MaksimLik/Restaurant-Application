@@ -29,6 +29,8 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
     @FXML
     private TextField kcal_field;
     @FXML
+    private TextArea about_product;
+    @FXML
     private Button addButton;
 
     @FXML
@@ -46,6 +48,8 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
     private TableColumn<Menu, Double> price_table;
     @FXML
     private TableColumn<Menu, String> name_table;
+    @FXML
+    private TableColumn<Menu, String> table_description;
 
 
     ObservableList<Menu> listM;
@@ -60,6 +64,7 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
             name_field.clear();
             price_field.clear();
             kcal_field.clear();
+            about_product.clear();
         });
 
         deleteButton.setOnAction(event -> {
@@ -89,6 +94,7 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
         id_table.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("id"));
         name_table.setCellValueFactory(new PropertyValueFactory<Menu, String>("name"));
+        table_description.setCellValueFactory(new PropertyValueFactory<Menu, String>("description"));
         kcal_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("kcal"));
         price_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("price"));
 
@@ -102,10 +108,11 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
         try {
             String name = name_field.getText();
+            String description = about_product.getText();
             double kcal = Double.parseDouble(kcal_field.getText());
             double price = Double.parseDouble(price_field.getText());
             if (!name.equals("")) {
-                Menu menu = new Menu(name, kcal, price);
+                Menu menu = new Menu(name, description, kcal, price);
                 db_handler.registrationProduct(menu);
             } else {
                 errorAlarm();

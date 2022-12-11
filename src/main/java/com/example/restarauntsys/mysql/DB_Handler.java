@@ -73,16 +73,18 @@ public class DB_Handler extends Configurations {
     public void registrationProduct(Menu menu) {
         String insert = "INSERT INTO " + Constants.MENU_TABLE + "(" +
                 Constants.MENU_NAME + "," +
+                Constants.MENU_DESCRIPTION + "," +
                 Constants.MENU_KCAL + "," +
                 Constants.MENU_PRICE + ")" +
-                "VALUES(?, ?, ?)";
+                "VALUES(?, ?, ?, ?)";
         System.out.println(insert);
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, menu.getName());
-            preparedStatement.setDouble(2, menu.getKcal());
-            preparedStatement.setDouble(3, menu.getPrice());
+            preparedStatement.setString(2, menu.getDescription());
+            preparedStatement.setDouble(3, menu.getKcal());
+            preparedStatement.setDouble(4, menu.getPrice());
 
             preparedStatement.executeUpdate();
 
@@ -121,7 +123,7 @@ public class DB_Handler extends Configurations {
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(selectQuery);
             while (rs.next()) {
-                list.add(new Menu(rs.getInt("ID_food"), rs.getString("name_food"),
+                list.add(new Menu(rs.getInt("ID_food"), rs.getString("name_food"), rs.getString("description"),
                         rs.getDouble("kcal"), rs.getDouble("price")));
             }
 
