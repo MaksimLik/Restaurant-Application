@@ -15,7 +15,7 @@
             <children>
                 <AnchorPane layoutY="83.0" prefHeight="317.0" prefWidth="600.0" style="-fx-background-color: #BDB76B;">
                     <children>
-                        <Text fill="WHITE" layoutX="273.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write your address:">
+                        <Text fill="WHITE" layoutX="200.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write your address for delivery:">
                             <font>
                                 <Font name="System Bold Italic" size="26.0" />
                             </font>

@@ -17,10 +17,14 @@ public class CustomerStartController implements Initializable {
     @FXML
     private URL location;
     @FXML
-    private Button order_button;
+    private Button address_button;
     @FXML
     private Button logoutButton;
+    private Scene sixScene;
     private Scene firstScene;
+    public void setSixScene(Scene scene) {
+        sixScene = scene;
+    }
     public void setFirstScene(Scene scene) {
         firstScene = scene;
     }
@@ -30,6 +34,11 @@ public class CustomerStartController implements Initializable {
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(firstScene);
+        });
+
+        address_button.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(sixScene);
         });
 
 

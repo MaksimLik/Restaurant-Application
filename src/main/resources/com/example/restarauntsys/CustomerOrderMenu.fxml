@@ -13,7 +13,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restarauntsys.CustomerOrderController">
     <children>
-        <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;">
+        <AnchorPane prefHeight="595.0" prefWidth="850.0" style="-fx-background-color: #2F4F4F;">
             <children>
                 <AnchorPane layoutY="83.0" prefHeight="516.0" prefWidth="850.0" style="-fx-background-color: #BDB76B;">
                     <children>
@@ -27,7 +27,7 @@
                         <Font name="Modern No. 20" size="37.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="table_menu" layoutX="244.0" layoutY="60.0" prefHeight="479.0" prefWidth="606.0">
+                  <TableView fx:id="table_menu" layoutX="236.0" layoutY="65.0" prefHeight="450.0" prefWidth="606.0">
                      <columns>
                         <TableColumn fx:id="id_table" prefWidth="38.0" text="id" />
                         <TableColumn fx:id="name_table" prefWidth="68.0" text="name" />
@@ -46,7 +46,7 @@
                         <Font size="16.0" />
                      </font>
                   </RadioButton>
-                  <Button layoutX="51.0" layoutY="471.0" mnemonicParsing="false" onAction="#backButton" prefHeight="39.0" prefWidth="136.0" text="Back">
+                  <Button layoutX="51.0" layoutY="445.0" mnemonicParsing="false" onAction="#backButton" prefHeight="39.0" prefWidth="136.0" text="Back">
                      <font>
                         <Font size="18.0" />
                      </font>

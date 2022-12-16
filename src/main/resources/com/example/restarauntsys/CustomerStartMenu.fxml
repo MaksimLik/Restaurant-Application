@@ -14,7 +14,7 @@
             <children>
                 <AnchorPane layoutY="83.0" prefHeight="317.0" prefWidth="600.0" style="-fx-background-color: #BDB76B;">
                <children>
-                  <Button fx:id="order_button" layoutX="424.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="To order">
+                  <Button fx:id="address_button" layoutX="424.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Set address">
                      <font>
                         <Font size="20.0" />
                      </font>
