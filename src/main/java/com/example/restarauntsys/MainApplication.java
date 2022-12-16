@@ -51,12 +51,16 @@ public class MainApplication extends Application {
         CustomerStartController thirdPaneController = (CustomerStartController) thirdPageLoader.getController();
         thirdPaneController.setFirstScene(firstscene);
         thirdPaneController.setSixScene(sixScene);
+        thirdPaneController.setSevenScene(sevenScene);
 
         EmployeesStartController fourPaneController = (EmployeesStartController) fourPageLoader.getController();
         fourPaneController.setFiveScene(fiveScene);
 
         CustomerAddressController fivePaneController = (CustomerAddressController) sixPageLoader.getController();
         fivePaneController.setThirdScene(thirdScene);
+
+        CustomerOrderController sixPaneController = (CustomerOrderController) sevenPageLoader.getController();
+        sixPaneController.setThirdScene(thirdScene);
 
 
         stage.setTitle("Restaurant Application");

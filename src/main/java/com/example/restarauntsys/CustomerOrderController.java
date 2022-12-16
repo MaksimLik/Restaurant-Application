@@ -4,10 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 public class CustomerOrderController {
 
@@ -40,10 +43,15 @@ public class CustomerOrderController {
 
     @FXML
     private TableView<?> table_menu;
+    private Scene thirdScene;
+    public void setThirdScene(Scene scene) {
+        thirdScene = scene;
+    }
 
     @FXML
     void backButton(ActionEvent event) {
-
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(thirdScene);
     }
 
     @FXML

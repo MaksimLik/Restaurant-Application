@@ -22,11 +22,19 @@ public class CustomerStartController implements Initializable {
     private Button logoutButton;
     private Scene sixScene;
     private Scene firstScene;
+    private Scene sevenScene;
+    @FXML
+    private Button order_button;
+    @FXML
+    private Button showBasketButton;
     public void setSixScene(Scene scene) {
         sixScene = scene;
     }
     public void setFirstScene(Scene scene) {
         firstScene = scene;
+    }
+    public void setSevenScene(Scene scene) {
+        sevenScene = scene;
     }
 
     @Override
@@ -39,6 +47,11 @@ public class CustomerStartController implements Initializable {
         address_button.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(sixScene);
+        });
+
+        order_button.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(sevenScene);
         });
 
 

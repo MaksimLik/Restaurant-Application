@@ -19,7 +19,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="424.0" layoutY="159.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Your basket">
+                  <Button fx:id="showBasketButton" layoutX="424.0" layoutY="159.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Your basket">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -39,6 +39,11 @@
                         <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="order_button" layoutX="424.0" layoutY="240.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="To order">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
                </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">
