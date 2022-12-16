@@ -30,17 +30,17 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="308.0" layoutY="73.0" prefHeight="38.0" prefWidth="169.0" promptText="Your street">
+                  <TextField fx:id="streetField" layoutX="308.0" layoutY="73.0" prefHeight="38.0" prefWidth="169.0" promptText="Your street">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="307.0" layoutY="132.0" prefHeight="38.0" prefWidth="169.0" promptText="Your room number">
+                  <TextField fx:id="roomField" layoutX="307.0" layoutY="132.0" prefHeight="38.0" prefWidth="169.0" promptText="Your room number">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="308.0" layoutY="194.0" prefHeight="38.0" prefWidth="169.0" promptText="Your postal index">
+                  <TextField fx:id="indexField" layoutX="308.0" layoutY="194.0" prefHeight="38.0" prefWidth="169.0" promptText="Your postal index">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -1,9 +1,6 @@
 package com.example.restarauntsys.mysql;
 
-import com.example.restarauntsys.tables.Customers;
-import com.example.restarauntsys.tables.Employees;
-import com.example.restarauntsys.tables.Menu;
-import com.example.restarauntsys.tables.User;
+import com.example.restarauntsys.tables.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -66,6 +63,23 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void registrationAddress(Address address){
+        String insert = "INSERT INTO " + Constants.MENU_ADDRESS + "(" +
+                Constants.ADDRESS_STREET + "," +
+                Constants.ADDRESS_ROOM + "," +
+                Constants.ADDRESS_INDEX + ")" +
+                "VALUES(?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, address.getStreet());
+            preparedStatement.setString(2, address.getRoom_number());
+            preparedStatement.setString(3, address.getPostal_index());
+
+            preparedStatement.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

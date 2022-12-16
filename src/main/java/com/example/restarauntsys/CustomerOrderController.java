@@ -2,17 +2,23 @@ package com.example.restarauntsys;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.restarauntsys.mysql.DB_Handler;
+import com.example.restarauntsys.tables.Menu;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class CustomerOrderController {
+public class CustomerOrderController extends DB_Handler implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -27,37 +33,52 @@ public class CustomerOrderController {
     private RadioButton deliveryButton;
 
     @FXML
-    private TableColumn<?, ?> id_table;
-
+    private TableView<Menu> table_menu;
     @FXML
-    private TableColumn<?, ?> kcal_table;
-
+    private TableColumn<Menu, Double> kcal_table;
     @FXML
-    private TableColumn<?, ?> name_table;
-
+    private TableColumn<Menu, Double> price_table;
     @FXML
-    private TableColumn<?, ?> price_table;
-
+    private TableColumn<Menu, String> name_table;
     @FXML
-    private TableColumn<?, ?> table_description;
-
-    @FXML
-    private TableView<?> table_menu;
+    private TableColumn<Menu, String> table_description;
+    ObservableList<Menu> listM;
+    private Menu menu;
     private Scene thirdScene;
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
     }
-
+    String loginText;
     @FXML
     void backButton(ActionEvent event) {
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         primaryStage.setScene(thirdScene);
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(loginText);
+        initData();
+        addButton.setOnAction(event -> {
+            //addFunction();
+        });
+    }
 
-    @FXML
-    void initialize() {
+    private void addFunction() {
+        DB_Handler db_handler = new DB_Handler();
+
+    }
+
+    private void initData() {
+        DB_Handler db_handler = new DB_Handler();
+
+        name_table.setCellValueFactory(new PropertyValueFactory<Menu, String>("name"));
+        table_description.setCellValueFactory(new PropertyValueFactory<Menu, String>("description"));
+        kcal_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("kcal"));
+        price_table.setCellValueFactory(new PropertyValueFactory<Menu, Double>("price"));
 
 
+        listM = db_handler.getMenu();
+        table_menu.setItems(listM);
     }
 
 }

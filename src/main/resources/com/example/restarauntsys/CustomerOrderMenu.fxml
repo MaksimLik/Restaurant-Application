@@ -17,7 +17,7 @@
             <children>
                 <AnchorPane layoutY="83.0" prefHeight="516.0" prefWidth="850.0" style="-fx-background-color: #BDB76B;">
                     <children>
-                        <ImageView fitHeight="189.0" fitWidth="224.0" layoutX="24.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="189.0" fitWidth="224.0" layoutX="25.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                             </image>
@@ -27,13 +27,12 @@
                         <Font name="Modern No. 20" size="37.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="table_menu" layoutX="236.0" layoutY="65.0" prefHeight="450.0" prefWidth="606.0">
+                  <TableView fx:id="table_menu" layoutX="261.0" layoutY="65.0" prefHeight="450.0" prefWidth="581.0">
                      <columns>
-                        <TableColumn fx:id="id_table" prefWidth="38.0" text="id" />
-                        <TableColumn fx:id="name_table" prefWidth="68.0" text="name" />
-                        <TableColumn fx:id="kcal_table" minWidth="12.0" prefWidth="58.0" text="kcal" />
-                        <TableColumn fx:id="price_table" prefWidth="58.0" text="price" />
-                        <TableColumn fx:id="table_description" prefWidth="384.0" text="description" />
+                        <TableColumn fx:id="name_table" prefWidth="95.0" text="name" />
+                        <TableColumn fx:id="kcal_table" minWidth="12.0" prefWidth="61.0" text="kcal" />
+                        <TableColumn fx:id="price_table" prefWidth="67.0" text="price" />
+                        <TableColumn fx:id="table_description" prefWidth="382.0" text="description" />
                      </columns>
                   </TableView>
                   <Button fx:id="addButton" layoutX="51.0" layoutY="270.0" mnemonicParsing="false" text="Add to basket">
