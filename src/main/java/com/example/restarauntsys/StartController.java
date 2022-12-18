@@ -1,24 +1,22 @@
 package com.example.restarauntsys;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class StartController implements Initializable {
+public class StartController extends DB_Handler implements Initializable {
     @FXML
     private CheckBox checkButton;
 
@@ -37,6 +35,7 @@ public class StartController implements Initializable {
     private Scene secondScene;
     private Scene thirdScene;
     private Scene fourScene;
+    public static int CustID;
     @FXML
     private Button registrationFirstButton;
     public void setSecondScene(Scene scene) {
@@ -51,8 +50,11 @@ public class StartController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         loginButton.setOnAction(event -> {
             authorization();
+
+            System.out.println(getCustID());
         });
 
         registrationFirstButton.setOnAction(event -> {
@@ -61,11 +63,36 @@ public class StartController implements Initializable {
         });
     }
 
+    public int getCustID () {
+        String loginText = nick_name.getText().trim();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select * from customers where nick_name = " + "'" + loginText + "'";
+        System.out.println(selectQuery);
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            rs.next();
+
+            CustID = Integer.parseInt(rs.getString(2));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return CustID;
+    }
+
+
     private void authorization() {
         String loginText = nick_name.getText().trim();
         String loginPassword = password.getText().trim();
 
-        nick_name.clear();
+       // nick_name.clear();
         password.clear();
         checkButton.isDisabled();
 

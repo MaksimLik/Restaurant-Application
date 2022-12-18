@@ -2,12 +2,17 @@ package com.example.restarauntsys;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.restarauntsys.tables.Customers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import static com.example.restarauntsys.StartController.CustID;
 
 public class CustomerStartController implements Initializable {
 
@@ -24,6 +29,8 @@ public class CustomerStartController implements Initializable {
     private Scene firstScene;
     private Scene sevenScene;
     @FXML
+    private Text index;
+    @FXML
     private Button order_button;
     @FXML
     private Button showBasketButton;
@@ -39,6 +46,8 @@ public class CustomerStartController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(CustID);
+
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(firstScene);
@@ -52,6 +61,10 @@ public class CustomerStartController implements Initializable {
         order_button.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(sevenScene);
+        });
+
+        showBasketButton.setOnAction(event -> {
+            index.setText(String.valueOf(CustID));
         });
 
 

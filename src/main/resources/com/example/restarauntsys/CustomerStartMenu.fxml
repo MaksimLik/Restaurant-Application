@@ -34,7 +34,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="189.0" fitWidth="224.0" layoutX="35.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="189.0" fitWidth="224.0" layoutX="35.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                      </image>
@@ -44,6 +44,16 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Index:">
+                     <font>
+                        <Font name="System Bold Italic" size="26.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="index" fill="WHITE" layoutX="92.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="System Bold Italic" size="26.0" />
+                     </font>
+                  </Text>
                </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">
