@@ -24,6 +24,10 @@ public class Constants {
     public  static final String MENU_DESCRIPTION = "description";
 
     public  static final String MENU_ADDRESS = "address";
+    public  static final String CUSTOMER_ADDRESS = "adress_customer";
+    public static final String ID_ADDRESS = "ID_adress";
+    public static final String Customer_ID = "Customers_Users_ID_user";
+   // public static final String  = "Customers_Users_ID_user";
 
 
 }

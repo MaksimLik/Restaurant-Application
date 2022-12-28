@@ -33,6 +33,7 @@ public class CustomerAddressController {
     private Scene thirdScene;
     @FXML
     private Button save_button;
+    public static int CustID;
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
     }
@@ -46,7 +47,11 @@ public class CustomerAddressController {
     void initialize() {
         save_button.setOnAction(event -> {
             addAddress();
+            addAddressCustomer();
         });
+
+    }
+    public void addAddressCustomer() {
 
     }
     public void addAddress(){
@@ -58,7 +63,8 @@ public class CustomerAddressController {
         if (!street.equals("") && !room.equals("") && !index.equals("")) {
             Address address = new Address(street, room, index);
             db_handler.registrationAddress(address);
-            successRegistration();
+            db_handler.registrationCustomerAddress(address);
+       //     successRegistration();
 
         } else {
             warningRegistration();

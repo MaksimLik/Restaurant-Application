@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
+import static com.example.restarauntsys.StartController.CustID;
+
 public class DB_Handler extends Configurations {
     Connection dbConnection;
 
@@ -67,12 +69,34 @@ public class DB_Handler extends Configurations {
             e.printStackTrace();
         }
     }
+
+    public void registrationCustomerAddress(Address address) {
+        String insert = "INSERT INTO " + Constants.CUSTOMER_ADDRESS + "(" +
+                Constants.ID_ADDRESS + "," +
+                Constants.Customer_ID + ")" +
+                "VALUES(?, ?)";
+        System.out.println(insert);
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, address.getIDadr());
+            preparedStatement.setInt(2, CustID);
+
+            System.out.println(address.getIDadr());
+            System.out.println(CustID);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     public void registrationAddress(Address address){
         String insert = "INSERT INTO " + Constants.MENU_ADDRESS + "(" +
                 Constants.ADDRESS_STREET + "," +
                 Constants.ADDRESS_ROOM + "," +
                 Constants.ADDRESS_INDEX + ")" +
                 "VALUES(?, ?, ?)";
+
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, address.getStreet());
