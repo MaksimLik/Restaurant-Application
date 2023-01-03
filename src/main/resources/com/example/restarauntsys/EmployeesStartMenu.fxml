@@ -29,9 +29,14 @@
                         <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="addButton" layoutX="392.0" layoutY="89.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="130.0" text="Unknown">
+                  <Button fx:id="addButton" layoutX="392.0" layoutY="89.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="130.0" text="Show order">
                      <font>
                         <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="logoutButton" layoutX="80.0" layoutY="236.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="130.0" text="Log out">
+                     <font>
+                        <Font size="17.0" />
                      </font>
                   </Button>
                </children>

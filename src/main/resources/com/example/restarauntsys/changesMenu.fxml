@@ -16,11 +16,11 @@
             <children>
                 <AnchorPane layoutY="82.0" prefHeight="468.0" prefWidth="750.0" style="-fx-background-color: #ffa500;">
                <children>
-                  <AnchorPane prefHeight="468.0" prefWidth="296.0" style="-fx-background-color: #CD5C5C;">
+                  <AnchorPane layoutY="-1.0" prefHeight="468.0" prefWidth="296.0" style="-fx-background-color: #CD5C5C;">
                      <children>
                         <Button fx:id="addButton" layoutX="14.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
-                        <Button fx:id="deleteButton" layoutX="192.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Delete" />
-                        <Button fx:id="updateButton" layoutX="99.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: orange;" text="Update" />
+                        <Button fx:id="deleteButton" layoutX="108.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Delete" />
+                        <Button fx:id="logoutButton" layoutX="198.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: orange;" text="Log out" />
                         <TextField fx:id="name_field" layoutX="28.0" layoutY="62.0" prefHeight="37.0" prefWidth="155.0" promptText="Name">
                            <font>
                               <Font size="14.0" />

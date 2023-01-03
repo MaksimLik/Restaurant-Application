@@ -20,11 +20,16 @@ public class EmployeesStartController implements Initializable {
     @FXML
     private Button addButton;
     @FXML
+    private Button logoutButton;
+    @FXML
     private Button changesPanelButton;
-
+    private Scene FirstScene;
     private Scene fiveScene;
     public void setFiveScene(Scene scene) {
         fiveScene = scene;
+    }
+    public void setFirstScene(Scene scene) {
+        FirstScene = scene;
     }
 
 
@@ -32,6 +37,10 @@ public class EmployeesStartController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         changesPanelButton.setOnAction(event -> {
             openNewWindow();
+        });
+        logoutButton.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(FirstScene);
         });
 
     }

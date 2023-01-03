@@ -10,9 +10,12 @@ import com.example.restarauntsys.tables.Menu;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ChangesMenuController extends DB_Handler implements Initializable {
     @FXML
@@ -35,6 +38,8 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button logoutButton;
 
     @FXML
     private Button updateButton;
@@ -54,6 +59,11 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
     ObservableList<Menu> listM;
     private Menu menu;
+    private Scene fourScene;
+
+    public void setFourScene (Scene scene) {
+        fourScene = scene;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,6 +79,11 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
 
         deleteButton.setOnAction(event -> {
             deleteProduct();
+        });
+
+        logoutButton.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(fourScene);
         });
     }
     private void deleteProduct() {
