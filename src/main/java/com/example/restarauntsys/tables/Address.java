@@ -46,7 +46,7 @@ public class Address extends DB_Handler {
     public int getIDadr() {
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select count(street) from address;";
+        String selectQuery = "select max(ID_address) from address;";
 
         try {
             stmt = getDbConnection().createStatement();

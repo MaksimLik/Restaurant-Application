@@ -50,11 +50,11 @@ public class StartController extends DB_Handler implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         loginButton.setOnAction(event -> {
             authorization();
+            //getCustID();
 
-            System.out.println(getCustID());
+     //       System.out.println(getCustID());
         });
 
         registrationFirstButton.setOnAction(event -> {
@@ -81,7 +81,7 @@ public class StartController extends DB_Handler implements Initializable {
             stmt.close();
 
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+
         }
 
         return CustID;
@@ -104,6 +104,7 @@ public class StartController extends DB_Handler implements Initializable {
 
         } else  {
             if (!loginText.equals("") && !loginPassword.equals("")) {
+                getCustID();
                 loginCustomer(loginText, loginPassword);
             } else
                 alertWarning();
