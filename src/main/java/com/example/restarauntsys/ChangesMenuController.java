@@ -71,10 +71,6 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
         addButton.setOnAction(event -> {
             addNewProduct();
             initData();
-            name_field.clear();
-            price_field.clear();
-            kcal_field.clear();
-            about_product.clear();
         });
 
         deleteButton.setOnAction(event -> {
@@ -129,11 +125,15 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
             if (!name.equals("")) {
                 Menu menu = new Menu(name, description, kcal, price);
                 db_handler.registrationProduct(menu);
+                name_field.clear();
+                price_field.clear();
+                kcal_field.clear();
+                about_product.clear();
             } else {
                 errorAlarm();
             }
         } catch (NumberFormatException e) {
-            errorAlarm();
+            warningAlarm();
         }
 
     }
@@ -146,4 +146,11 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
         alert.showAndWait();
     }
 
+    private void warningAlarm () {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, if you can use float number you must use comma (.)");
+        alert.setContentText("Please, use COMMA");
+        alert.showAndWait();
+    }
 }

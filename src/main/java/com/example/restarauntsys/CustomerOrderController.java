@@ -1,6 +1,8 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
@@ -17,6 +19,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import static com.example.restarauntsys.StartController.CustID;
 
 public class CustomerOrderController extends DB_Handler implements Initializable {
 
@@ -59,12 +63,23 @@ public class CustomerOrderController extends DB_Handler implements Initializable
         System.out.println(loginText);
         initData();
         addButton.setOnAction(event -> {
-            //addFunction();
+            addFunction();
         });
     }
 
     private void addFunction() {
-        DB_Handler db_handler = new DB_Handler();
+        try {
+            menu = table_menu.getSelectionModel().getSelectedItem();
+            String select = "insert into orders (date_of_order, order_status, Customers_Users_ID_user, Menu_ID_food) " +
+                    "values (current_date(), 'w procesie', " + CustID + ", " + menu.getId() + ");";
+            System.out.println(select);
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+            preparedStatement.execute();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 

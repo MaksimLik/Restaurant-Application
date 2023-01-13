@@ -33,7 +33,7 @@ public class CustomerAddressController {
     private Scene thirdScene;
     @FXML
     private Button save_button;
-    public static int CustID;
+
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
     }
