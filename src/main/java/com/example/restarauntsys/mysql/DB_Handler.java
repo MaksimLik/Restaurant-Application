@@ -174,6 +174,29 @@ public class DB_Handler extends Configurations {
         return list;
     }
 
+    public ObservableList<Orders> getOrder() {
+        ObservableList<Orders> listt = FXCollections.observableArrayList();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select * from orders";
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            while (rs.next()) {
+                listt.add(new Orders(rs.getInt("ID_order"), rs.getString("date_of_order"), rs.getString("order_status"),
+                        rs.getInt("Customers_Users_ID_user"), rs.getInt("Menu_ID_food")));
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return listt;
+    }
+
     public ResultSet getEmployees(Employees employees) {
         ResultSet resultSet = null;
         String select = "select " + Constants.USER_NICK_NAME + ", " + Constants.USER_PASSWORD + " from " +

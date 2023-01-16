@@ -24,12 +24,16 @@ public class EmployeesStartController implements Initializable {
     @FXML
     private Button changesPanelButton;
     private Scene FirstScene;
+    private Scene nineScene;
     private Scene fiveScene;
     public void setFiveScene(Scene scene) {
         fiveScene = scene;
     }
     public void setFirstScene(Scene scene) {
         FirstScene = scene;
+    }
+    public void setNineScene(Scene scene) {
+        nineScene = scene;
     }
 
 
@@ -41,6 +45,11 @@ public class EmployeesStartController implements Initializable {
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(FirstScene);
+        });
+
+        addButton.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(nineScene);
         });
 
     }
