@@ -178,14 +178,15 @@ public class DB_Handler extends Configurations {
         ObservableList<Orders> listt = FXCollections.observableArrayList();
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select * from orders";
+        String selectQuery = "select id_order, date_of_order, order_status, Customers_Users_ID_user, name_food \n" +
+                "from menu inner join orders on menu.id_food = orders.id_order;";
 
         try {
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(selectQuery);
             while (rs.next()) {
                 listt.add(new Orders(rs.getInt("ID_order"), rs.getString("date_of_order"), rs.getString("order_status"),
-                        rs.getInt("Customers_Users_ID_user"), rs.getInt("Menu_ID_food")));
+                        rs.getInt("Customers_Users_ID_user"), rs.getString("name_food")));
             }
 
             rs.close();

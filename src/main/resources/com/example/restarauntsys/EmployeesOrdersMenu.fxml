@@ -27,7 +27,7 @@
                                 <TableColumn fx:id="date_table" prefWidth="83.0" text="date" />
                                 <TableColumn fx:id="status_table" minWidth="12.0" prefWidth="113.0" text="status" />
                                 <TableColumn fx:id="klient_table" prefWidth="134.0" text="customer_ID" />
-                                <TableColumn fx:id="table_product" prefWidth="238.0" text="product_ID" />
+                                <TableColumn fx:id="table_product" prefWidth="238.0" text="name_food" />
                             </columns>
                         </TableView>
                     </children>

@@ -37,7 +37,7 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
     @FXML
     private TableColumn<Orders, String> status_table;
     @FXML
-    private TableColumn<Orders, Integer> table_product;
+    private TableColumn<Orders, String> table_product;
 
     ObservableList<Orders> listOrd;
     private Orders orders;
@@ -53,7 +53,7 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
         date_table.setCellValueFactory(new PropertyValueFactory<Orders, String>("date"));
         status_table.setCellValueFactory(new PropertyValueFactory<Orders, String>("order_status"));
         klient_table.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("cust_id"));
-        table_product.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("food_id"));
+        table_product.setCellValueFactory(new PropertyValueFactory<Orders, String>("name_food"));
 
 
         listOrd = db_handler.getOrder();

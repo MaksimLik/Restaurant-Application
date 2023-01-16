@@ -5,21 +5,21 @@ public class Orders {
     private String date;
     private String order_status;
     private int cust_id;
-    private int food_id;
+    private String name_food;
 
-    public Orders(int id, String date, String order_status, int cust_id, int food_id) {
+    public Orders(int id, String date, String order_status, int cust_id, String food_id) {
         this.id = id;
         this.date = date;
         this.order_status = order_status;
         this.cust_id = cust_id;
-        this.food_id = food_id;
+        this.name_food = food_id;
     }
 
-    public Orders(String date, String order_status, int cust_id, int food_id) {
+    public Orders(String date, String order_status, int cust_id, String food_id) {
         this.date = date;
         this.order_status = order_status;
         this.cust_id = cust_id;
-        this.food_id = food_id;
+        this.name_food = food_id;
     }
 
     public int getId() {
@@ -54,11 +54,11 @@ public class Orders {
         this.cust_id = cust_id;
     }
 
-    public int getFood_id() {
-        return food_id;
+    public String getName_food() {
+        return name_food;
     }
 
-    public void setFood_id(int food_id) {
-        this.food_id = food_id;
+    public void setName_food(String name_food) {
+        this.name_food = name_food;
     }
 }
