@@ -214,6 +214,7 @@ public class DB_Handler extends Configurations {
         }
         return list;
     }
+
     public ObservableList<Orders> getOrder() {
         ObservableList<Orders> listt = FXCollections.observableArrayList();
         ResultSet rs = null;

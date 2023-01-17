@@ -88,6 +88,9 @@ public class MainApplication extends Application {
         EmployeesAdditionsController tenPaneController = (EmployeesAdditionsController) ninePageLoader.getController();
         tenPaneController.setFourScene(fourScene);
 
+        CustomerBasketController elevenPaneContoller = (CustomerBasketController) tenPageLoader.getController();
+        elevenPaneContoller.setThirdScene(thirdScene);
+
 
         stage.setTitle("Restaurant Application");
         stage.setScene(firstscene);
