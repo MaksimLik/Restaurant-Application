@@ -30,4 +30,7 @@ public class Constants {
    // public static final String  = "Customers_Users_ID_user";
 
 
+    public static final String ADDITIONS_TABLE = "additions";
+    public static final String ADDITIONS_NAME = "name";
+    public static final String ADDITIONS_PRICE = "price";
 }

@@ -108,6 +108,24 @@ public class DB_Handler extends Configurations {
             e.printStackTrace();
         }
     }
+    public void registrationAddition(Additions additions) {
+        String insert = "INSERT INTO " + Constants.ADDITIONS_TABLE + "(" +
+                Constants.ADDITIONS_NAME + "," +
+                Constants.ADDITIONS_PRICE + ")" +
+                "VALUES(?, ?)";
+        System.out.println(insert);
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, additions.getName());
+            preparedStatement.setDouble(2, additions.getPrice());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     public void registrationProduct(Menu menu) {
         String insert = "INSERT INTO " + Constants.MENU_TABLE + "(" +
                 Constants.MENU_NAME + "," +
