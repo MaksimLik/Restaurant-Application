@@ -34,7 +34,7 @@ public class MainApplication extends Application {
 
         FXMLLoader sixPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerAddressMenu.fxml"));
         Parent sixPane = sixPageLoader.load();
-        Scene sixScene = new Scene(sixPane, 600, 400);
+        Scene sixScene = new Scene(sixPane, 619, 427);
 
         FXMLLoader sevenPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerOrderMenu.fxml"));
         Parent sevenPane = sevenPageLoader.load();

@@ -20,7 +20,7 @@
                         <Image url="@pictures/registration.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="310.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
+                  <Text layoutX="290.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
                      <font>
                         <Font size="32.0" />
                      </font>
@@ -34,11 +34,31 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="logout_ButtonFirst" layoutX="260.0" layoutY="218.0" mnemonicParsing="false" text="Log out">
+                  <Button fx:id="logout_ButtonFirst" layoutX="260.0" layoutY="218.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Back">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Button>
+                  <Text layoutX="226.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="225.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nick-name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="405.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="403.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

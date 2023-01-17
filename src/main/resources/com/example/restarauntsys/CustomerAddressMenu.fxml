@@ -9,13 +9,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restarauntsys.CustomerAddressController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restarauntsys.CustomerAddressController">
     <children>
         <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;">
             <children>
-                <AnchorPane layoutY="83.0" prefHeight="317.0" prefWidth="600.0" style="-fx-background-color: #BDB76B;">
+                <AnchorPane layoutY="83.0" prefHeight="346.0" prefWidth="619.0" style="-fx-background-color: #BDB76B;">
                     <children>
-                        <Text fill="WHITE" layoutX="200.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write your address for delivery:">
+                        <Text fill="WHITE" layoutX="200.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write your address for delivery:">
                             <font>
                                 <Font name="System Bold Italic" size="26.0" />
                             </font>
@@ -25,29 +25,49 @@
                                 <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                             </image>
                         </ImageView>
-                  <Button fx:id="save_button" layoutX="358.0" layoutY="252.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="SAVE">
+                  <Button fx:id="save_button" layoutX="337.0" layoutY="285.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: green;" text="SAVE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="streetField" layoutX="337.0" layoutY="69.0" prefHeight="35.0" prefWidth="169.0" promptText="Your street">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="roomField" layoutX="337.0" layoutY="155.0" prefHeight="35.0" prefWidth="169.0" promptText="Your room number">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="indexField" layoutX="337.0" layoutY="236.0" prefHeight="35.0" prefWidth="169.0" promptText="Your postal index">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="66.0" layoutY="234.0" mnemonicParsing="false" onAction="#back_button" prefHeight="38.0" prefWidth="127.0" text="Back">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="streetField" layoutX="308.0" layoutY="73.0" prefHeight="38.0" prefWidth="169.0" promptText="Your street">
+                  <Text fill="#fff4f4" layoutX="331.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name of street:">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold Italic" size="20.0" />
                      </font>
-                  </TextField>
-                  <TextField fx:id="roomField" layoutX="307.0" layoutY="132.0" prefHeight="38.0" prefWidth="169.0" promptText="Your room number">
+                  </Text>
+                  <Text fill="#fff4f4" layoutX="337.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room number:">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold Italic" size="20.0" />
                      </font>
-                  </TextField>
-                  <TextField fx:id="indexField" layoutX="308.0" layoutY="194.0" prefHeight="38.0" prefWidth="169.0" promptText="Your postal index">
+                  </Text>
+                  <Text fill="#fff4f4" layoutX="337.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postal index:">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold Italic" size="20.0" />
                      </font>
-                  </TextField>
-                  <Button layoutX="66.0" layoutY="252.0" mnemonicParsing="false" onAction="#back_button" prefHeight="38.0" prefWidth="127.0" text="Back">
+                  </Text>
+                  <Button fx:id="save_button1" layoutX="428.0" layoutY="285.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #333356;" text="UPDATE" textFill="WHITE">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="15.0" />
                      </font>
                   </Button>
                     </children>
