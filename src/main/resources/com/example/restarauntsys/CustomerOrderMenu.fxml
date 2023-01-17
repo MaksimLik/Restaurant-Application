@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -40,16 +40,16 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <RadioButton fx:id="deliveryButton" layoutX="76.0" layoutY="334.0" mnemonicParsing="false" text="Delivery">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </RadioButton>
                   <Button layoutX="51.0" layoutY="445.0" mnemonicParsing="false" onAction="#backButton" prefHeight="39.0" prefWidth="136.0" text="Back">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
+                  <CheckBox fx:id="deliveryButton" layoutX="76.0" layoutY="345.0" mnemonicParsing="false" text="Delivery">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </CheckBox>
                     </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="194.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

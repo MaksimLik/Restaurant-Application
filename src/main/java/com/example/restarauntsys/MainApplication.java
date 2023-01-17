@@ -48,6 +48,10 @@ public class MainApplication extends Application {
         Parent ninePane = ninePageLoader.load();
         Scene nineScene = new Scene(ninePane, 520, 550);
 
+        FXMLLoader tenPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerBasketMenu.fxml"));
+        Parent tenPane = tenPageLoader.load();
+        Scene tenScene = new Scene(tenPane, 445, 425);
+
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);
         firstPaneController.setThirdScene(thirdScene);
@@ -60,6 +64,7 @@ public class MainApplication extends Application {
         thirdPaneController.setFirstScene(firstscene);
         thirdPaneController.setSixScene(sixScene);
         thirdPaneController.setSevenScene(sevenScene);
+        thirdPaneController.setTenScene(tenScene);
 
         EmployeesStartController fourPaneController = (EmployeesStartController) fourPageLoader.getController();
         fourPaneController.setFiveScene(fiveScene);

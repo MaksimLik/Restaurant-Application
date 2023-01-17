@@ -28,6 +28,7 @@ public class CustomerStartController implements Initializable {
     private Scene sixScene;
     private Scene firstScene;
     private Scene sevenScene;
+    private Scene tenScene;
     @FXML
     private Text index;
     @FXML
@@ -42,6 +43,9 @@ public class CustomerStartController implements Initializable {
     }
     public void setSevenScene(Scene scene) {
         sevenScene = scene;
+    }
+    public void setTenScene(Scene scene) {
+        tenScene = scene;
     }
 
     @Override
@@ -64,7 +68,9 @@ public class CustomerStartController implements Initializable {
         });
 
         showBasketButton.setOnAction(event -> {
-            index.setText(String.valueOf(CustID));
+            //index.setText(String.valueOf(CustID));
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(tenScene);
         });
 
 

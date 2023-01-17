@@ -13,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -34,7 +31,7 @@ public class CustomerOrderController extends DB_Handler implements Initializable
     private Button addButton;
 
     @FXML
-    private RadioButton deliveryButton;
+    private CheckBox deliveryButton;
 
     @FXML
     private TableView<Menu> table_menu;
@@ -64,6 +61,10 @@ public class CustomerOrderController extends DB_Handler implements Initializable
         initData();
         addButton.setOnAction(event -> {
             addFunction();
+        });
+
+        deliveryButton.setOnAction(event -> {
+
         });
     }
 
