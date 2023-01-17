@@ -16,18 +16,27 @@
                     <children>
                         <AnchorPane layoutY="-1.0" prefHeight="468.0" prefWidth="296.0" style="-fx-background-color: #CD5C5C;">
                             <children>
-                                <Button fx:id="addButton" layoutX="14.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
-                                <Button fx:id="deleteButton" layoutX="113.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Delete" />
-                                <Button fx:id="logoutButton" layoutX="204.0" layoutY="379.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: orange;" text="BACK" />
+                                <Button fx:id="doneButton" layoutX="106.0" layoutY="156.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: green;" text="Done" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                                <Button fx:id="deliveryButton" layoutX="106.0" layoutY="216.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delivery" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                                <Button fx:id="logoutButton" layoutX="106.0" layoutY="276.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: red;" text="BACK" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
                             </children>
                         </AnchorPane>
                         <TableView fx:id="table_orders" layoutX="295.0" layoutY="-1.0" prefHeight="468.0" prefWidth="606.0">
                             <columns>
                                 <TableColumn fx:id="id_table" prefWidth="38.0" text="id" />
-                                <TableColumn fx:id="date_table" prefWidth="83.0" text="date" />
-                                <TableColumn fx:id="status_table" minWidth="12.0" prefWidth="113.0" text="status" />
-                                <TableColumn fx:id="klient_table" prefWidth="134.0" text="customer_ID" />
-                                <TableColumn fx:id="table_product" prefWidth="238.0" text="name_food" />
+                                <TableColumn fx:id="date_table" prefWidth="83.0" text="Date:" />
+                                <TableColumn fx:id="status_table" minWidth="12.0" prefWidth="113.0" text="Status:" />
+                                <TableColumn fx:id="klient_table" prefWidth="134.0" text="Сustomer ID:" />
+                                <TableColumn fx:id="table_product" prefWidth="238.0" text="Name of food:" />
                             </columns>
                         </TableView>
                     </children>
