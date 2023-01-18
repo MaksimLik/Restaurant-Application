@@ -54,7 +54,7 @@ public class MainApplication extends Application {
 
         FXMLLoader twelvePageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerAdditionsMenu.fxml"));
         Parent twelvePane = twelvePageLoader.load();
-        Scene twelveScene = new Scene(twelvePane, 365, 444);
+        Scene twelveScene = new Scene(twelvePane, 490, 430);
 
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setSecondScene(secondScene);

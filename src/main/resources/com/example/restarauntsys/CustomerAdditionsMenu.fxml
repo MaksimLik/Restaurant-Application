@@ -16,13 +16,12 @@
                     <children>
                           <TableView fx:id="table_menu" layoutY="-6.0" prefHeight="286.0" prefWidth="365.0">
                               <columns>
-                                  <TableColumn fx:id="id_table" prefWidth="38.0" text="id" />
                                   <TableColumn fx:id="name_table" prefWidth="230.0" text="name" />
-                                  <TableColumn fx:id="price_table" minWidth="3.0" prefWidth="96.0" text="price" />
+                                  <TableColumn fx:id="price_table" minWidth="3.0" prefWidth="134.0" text="price" />
                               </columns>
                           </TableView>
-                          <Button fx:id="addButton" layoutX="225.0" layoutY="315.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
-                          <Button fx:id="logoutButton" layoutX="67.0" layoutY="315.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Back" />
+                          <Button fx:id="addButton" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
+                          <Button fx:id="logoutButton" layoutX="69.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Back" />
                     </children>
                 </AnchorPane>
                 <Text layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System" wrappingWidth="313.9750061035156">

@@ -26,18 +26,22 @@ public class CustomerBasketController extends DB_Handler implements Initializabl
 
     @FXML
     private Button logoutButton;
+
     @FXML
-    private TableView<Orders> table_orders;
+    private TableView<?> table_orders;
     @FXML
-    private TableColumn<Orders, String> status_table;
+    private TableColumn<?, ?> table_additions;
+
     @FXML
-    private TableColumn<Orders, String> table_product;
+    private TableColumn<?, ?> table_product;
+
+    @FXML
+    private TableColumn<?, ?> table_status;
+
     private Scene thirdScene;
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
     }
-    ObservableList<Orders> listOrd;
-    private Orders orders;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
