@@ -29,12 +29,15 @@ public class CustomerStartController implements Initializable {
     private Scene firstScene;
     private Scene sevenScene;
     private Scene tenScene;
+    private Scene twelveScene;
     @FXML
     private Text index;
     @FXML
     private Button order_button;
     @FXML
     private Button showBasketButton;
+    @FXML
+    private Button additionsButton;
     public void setSixScene(Scene scene) {
         sixScene = scene;
     }
@@ -46,6 +49,9 @@ public class CustomerStartController implements Initializable {
     }
     public void setTenScene(Scene scene) {
         tenScene = scene;
+    }
+    public void setTwelveScene(Scene scene) {
+        twelveScene = scene;
     }
 
     @Override
@@ -71,6 +77,11 @@ public class CustomerStartController implements Initializable {
             //index.setText(String.valueOf(CustID));
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(tenScene);
+        });
+
+        additionsButton.setOnAction(event -> {
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(twelveScene);
         });
 
 

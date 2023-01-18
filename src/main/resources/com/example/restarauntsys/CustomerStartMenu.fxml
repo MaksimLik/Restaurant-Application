@@ -14,14 +14,14 @@
             <children>
                 <AnchorPane layoutY="83.0" prefHeight="317.0" prefWidth="600.0" style="-fx-background-color: #BDB76B;">
                <children>
-                  <Button fx:id="address_button" layoutX="424.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Address">
+                  <Button fx:id="address_button" layoutX="432.0" layoutY="74.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" text="Address">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="showBasketButton" layoutX="424.0" layoutY="159.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Your basket">
+                  <Button fx:id="showBasketButton" layoutX="432.0" layoutY="140.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" text="Your basket">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Button>
                   <Text fill="WHITE" layoutX="398.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your functions:">
@@ -39,9 +39,9 @@
                         <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="order_button" layoutX="424.0" layoutY="240.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="To order">
+                  <Button fx:id="order_button" layoutX="431.0" layoutY="202.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" text="To order">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Button>
                   <Text fill="WHITE" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Index:">
@@ -54,6 +54,11 @@
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Text>
+                  <Button fx:id="additionsButton" layoutX="432.0" layoutY="262.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" text="Additions">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
                </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

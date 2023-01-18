@@ -64,7 +64,7 @@ public class CustomerAddressController {
             Address address = new Address(street, room, index);
             db_handler.registrationAddress(address);
             db_handler.registrationCustomerAddress(address);
-       //     successRegistration();
+            successRegistration();
 
         } else {
             warningRegistration();
