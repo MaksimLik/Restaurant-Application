@@ -12,7 +12,7 @@
     <children>
         <AnchorPane prefHeight="426.0" prefWidth="365.0" style="-fx-background-color: #f0e68c;">
             <children>
-                <AnchorPane layoutY="82.0" prefHeight="364.0" prefWidth="365.0" style="-fx-background-color: #ffa500;">
+                <AnchorPane layoutY="82.0" prefHeight="364.0" prefWidth="365.0" style="-fx-background-color: #BDB76B;">
                     <children>
                           <TableView fx:id="table_menu" layoutY="-6.0" prefHeight="286.0" prefWidth="365.0">
                               <columns>

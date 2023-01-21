@@ -1,23 +1,26 @@
 package com.example.restarauntsys;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import static com.example.restarauntsys.StartController.CustID;
 
-public class CustomerOrderController extends DB_Handler {
+public class CustomerCommentsController extends DB_Handler {
+
     @FXML
-    private Button addButton;
+    private TextArea commentArea;
     @FXML
-    private CheckBox deliveryButton;
+    private Button commentButton;
     @FXML
     private TableView<Menu> table_menu;
     @FXML
@@ -30,26 +33,23 @@ public class CustomerOrderController extends DB_Handler {
     private TableColumn<Menu, String> table_description;
     ObservableList<Menu> listM;
     private Menu menu;
-    String loginText;
 
     @FXML
     public void initialize() {
-        System.out.println(loginText);
         initData();
-        addButton.setOnAction(event -> {
+
+        commentButton.setOnAction(event -> {
             addFunction();
         });
-
-        deliveryButton.setOnAction(event -> {
-
-        });
     }
+
     private void addFunction() {
         try {
+            String comment = commentArea.getText();
+            System.out.println(comment);
             menu = table_menu.getSelectionModel().getSelectedItem();
-            String select = "insert into orders (date_of_order, order_status, Customers_Users_ID_user, Menu_ID_food) " +
-                    "values (current_date(), 'in progress', " + CustID + ", " + menu.getId() + ");";
-            System.out.println(select);
+            String select = "insert into comments(comment, Customers_Users_ID_user, Menu_ID_food) " +
+                    "values ('" + comment + "'," + CustID + "," + menu.getId() + ");";
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
@@ -71,5 +71,4 @@ public class CustomerOrderController extends DB_Handler {
         listM = db_handler.getMenu();
         table_menu.setItems(listM);
     }
-
 }

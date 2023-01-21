@@ -40,11 +40,6 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="51.0" layoutY="445.0" mnemonicParsing="false" onAction="#backButton" prefHeight="39.0" prefWidth="136.0" text="Back">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
                   <CheckBox fx:id="deliveryButton" layoutX="76.0" layoutY="345.0" mnemonicParsing="false" text="Delivery">
                      <font>
                         <Font size="16.0" />

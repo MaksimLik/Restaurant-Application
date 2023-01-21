@@ -18,19 +18,14 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class EmployeesAdditionsController extends DB_Handler implements Initializable{
-
     @FXML
     private Button addButton;
-
     @FXML
     private Button deleteButton;
-
     @FXML
     private TableColumn<Additions, Integer> id_table;
-
     @FXML
     private Button logoutButton;
-
     @FXML
     private TextField name_field;
     private Additions additions;
