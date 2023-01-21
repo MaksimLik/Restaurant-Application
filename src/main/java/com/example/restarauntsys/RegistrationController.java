@@ -7,24 +7,13 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.User;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-public class RegistrationController implements Initializable {
 
-    @FXML
-    private ResourceBundle resources;
+public class RegistrationController {
 
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button logout_ButtonFirst;
     @FXML
     private TextField signUPname;
 
@@ -38,21 +27,12 @@ public class RegistrationController implements Initializable {
     private TextField singUPsurname;
     @FXML
     private Button registrationButtonTwo;
-    private Scene firstScene;
-    public void setFirstScene(Scene scene) {
-        firstScene = scene;
-    }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         registrationButtonTwo.setOnAction(event -> {
             signUPnewUser();
         });
-        logout_ButtonFirst.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(firstScene);
-        });
     }
-
 
     private void signUPnewUser(){
         DB_Handler db_handler = new DB_Handler();

@@ -17,14 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ChangesMenuController extends DB_Handler implements Initializable {
-    @FXML
-    private VBox item_list;
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+public class ChangesMenuController extends DB_Handler {
     @FXML
     private TextField price_field;
     @FXML
@@ -35,14 +28,10 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
     private TextArea about_product;
     @FXML
     private Button addButton;
-
     @FXML
     private Button deleteButton;
     @FXML
     private Button logoutButton;
-
-    @FXML
-    private Button updateButton;
     @FXML
     private TableView<Menu> table_menu;
     @FXML
@@ -65,8 +54,8 @@ public class ChangesMenuController extends DB_Handler implements Initializable {
         fourScene = scene;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         initData();
         addButton.setOnAction(event -> {
             addNewProduct();

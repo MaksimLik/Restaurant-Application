@@ -1,22 +1,12 @@
 package com.example.restarauntsys;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class EmployeesStartController implements Initializable {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
+public class EmployeesStartController {
     @FXML
     private Button addButton;
     @FXML
@@ -41,10 +31,8 @@ public class EmployeesStartController implements Initializable {
     public void setTenScene (Scene scene) {
         tenScene = scene;
     }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         changesPanelButton.setOnAction(event -> {
             openNewWindow();
         });

@@ -1,5 +1,6 @@
 package com.example.restarauntsys;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +11,13 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class StartController extends DB_Handler implements Initializable {
@@ -32,15 +36,11 @@ public class StartController extends DB_Handler implements Initializable {
     private PasswordField password;
     @FXML
     private Button loginButton;
-    private Scene secondScene;
     private Scene thirdScene;
     private Scene fourScene;
     public static int CustID;
     @FXML
     private Button registrationFirstButton;
-    public void setSecondScene(Scene scene) {
-        secondScene = scene;
-    }
     public void setThirdScene(Scene scene) {
         thirdScene = scene;
     }
@@ -52,42 +52,12 @@ public class StartController extends DB_Handler implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loginButton.setOnAction(event -> {
             authorization();
-            //getCustID();
-
-     //       System.out.println(getCustID());
         });
 
         registrationFirstButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(secondScene);
+            InitWindow("RegistrationMenu.fxml");
         });
     }
-
-    public int getCustID () {
-        String loginText = nick_name.getText().trim();
-        ResultSet rs = null;
-        Statement stmt = null;
-        String selectQuery = "select * from customers where nick_name = " + "'" + loginText + "'";
-        System.out.println(selectQuery);
-
-        try {
-            stmt = getDbConnection().createStatement();
-            rs = stmt.executeQuery(selectQuery);
-            rs.next();
-
-            CustID = Integer.parseInt(rs.getString(2));
-
-            rs.close();
-            stmt.close();
-
-        } catch (SQLException | ClassNotFoundException e) {
-
-        }
-
-        return CustID;
-    }
-
-
     private void authorization() {
         String loginText = nick_name.getText().trim();
         String loginPassword = password.getText().trim();
@@ -164,7 +134,6 @@ public class StartController extends DB_Handler implements Initializable {
         }
         if(counter >= 1){
             openEmployeeWindow();
-            //openNewScene("EmployeesStartMenu.fxml");
         } else {
             alertLOGIN();
         }
@@ -190,22 +159,45 @@ public class StartController extends DB_Handler implements Initializable {
             primaryStage.setScene(fourScene);
         });
     }
+    public int getCustID () {
+        String loginText = nick_name.getText().trim();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select * from customers where nick_name = " + "'" + loginText + "'";
+        System.out.println(selectQuery);
 
-/*    private void openNewScene(String window) {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(window));
         try {
-            loader.load();
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            rs.next();
+
+            CustID = Integer.parseInt(rs.getString(2));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+
+        }
+
+        return CustID;
+    }
+
+    private void InitWindow(String window) {
+        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
+        Parent windowPane = null;
+
+        try {
+            windowPane = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Restaurant customer");
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
+        stage.setTitle("Restaurant Application");
+        stage.setScene(new Scene(windowPane));
         stage.showAndWait();
-    } */
+    }
 }

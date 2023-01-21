@@ -1,28 +1,14 @@
 package com.example.restarauntsys;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Address;
-import com.example.restarauntsys.tables.Customers;
-import com.example.restarauntsys.tables.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class CustomerAddressController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
     @FXML
     private TextField indexField;
     @FXML
@@ -37,7 +23,6 @@ public class CustomerAddressController {
         save_button.setOnAction(event -> {
             addAddress();
         });
-
     }
     public void addAddress(){
         DB_Handler db_handler = new DB_Handler();
