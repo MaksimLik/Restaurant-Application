@@ -4,29 +4,23 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Additions;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
-import java.net.URL;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+
 
 import static com.example.restarauntsys.StartController.CustID;
 
-public class CustomerAdditionsController extends DB_Handler implements Initializable {
+public class CustomerAdditionsController extends DB_Handler {
 
     @FXML
     private Button addButton;
-
-    @FXML
-    private Button logoutButton;
     private Additions additions;
     @FXML
     private TableView<Additions> table_menu;
@@ -35,18 +29,9 @@ public class CustomerAdditionsController extends DB_Handler implements Initializ
     @FXML
     private TableColumn<Additions, Double> price_table;
     ObservableList<Additions> listA;
-    private Scene thirdScene;
-    public void setThirdScene(Scene scene) {
-        thirdScene = scene;
-    }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         initData();
-        logoutButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(thirdScene);
-        });
-
         addButton.setOnAction(event -> {
             addProduct();
         });

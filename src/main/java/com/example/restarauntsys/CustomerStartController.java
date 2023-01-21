@@ -9,26 +9,18 @@ import com.example.restarauntsys.tables.Basket;
 import com.example.restarauntsys.tables.Customers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static com.example.restarauntsys.StartController.CustID;
 
-public class CustomerStartController extends CustomerBasketController implements Initializable {
+public class CustomerStartController extends CustomerBasketController {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
     @FXML
     private Button address_button;
     @FXML
@@ -36,7 +28,6 @@ public class CustomerStartController extends CustomerBasketController implements
     private Scene sixScene;
     private Scene firstScene;
     private Scene sevenScene;
-    private Scene tenScene;
     private Scene twelveScene;
     @FXML
     private Text index;
@@ -46,25 +37,19 @@ public class CustomerStartController extends CustomerBasketController implements
     private Button showBasketButton;
     @FXML
     private Button additionsButton;
- //   public void setSixScene(Scene scene) {
- //       sixScene = scene;
- //   }
+
     public void setFirstScene(Scene scene) {
         firstScene = scene;
     }
     public void setSevenScene(Scene scene) {
         sevenScene = scene;
     }
-  /*  public void setTenScene(Scene scene) {
-        tenScene = scene;
-    } */
     public void setTwelveScene(Scene scene) {
         twelveScene = scene;
     }
 
-    @Override
-    public void initialize (URL location, ResourceBundle resources) {
-        System.out.println(CustID);
+    @FXML
+    public void initialize () {
 
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -86,8 +71,9 @@ public class CustomerStartController extends CustomerBasketController implements
         });
 
         additionsButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(twelveScene);
+            /* Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            primaryStage.setScene(twelveScene); */
+            InitWindow("CustomerAdditionsMenu.fxml");
         });
 
     }

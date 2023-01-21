@@ -20,8 +20,7 @@
                                   <TableColumn fx:id="price_table" minWidth="3.0" prefWidth="134.0" text="price" />
                               </columns>
                           </TableView>
-                          <Button fx:id="addButton" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
-                          <Button fx:id="logoutButton" layoutX="69.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Back" />
+                          <Button fx:id="addButton" layoutX="148.0" layoutY="299.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
                     </children>
                 </AnchorPane>
                 <Text layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System" wrappingWidth="313.9750061035156">

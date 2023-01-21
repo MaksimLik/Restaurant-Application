@@ -67,7 +67,6 @@ public class CustomerOrderController extends DB_Handler implements Initializable
 
         });
     }
-
     private void addFunction() {
         try {
             menu = table_menu.getSelectionModel().getSelectedItem();
