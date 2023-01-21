@@ -47,11 +47,7 @@ public class CustomerAddressController {
     void initialize() {
         save_button.setOnAction(event -> {
             addAddress();
-            addAddressCustomer();
         });
-
-    }
-    public void addAddressCustomer() {
 
     }
     public void addAddress(){

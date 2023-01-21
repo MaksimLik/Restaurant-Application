@@ -50,7 +50,7 @@ public class MainApplication extends Application {
 
         FXMLLoader tenPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerBasketMenu.fxml"));
         Parent tenPane = tenPageLoader.load();
-        Scene tenScene = new Scene(tenPane, 445, 425);
+        Scene tenScene = new Scene(tenPane, 500, 430);
 
         FXMLLoader twelvePageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerAdditionsMenu.fxml"));
         Parent twelvePane = twelvePageLoader.load();

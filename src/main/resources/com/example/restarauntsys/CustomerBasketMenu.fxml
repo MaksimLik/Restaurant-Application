@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restarauntsys.CustomerBasketController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restarauntsys.CustomerBasketController">
     <children>
         <AnchorPane prefHeight="430.0" prefWidth="450.0" style="-fx-background-color: #f0e68c;">
             <children>
@@ -17,12 +17,12 @@
                         <Font name="Modern No. 20" size="30.0" />
                     </font>
                 </Text>
-                  <TableView fx:id="table_orders" layoutX="-2.0" layoutY="91.0" prefHeight="270.0" prefWidth="490.0">
+                  <TableView fx:id="table_basket" layoutX="-2.0" layoutY="91.0" prefHeight="270.0" prefWidth="507.0">
                       <columns>
-                          <TableColumn fx:id="date_table" prefWidth="107.0" text="Date:" />
+                          <TableColumn fx:id="table_date" prefWidth="107.0" text="Date:" />
                           <TableColumn fx:id="table_additions" minWidth="12.0" prefWidth="131.0" text="Name of additions:" />
-                          <TableColumn fx:id="table_product" prefWidth="123.0" text="Name of food:" />
-                  <TableColumn fx:id="table_status" prefWidth="128.0" text="Name of additions" />
+                          <TableColumn fx:id="table_product" prefWidth="136.0" text="Name of food:" />
+                  <TableColumn fx:id="table_status" prefWidth="132.0" text="Orders status:" />
                       </columns>
                   </TableView>
                     <Button fx:id="logoutButton" layoutX="76.0" layoutY="370.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: red;" text="BACK" textFill="WHITE">

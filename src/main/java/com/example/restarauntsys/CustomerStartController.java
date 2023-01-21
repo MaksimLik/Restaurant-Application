@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import static com.example.restarauntsys.StartController.CustID;
 
-public class CustomerStartController implements Initializable {
+public class CustomerStartController extends CustomerBasketController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -75,8 +75,10 @@ public class CustomerStartController implements Initializable {
 
         showBasketButton.setOnAction(event -> {
             //index.setText(String.valueOf(CustID));
+
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(tenScene);
+
         });
 
         additionsButton.setOnAction(event -> {

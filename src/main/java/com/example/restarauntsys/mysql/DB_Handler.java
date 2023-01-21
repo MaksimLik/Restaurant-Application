@@ -192,6 +192,32 @@ public class DB_Handler extends Configurations {
         return list;
     }
 
+    public ObservableList<Basket> getBasket() {
+        ObservableList<Basket> list = FXCollections.observableArrayList();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select date_of_order, name, name_food, order_status from (orders " +
+                "left outer join additions on orders.Additions_ID_addition = additions.ID_addition) " +
+                "left join menu on orders.Menu_ID_food = menu.ID_food where Customers_Users_ID_user = " + CustID + ";";
+        System.out.println(selectQuery);
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            while (rs.next()) {
+                list.add(new Basket(rs.getString("date_of_order"), rs.getString("name"),
+                        rs.getString("name_food"), rs.getString("order_status")));
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
     public ObservableList<Additions> getAdditions() {
         ObservableList<Additions> list = FXCollections.observableArrayList();
         ResultSet rs = null;
