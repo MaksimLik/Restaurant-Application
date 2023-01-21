@@ -1,9 +1,12 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
+import com.example.restarauntsys.tables.Additions;
 import com.example.restarauntsys.tables.Menu;
 import com.example.restarauntsys.tables.Orders;
 import javafx.collections.ObservableList;
@@ -30,6 +33,8 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
     @FXML
     private Button doneButton;
     @FXML
+    private Button deleteButton;
+    @FXML
     private TableView<Orders> table_orders;
     @FXML
     private TableColumn<Orders, String> date_table;
@@ -44,17 +49,10 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
 
     ObservableList<Orders> listOrd;
     private Orders orders;
-    private Scene fourScene;
-    public void setFourScene(Scene scene) {
-        fourScene = scene;
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initData();
-        logoutButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(fourScene);
-        });
 
         deliveryButton.setOnAction(event -> {
             //TODO
@@ -62,6 +60,23 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
 
         doneButton.setOnAction(event -> {
             //TODO
+        });
+
+        deleteButton.setOnAction(event -> {
+
+            try {
+                orders = table_orders.getSelectionModel().getSelectedItem();
+                String select = "delete from orders where id_order = " + orders.getId() + ";";
+                System.out.println(select);
+
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+                preparedStatement.execute();
+
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            initData();
+
         });
     }
 

@@ -1,14 +1,21 @@
 package com.example.restarauntsys;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class EmployeesStartController {
     @FXML
-    private Button addButton;
+    private Button commentsButton;
+    @FXML
+    private Button showOrdersButton;
     @FXML
     private Button logoutButton;
     @FXML
@@ -16,49 +23,50 @@ public class EmployeesStartController {
     @FXML
     private Button additionsButton;
     private Scene FirstScene;
-    private Scene nineScene;
-    private Scene fiveScene;
-    private Scene tenScene;
-    public void setFiveScene(Scene scene) {
-        fiveScene = scene;
-    }
+
     public void setFirstScene(Scene scene) {
         FirstScene = scene;
-    }
-    public void setNineScene(Scene scene) {
-        nineScene = scene;
-    }
-    public void setTenScene (Scene scene) {
-        tenScene = scene;
     }
     @FXML
     public void initialize() {
         changesPanelButton.setOnAction(event -> {
-            openNewWindow();
+            InitWindow("changesMenu.fxml");
         });
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             primaryStage.setScene(FirstScene);
         });
 
-        addButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(nineScene);
+        showOrdersButton.setOnAction(event -> {
+            InitWindow("EmployeesOrdersMenu.fxml");
         });
 
         additionsButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(tenScene);
+            InitWindow("EmployeesAdditionsMenu.fxml");
+        });
+
+        commentsButton.setOnAction(event -> {
+
         });
 
     }
 
-    private void openNewWindow () {
-        changesPanelButton.setOnMouseClicked(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(fiveScene);
-            }
-        );
+    private void InitWindow (String window) {
+        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
+        Parent windowPane = null;
+
+        try {
+            windowPane = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.setTitle("Restaurant Application");
+        stage.setScene(new Scene(windowPane));
+        stage.showAndWait();
     }
 
 }

@@ -25,11 +25,6 @@
                   <TableColumn fx:id="table_status" prefWidth="132.0" text="Orders status:" />
                       </columns>
                   </TableView>
-                    <Button fx:id="logoutButton" layoutX="76.0" layoutY="370.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: red;" text="BACK" textFill="WHITE">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-            </Button>
                     <Button fx:id="deliveryButton" layoutX="329.0" layoutY="370.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delivery" textFill="WHITE">
                         <font>
                             <Font size="14.0" />

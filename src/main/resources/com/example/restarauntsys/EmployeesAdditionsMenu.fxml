@@ -18,9 +18,8 @@
                     <children>
                         <AnchorPane prefHeight="468.0" prefWidth="520.0" style="-fx-background-color: #CD5C5C;">
                             <children>
-                                <Button fx:id="logoutButton" layoutX="389.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: orange;" text="Back" />
-                                <Button fx:id="addButton" layoutX="389.0" layoutY="206.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
-                                <Button fx:id="deleteButton" layoutX="390.0" layoutY="275.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Delete" />
+                                <Button fx:id="addButton" layoutX="390.0" layoutY="259.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Add" />
+                                <Button fx:id="deleteButton" layoutX="390.0" layoutY="327.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: red;" text="Delete" />
                                 <TextField fx:id="price_field" layoutX="347.0" layoutY="147.0" prefHeight="30.0" prefWidth="155.0" promptText="Price">
                                     <font>
                                         <Font size="14.0" />

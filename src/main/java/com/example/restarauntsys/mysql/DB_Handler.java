@@ -245,8 +245,9 @@ public class DB_Handler extends Configurations {
         ObservableList<Orders> listt = FXCollections.observableArrayList();
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select id_order, date_of_order, order_status, Customers_Users_ID_user, name_food \n" +
-                "from menu inner join orders on menu.id_food = orders.id_order;";
+        String selectQuery = "select id_order, date_of_order, order_status, Customers_Users_ID_user, name_food from " +
+                "(orders left outer join additions on orders.Additions_ID_addition = additions.ID_addition) " +
+                "left join menu on orders.Menu_ID_food = menu.ID_food;";
 
         try {
             stmt = getDbConnection().createStatement();

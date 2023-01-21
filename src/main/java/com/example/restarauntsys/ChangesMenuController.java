@@ -31,8 +31,6 @@ public class ChangesMenuController extends DB_Handler {
     @FXML
     private Button deleteButton;
     @FXML
-    private Button logoutButton;
-    @FXML
     private TableView<Menu> table_menu;
     @FXML
     private TableColumn<Menu, Integer> id_table;
@@ -66,20 +64,17 @@ public class ChangesMenuController extends DB_Handler {
             deleteProduct();
         });
 
-        logoutButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(fourScene);
-        });
     }
     private void deleteProduct() {
-        ObservableList<Menu> allMenu, singleMenu;
+     /*   ObservableList<Menu> allMenu, singleMenu;
         allMenu = table_menu.getItems();
         singleMenu = table_menu.getSelectionModel().getSelectedItems();
-        singleMenu.forEach(allMenu::remove);
+        singleMenu.forEach(allMenu::remove); */
 
         try {
             menu = table_menu.getSelectionModel().getSelectedItem();
             String select = "delete from menu where id_food = " + menu.getId();
+            System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
@@ -87,6 +82,7 @@ public class ChangesMenuController extends DB_Handler {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        initData();
     }
 
     private void initData() {

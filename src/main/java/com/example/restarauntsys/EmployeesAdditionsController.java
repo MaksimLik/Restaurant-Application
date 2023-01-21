@@ -2,15 +2,12 @@ package com.example.restarauntsys;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Additions;
-import com.example.restarauntsys.tables.Menu;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -25,8 +22,6 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
     @FXML
     private TableColumn<Additions, Integer> id_table;
     @FXML
-    private Button logoutButton;
-    @FXML
     private TextField name_field;
     private Additions additions;
     @FXML
@@ -38,19 +33,11 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
     @FXML
     private TextField price_field;
 
-    private Scene fourScene;
     ObservableList<Additions> listA;
-    public void setFourScene(Scene scene) {
-        fourScene = scene;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initData();
-        logoutButton.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(fourScene);
-        });
 
         addButton.setOnAction(event -> {
             addNewProduct();
@@ -95,21 +82,17 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
     }
 
     private void deleteProduct() {
-        ObservableList<Additions> allMenu, singleMenu;
-        allMenu = table_menu.getItems();
-        singleMenu = table_menu.getSelectionModel().getSelectedItems();
-        singleMenu.forEach(allMenu::remove);
-
         try {
             additions = table_menu.getSelectionModel().getSelectedItem();
             String select = "delete from additions where ID_addition = " + additions.getId();
-
+            System.out.println(select);
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        initData();
     }
 
     private void errorAlarm () {

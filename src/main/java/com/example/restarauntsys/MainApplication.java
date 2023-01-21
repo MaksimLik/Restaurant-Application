@@ -24,18 +24,6 @@ public class MainApplication extends Application {
         Parent fourPane = fourPageLoader.load();
         Scene fourScene = new Scene(fourPane, 600, 400);
 
-        FXMLLoader fivePageLoader  = new FXMLLoader(MainApplication.class.getResource("changesMenu.fxml"));
-        Parent fivePane = fivePageLoader.load();
-        Scene fiveScene = new Scene(fivePane, 900, 550);
-
-        FXMLLoader eightPageLoader  = new FXMLLoader(MainApplication.class.getResource("EmployeesOrdersMenu.fxml"));
-        Parent eightPane = eightPageLoader.load();
-        Scene eightScene = new Scene(eightPane, 900, 550);
-
-        FXMLLoader ninePageLoader  = new FXMLLoader(MainApplication.class.getResource("EmployeesAdditionsMenu.fxml"));
-        Parent ninePane = ninePageLoader.load();
-        Scene nineScene = new Scene(ninePane, 520, 550);
-
         StartController firstPaneController = (StartController) firstPaneLoader.getController();
         firstPaneController.setThirdScene(thirdScene);
         firstPaneController.setFourScene(fourScene);
@@ -44,19 +32,7 @@ public class MainApplication extends Application {
         thirdPaneController.setFirstScene(firstscene);
 
         EmployeesStartController fourPaneController = (EmployeesStartController) fourPageLoader.getController();
-        fourPaneController.setFiveScene(fiveScene);
         fourPaneController.setFirstScene(firstscene);
-        fourPaneController.setNineScene(eightScene);
-        fourPaneController.setTenScene(nineScene);
-
-        ChangesMenuController eightPaneController = (ChangesMenuController) fivePageLoader.getController();
-        eightPaneController.setFourScene(fourScene);
-
-        EmployeesOrdersController ninePaneController = (EmployeesOrdersController) eightPageLoader.getController();
-        ninePaneController.setFourScene(fourScene);
-
-        EmployeesAdditionsController tenPaneController = (EmployeesAdditionsController) ninePageLoader.getController();
-        tenPaneController.setFourScene(fourScene);
 
         stage.setTitle("Restaurant Application");
         stage.setScene(firstscene);
