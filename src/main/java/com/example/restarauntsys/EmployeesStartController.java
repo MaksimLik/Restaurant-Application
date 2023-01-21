@@ -46,7 +46,7 @@ public class EmployeesStartController {
         });
 
         commentsButton.setOnAction(event -> {
-
+            InitWindow("EmployeesShowComments.fxml");
         });
 
     }

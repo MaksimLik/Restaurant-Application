@@ -38,7 +38,6 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initData();
-
         addButton.setOnAction(event -> {
             addNewProduct();
             initData();

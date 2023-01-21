@@ -1,6 +1,7 @@
 package com.example.restarauntsys.tables;
 
 public class Basket {
+
     private String date_of_order;
     private String name;
     private String name_food;
@@ -12,6 +13,7 @@ public class Basket {
         this.name_food = name_food;
         this.order_status = order_status;
     }
+
 
     public String getDate_of_order() {
         return date_of_order;
