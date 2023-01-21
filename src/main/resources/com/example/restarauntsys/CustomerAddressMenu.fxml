@@ -25,7 +25,7 @@
                                 <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                             </image>
                         </ImageView>
-                  <Button fx:id="save_button" layoutX="337.0" layoutY="285.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: green;" text="SAVE">
+                  <Button fx:id="save_button" layoutX="383.0" layoutY="284.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: green;" text="SAVE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -45,11 +45,6 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="66.0" layoutY="234.0" mnemonicParsing="false" onAction="#back_button" prefHeight="38.0" prefWidth="127.0" text="Back">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
                   <Text fill="#fff4f4" layoutX="331.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name of street:">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
@@ -65,11 +60,6 @@
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Text>
-                  <Button fx:id="save_button1" layoutX="428.0" layoutY="285.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #333356;" text="UPDATE" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
                     </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

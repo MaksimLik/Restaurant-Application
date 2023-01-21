@@ -46,9 +46,9 @@ public class CustomerStartController extends CustomerBasketController implements
     private Button showBasketButton;
     @FXML
     private Button additionsButton;
-    public void setSixScene(Scene scene) {
-        sixScene = scene;
-    }
+ //   public void setSixScene(Scene scene) {
+ //       sixScene = scene;
+ //   }
     public void setFirstScene(Scene scene) {
         firstScene = scene;
     }
@@ -72,8 +72,7 @@ public class CustomerStartController extends CustomerBasketController implements
         });
 
         address_button.setOnAction(event -> {
-            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            primaryStage.setScene(sixScene);
+            InitWindow("CustomerAddressMenu.fxml");
         });
 
         order_button.setOnAction(event -> {

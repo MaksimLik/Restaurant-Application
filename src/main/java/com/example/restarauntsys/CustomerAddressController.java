@@ -29,19 +29,8 @@ public class CustomerAddressController {
     private TextField roomField;
     @FXML
     private TextField streetField;
-
-    private Scene thirdScene;
     @FXML
     private Button save_button;
-
-    public void setThirdScene(Scene scene) {
-        thirdScene = scene;
-    }
-    @FXML
-    void back_button(ActionEvent event) {
-        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        primaryStage.setScene(thirdScene);
-    }
 
     @FXML
     void initialize() {
