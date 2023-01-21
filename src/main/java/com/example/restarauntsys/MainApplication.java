@@ -48,9 +48,9 @@ public class MainApplication extends Application {
         Parent ninePane = ninePageLoader.load();
         Scene nineScene = new Scene(ninePane, 520, 550);
 
-        FXMLLoader tenPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerBasketMenu.fxml"));
+   /*     FXMLLoader tenPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerBasketMenu.fxml"));
         Parent tenPane = tenPageLoader.load();
-        Scene tenScene = new Scene(tenPane, 500, 430);
+        Scene tenScene = new Scene(tenPane, 500, 430); */
 
         FXMLLoader twelvePageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerAdditionsMenu.fxml"));
         Parent twelvePane = twelvePageLoader.load();
@@ -68,7 +68,7 @@ public class MainApplication extends Application {
         thirdPaneController.setFirstScene(firstscene);
         thirdPaneController.setSixScene(sixScene);
         thirdPaneController.setSevenScene(sevenScene);
-        thirdPaneController.setTenScene(tenScene);
+       // thirdPaneController.setTenScene(tenScene);
         thirdPaneController.setTwelveScene(twelveScene);
 
         EmployeesStartController fourPaneController = (EmployeesStartController) fourPageLoader.getController();
@@ -93,8 +93,8 @@ public class MainApplication extends Application {
         EmployeesAdditionsController tenPaneController = (EmployeesAdditionsController) ninePageLoader.getController();
         tenPaneController.setFourScene(fourScene);
 
-        CustomerBasketController elevenPaneContoller = (CustomerBasketController) tenPageLoader.getController();
-        elevenPaneContoller.setThirdScene(thirdScene);
+     //   CustomerBasketController elevenPaneContoller = (CustomerBasketController) tenPageLoader.getController();
+     //   elevenPaneContoller.setThirdScene(thirdScene);
 
         CustomerAdditionsController twelvePaneContoller = (CustomerAdditionsController) twelvePageLoader.getController();
         twelvePaneContoller.setThirdScene(thirdScene);
