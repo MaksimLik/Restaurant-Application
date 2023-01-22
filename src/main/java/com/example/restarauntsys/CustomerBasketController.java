@@ -5,15 +5,9 @@ import com.example.restarauntsys.tables.Basket;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -132,6 +126,7 @@ public class CustomerBasketController extends DB_Handler {
         Statement stmt = null;
         basket = table_basket.getSelectionModel().getSelectedItem();
         String select = "select Orders_ID_order, coalesce(sum(Orders_ID_order), 0) from delivery where Orders_ID_order = " + basket.getId_order() +
+                " and Orders_Customers_Users_ID_user = " + CustID +
                 " GROUP BY (Orders_ID_order);";
         System.out.println(select);
 
