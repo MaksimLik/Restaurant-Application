@@ -42,7 +42,7 @@ public class CustomerCommentsController extends DB_Handler {
 
     private void addFunction() {
         try {
-            String comment = commentArea.getText();
+            String comment = commentArea.getText().trim();
             System.out.println(comment);
             menu = table_menu.getSelectionModel().getSelectedItem();
             String select = "insert into comments(comment, Customers_Users_ID_user, Menu_ID_food) " +
@@ -56,6 +56,8 @@ public class CustomerCommentsController extends DB_Handler {
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            error();
         }
     }
 
@@ -76,6 +78,14 @@ public class CustomerCommentsController extends DB_Handler {
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Comment has been added successfully");
         alert.setContentText("Thanks for comments of our products");
+        alert.showAndWait();
+    }
+
+    private void error() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("You must choose product from table, write comment on text area and press button (comment)");
+        alert.setContentText("Text area cannot is empty");
         alert.showAndWait();
     }
 }

@@ -191,6 +191,32 @@ public class DB_Handler extends Configurations {
         }
         return list;
     }
+
+    public ObservableList<Delivery> getDelivery() {
+        ObservableList<Delivery> list = FXCollections.observableArrayList();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select id_dilivery, date, invoice, Orders_ID_order, nick_name " +
+                "from delivery inner join customers on Orders_Customers_Users_ID_user = Users_ID_user;";
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            while (rs.next()) {
+                list.add(new Delivery (rs.getInt("ID_dilivery"), rs.getString("date"), rs.getString("invoice"),
+                        rs.getInt("Orders_ID_order"), rs.getString("nick_name")));
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+
     public ObservableList<Comments> getComment() {
         ObservableList<Comments> list = FXCollections.observableArrayList();
         ResultSet rs = null;

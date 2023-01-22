@@ -1,21 +1,14 @@
 package com.example.restarauntsys;
 
-import java.net.URL;
 import java.sql.*;
-import java.util.ResourceBundle;
 
-import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+
 
 public class ChangesMenuController extends DB_Handler {
     @FXML

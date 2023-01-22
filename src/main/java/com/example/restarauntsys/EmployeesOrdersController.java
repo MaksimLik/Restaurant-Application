@@ -1,5 +1,6 @@
 package com.example.restarauntsys;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -11,12 +12,17 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Orders;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class EmployeesOrdersController extends DB_Handler implements Initializable {
 
@@ -55,7 +61,7 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
         initData();
 
         deliveryButton.setOnAction(event -> {
-            //TODO
+            InitWindow("EmployeesDeliveryMenu.fxml");
         });
 
         doneButton.setOnAction(event -> {
@@ -78,7 +84,6 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
                 e.printStackTrace();
             }
             initData();
-
         });
     }
     private void errorAlarm () {
@@ -102,5 +107,23 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
 
         listOrd = db_handler.getOrder();
         table_orders.setItems(listOrd);
+    }
+
+    private void InitWindow (String window) {
+        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
+        Parent windowPane = null;
+
+        try {
+            windowPane = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.setTitle("Restaurant Application");
+        stage.setScene(new Scene(windowPane));
+        stage.showAndWait();
     }
 }
