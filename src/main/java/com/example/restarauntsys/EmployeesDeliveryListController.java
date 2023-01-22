@@ -6,12 +6,17 @@ import com.example.restarauntsys.tables.Delivery;
 import com.example.restarauntsys.tables.Supplier;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class EmployeesDeliveryListController {
+import java.sql.*;
+
+import static com.example.restarauntsys.StartController.CustID;
+
+public class EmployeesDeliveryListController extends DB_Handler {
     @FXML
     private Button deliveryButton;
     @FXML
@@ -28,7 +33,22 @@ public class EmployeesDeliveryListController {
     @FXML
     void initialize() {
         initData();
+        deliveryButton.setOnAction(event -> {
+            try {
+                supplier = table_delivery.getSelectionModel().getSelectedItem();
+                String select = "delete from supplier where idSupplier = " + supplier.getID_supplier() + ";";
+                System.out.println(select);
 
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+                preparedStatement.execute();
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                errorAlarm();
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            initData();
+        });
     }
 
     private void initData() {
@@ -40,6 +60,13 @@ public class EmployeesDeliveryListController {
 
         listS = db_handler.getSupplier();
         table_delivery.setItems(listS);
+    }
+    private void errorAlarm () {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
+        alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
+        alert.showAndWait();
     }
 
 }
