@@ -1,6 +1,8 @@
 package com.example.restarauntsys;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
@@ -13,7 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class EmployeesShowController {
+public class EmployeesShowController extends DB_Handler {
 
     @FXML
     private ResourceBundle resources;
@@ -44,7 +46,24 @@ public class EmployeesShowController {
     @FXML
     void initialize() {
         initTable();
+
+        deleteButton.setOnAction(event -> {
+            try {
+                comments = table_comments.getSelectionModel().getSelectedItem();
+                String select = "delete from comments where id_comment = " + comments.getId() + ";";
+                System.out.println(select);
+
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+                preparedStatement.execute();
+
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            initTable();
+
+        });
     }
+
 
     protected void initTable() {
         DB_Handler db_handler = new DB_Handler();

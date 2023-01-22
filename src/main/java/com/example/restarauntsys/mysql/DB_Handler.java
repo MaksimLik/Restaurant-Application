@@ -219,7 +219,7 @@ public class DB_Handler extends Configurations {
         ObservableList<Basket> list = FXCollections.observableArrayList();
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select date_of_order, name, name_food, order_status from (orders " +
+        String selectQuery = "select id_order, name, name_food, order_status, date_of_order from (orders " +
                 "left outer join additions on orders.Additions_ID_addition = additions.ID_addition) " +
                 "left join menu on orders.Menu_ID_food = menu.ID_food where Customers_Users_ID_user = " + CustID + ";";
         System.out.println(selectQuery);
@@ -228,8 +228,8 @@ public class DB_Handler extends Configurations {
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(selectQuery);
             while (rs.next()) {
-                list.add(new Basket(rs.getString("date_of_order"), rs.getString("name"),
-                        rs.getString("name_food"), rs.getString("order_status")));
+                list.add(new Basket(rs.getInt("id_order"), rs.getString("name"),
+                        rs.getString("name_food"), rs.getString("order_status"), rs.getString("date_of_order")));
             }
 
             rs.close();

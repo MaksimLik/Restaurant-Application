@@ -19,10 +19,11 @@
                 </Text>
                   <TableView fx:id="table_basket" layoutX="-2.0" layoutY="91.0" prefHeight="270.0" prefWidth="507.0">
                       <columns>
-                          <TableColumn fx:id="table_date" prefWidth="107.0" text="Date:" />
-                          <TableColumn fx:id="table_additions" minWidth="12.0" prefWidth="131.0" text="Name of additions:" />
-                          <TableColumn fx:id="table_product" prefWidth="136.0" text="Name of food:" />
-                  <TableColumn fx:id="table_status" prefWidth="132.0" text="Orders status:" />
+                          <TableColumn fx:id="table_id" prefWidth="42.0" text="ID:" />
+                          <TableColumn fx:id="table_additions" minWidth="12.0" prefWidth="123.0" text="Name of additions:" />
+                          <TableColumn fx:id="table_product" minWidth="0.0" prefWidth="138.0" text="Name of food:" />
+                  <TableColumn fx:id="table_status" prefWidth="108.0" text="Orders status:" />
+                  <TableColumn fx:id="table_date" prefWidth="95.0" text="Date:" />
                       </columns>
                   </TableView>
                     <Button fx:id="deliveryButton" layoutX="329.0" layoutY="370.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delivery" textFill="WHITE">
