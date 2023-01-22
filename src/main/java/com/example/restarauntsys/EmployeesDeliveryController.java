@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static com.example.restarauntsys.StartController.CustID;
+import static com.example.restarauntsys.StartController.EmpID;
 
 public class EmployeesDeliveryController extends DB_Handler{
     private Delivery delivery;
@@ -47,15 +47,15 @@ public class EmployeesDeliveryController extends DB_Handler{
             InitWindow("EmployeesDeliveryList.fxml");
         });
         deliveryButton.setOnAction(event -> {
-
+            addDelivery();
         });
     }
-
 
     private void addDelivery(){
         try {
             delivery = table_delivery.getSelectionModel().getSelectedItem();
-            String select = "insert into supplier (Delivery_ID_dilivery, Employees_Users_ID_user) values (1, 1)";
+            String select = "insert into supplier (Delivery_ID_dilivery, Employees_Users_ID_user) values (" + delivery.getId() + ", " + EmpID + ")";
+            System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();

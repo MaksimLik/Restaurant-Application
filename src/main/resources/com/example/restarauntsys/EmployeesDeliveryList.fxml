@@ -19,7 +19,7 @@
                 </Text>
                 <TableView fx:id="table_delivery" layoutX="-1.0" layoutY="69.0" prefHeight="270.0" prefWidth="341.0">
                     <columns>
-                        <TableColumn fx:id="table_id" prefWidth="101.0" text="ID:" />
+                        <TableColumn fx:id="table_id" prefWidth="101.0" text="ID_supplier:" />
                         <TableColumn fx:id="table_order" minWidth="9.0" prefWidth="97.0" text="ID order:" />
                         <TableColumn fx:id="table_emp" prefWidth="141.0" text="Nick-name delivery:" />
                     </columns>

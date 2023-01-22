@@ -294,13 +294,15 @@ public class DB_Handler extends Configurations {
         ObservableList<Supplier> list = FXCollections.observableArrayList();
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select idSupplier, Delivery_ID_dilivery, nick_name from supplier inner join employees on idsupplier = nick_name;";
-
+        String selectQuery = "select idSupplier, Delivery_ID_dilivery, nick_name from supplier inner join employees on " +
+                "Employees_Users_ID_user = Users_ID_user;";
+        System.out.println(selectQuery);
         try {
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(selectQuery);
             while (rs.next()) {
-                list.add(new Supplier(rs.getInt("ID_supplier"), rs.getInt("ID_delivery"),
+                //columnLabel musi być taki sam jak nazwy kolumn w wyniku zapytania do BD
+                list.add(new Supplier(rs.getInt("idSupplier"), rs.getInt("Delivery_ID_dilivery"),
                         rs.getString("nick_name")));
             }
 

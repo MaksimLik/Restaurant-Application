@@ -29,6 +29,7 @@ public class StartController extends DB_Handler {
     private Scene thirdScene;
     private Scene fourScene;
     public static int CustID;
+    public static int EmpID;
     @FXML
     private Button registrationFirstButton;
     public void setThirdScene(Scene scene) {
@@ -58,6 +59,7 @@ public class StartController extends DB_Handler {
         if (checkButton.isSelected()) {
             if (!loginText.equals("") && !loginPassword.equals("")) {
                 loginEmployees(loginText, loginPassword);
+                getEmpID();
             } else
                 alertWarning();
 
@@ -169,6 +171,30 @@ public class StartController extends DB_Handler {
         }
 
         return CustID;
+    }
+
+    public int getEmpID() {
+        String loginText = nick_name.getText().trim();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select * from employees where nick_name = " + "'" + loginText + "'";
+        System.out.println(selectQuery);
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            rs.next();
+
+            EmpID = Integer.parseInt(rs.getString(3));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+
+        }
+
+        return EmpID;
     }
 
     private void InitWindow(String window) {
