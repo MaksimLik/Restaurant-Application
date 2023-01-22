@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restarauntsys.EmployeesDeliveryListController">
+    <children>
+        <AnchorPane prefHeight="430.0" prefWidth="450.0" style="-fx-background-color: #f0e68c;">
+            <children>
+                <Text layoutX="17.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System" wrappingWidth="305.7229919433594">
+                    <font>
+                        <Font name="Modern No. 20" size="24.0" />
+                    </font>
+                </Text>
+                <TableView fx:id="table_delivery" layoutX="-1.0" layoutY="69.0" prefHeight="270.0" prefWidth="341.0">
+                    <columns>
+                        <TableColumn fx:id="table_id" prefWidth="101.0" text="ID:" />
+                        <TableColumn fx:id="table_order" minWidth="9.0" prefWidth="97.0" text="ID order:" />
+                        <TableColumn fx:id="table_emp" prefWidth="141.0" text="Nick-name delivery:" />
+                    </columns>
+                </TableView>
+                <Button fx:id="deliveryButton" layoutX="127.0" layoutY="362.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
+            </children></AnchorPane>
+    </children>
+</VBox>

@@ -26,11 +26,16 @@
                   <TableColumn fx:id="table_customer" prefWidth="143.0" text="Nick-name customer:" />
                     </columns>
                 </TableView>
-                <Button fx:id="deliveryButton" layoutX="209.0" layoutY="371.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delivery" textFill="WHITE">
+                <Button fx:id="deliveryButton" layoutX="118.0" layoutY="372.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: #27D477;" text="Take" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
+            <Button fx:id="listButton" layoutX="293.0" layoutY="372.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="118.0" style="-fx-background-color: orange;" text="Delivery list" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
             </children></AnchorPane>
     </children>
 </VBox>

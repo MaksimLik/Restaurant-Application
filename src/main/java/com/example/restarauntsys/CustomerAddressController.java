@@ -1,7 +1,6 @@
 package com.example.restarauntsys;
 
 import com.example.restarauntsys.mysql.DB_Handler;
-import com.example.restarauntsys.tables.Additions;
 import com.example.restarauntsys.tables.Address;
 import javafx.fxml.FXML;
 
@@ -30,6 +29,8 @@ public class CustomerAddressController extends DB_Handler {
     private TextField streetField;
     @FXML
     private Button save_button;
+    @FXML
+    private Button listButton;
     public int amount_addr;
     @FXML
     void initialize() {
@@ -37,6 +38,10 @@ public class CustomerAddressController extends DB_Handler {
         checkAddress();
         save_button.setOnAction(event -> {
             addAddress();
+        });
+
+        listButton.setOnAction(event -> {
+
         });
     }
     private void checkAddress() {

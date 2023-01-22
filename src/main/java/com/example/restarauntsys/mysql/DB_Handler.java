@@ -290,6 +290,29 @@ public class DB_Handler extends Configurations {
         return list;
     }
 
+    public ObservableList<Supplier> getSupplier() {
+        ObservableList<Supplier> list = FXCollections.observableArrayList();
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select idSupplier, Delivery_ID_dilivery, nick_name from supplier inner join employees on idsupplier = nick_name;";
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            while (rs.next()) {
+                list.add(new Supplier(rs.getInt("ID_supplier"), rs.getInt("ID_delivery"),
+                        rs.getString("nick_name")));
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
     public ObservableList<Orders> getOrder() {
         ObservableList<Orders> listt = FXCollections.observableArrayList();
         ResultSet rs = null;
