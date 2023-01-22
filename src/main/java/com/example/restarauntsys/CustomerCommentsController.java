@@ -4,10 +4,7 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.PreparedStatement;
@@ -53,11 +50,13 @@ public class CustomerCommentsController extends DB_Handler {
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
+            information();
+            commentArea.clear();
+
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     private void initData() {
@@ -70,5 +69,13 @@ public class CustomerCommentsController extends DB_Handler {
 
         listM = db_handler.getMenu();
         table_menu.setItems(listM);
+    }
+
+    private void information() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("Comment has been added successfully");
+        alert.setContentText("Thanks for comments of our products");
+        alert.showAndWait();
     }
 }

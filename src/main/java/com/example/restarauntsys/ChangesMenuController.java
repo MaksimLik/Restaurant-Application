@@ -46,11 +46,6 @@ public class ChangesMenuController extends DB_Handler {
 
     ObservableList<Menu> listM;
     private Menu menu;
-    private Scene fourScene;
-
-    public void setFourScene (Scene scene) {
-        fourScene = scene;
-    }
 
     @FXML
     public void initialize() {
@@ -79,7 +74,9 @@ public class ChangesMenuController extends DB_Handler {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLIntegrityConstraintViolationException e) {
+            errorAlarm2();
+        }  catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         initData();
@@ -120,10 +117,8 @@ public class ChangesMenuController extends DB_Handler {
         } catch (NumberFormatException e) {
             warningAlarm();
         }
-
     }
-
-    private void errorAlarm () {
+    private void errorAlarm() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("Field with name, price or kcal is empty!");
@@ -134,8 +129,16 @@ public class ChangesMenuController extends DB_Handler {
     private void warningAlarm () {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("WARNING");
-        alert.setHeaderText("Please, if you can use float number you must use comma (.)");
-        alert.setContentText("Please, use COMMA");
+        alert.setHeaderText("Please, if you can use float number you must use comma (.) and fill in all fields");
+        alert.setContentText("Please, use COMMA and checked all fields");
+        alert.showAndWait();
+    }
+
+    private void errorAlarm2() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
+        alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
         alert.showAndWait();
     }
 }

@@ -36,8 +36,9 @@
                                 <TableColumn fx:id="id_table" prefWidth="38.0" text="id" />
                                 <TableColumn fx:id="date_table" prefWidth="83.0" text="Date:" />
                                 <TableColumn fx:id="status_table" minWidth="12.0" prefWidth="113.0" text="Status:" />
-                                <TableColumn fx:id="klient_table" prefWidth="134.0" text="Сustomer ID:" />
-                                <TableColumn fx:id="table_product" prefWidth="238.0" text="Name of food:" />
+                                <TableColumn fx:id="klient_table" prefWidth="98.0" text="Сustomer ID:" />
+                                <TableColumn fx:id="table_product" prefWidth="122.0" text="Name of food:" />
+                        <TableColumn fx:id="table_additions" prefWidth="151.0" text="Name of additions:" />
                             </columns>
                         </TableView>
                     </children>

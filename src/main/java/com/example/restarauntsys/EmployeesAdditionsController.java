@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ResourceBundle;
 
 public class EmployeesAdditionsController extends DB_Handler implements Initializable{
@@ -88,6 +89,8 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
+        } catch (SQLIntegrityConstraintViolationException e) {
+            errorAlarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -99,6 +102,14 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
         alert.setTitle("ERROR");
         alert.setHeaderText("Field with name or price is empty!");
         alert.setContentText("Please, write all information about addition");
+        alert.showAndWait();
+    }
+
+    private void errorAlarm2 () {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
+        alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
         alert.showAndWait();
     }
 

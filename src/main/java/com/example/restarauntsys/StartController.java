@@ -1,18 +1,15 @@
 package com.example.restarauntsys;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,15 +17,9 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class StartController extends DB_Handler implements Initializable {
+public class StartController extends DB_Handler {
     @FXML
     private CheckBox checkButton;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
     @FXML
     private TextField nick_name;
 
@@ -48,8 +39,8 @@ public class StartController extends DB_Handler implements Initializable {
         fourScene = scene;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         loginButton.setOnAction(event -> {
             authorization();
         });
@@ -62,7 +53,6 @@ public class StartController extends DB_Handler implements Initializable {
         String loginText = nick_name.getText().trim();
         String loginPassword = password.getText().trim();
 
-       // nick_name.clear();
         password.clear();
         checkButton.isDisabled();
 

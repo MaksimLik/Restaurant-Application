@@ -1,9 +1,7 @@
 package com.example.restarauntsys;
 
-import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Basket;
-import com.example.restarauntsys.tables.Orders;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
@@ -45,18 +43,25 @@ public class CustomerBasketController extends DB_Handler {
 
     @FXML
     private TableColumn<Basket, Integer> table_id;
-    public int amountOrder;
+    public int amount;
 
     @FXML
     public void initialize() {
         initDataBasket();
 
         deliveryButton.setOnAction(event -> {
-           // delivery.getAmount();
-            addDelivery();
-            //initDataBasket();
+            amount();
+            changesFunction();
         });
 
+    }
+
+    protected void changesFunction() {
+        if (amount >= 1) {
+            warning();
+        } else {
+            addDelivery();
+        }
     }
 
     protected void initDataBasket() {
@@ -81,6 +86,7 @@ public class CustomerBasketController extends DB_Handler {
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
+
             information();
 
         } catch (SQLException | ClassNotFoundException e) {
@@ -88,11 +94,44 @@ public class CustomerBasketController extends DB_Handler {
         }
     }
 
+    private int amount() {
+        ResultSet rs = null;
+        Statement stmt = null;
+        basket = table_basket.getSelectionModel().getSelectedItem();
+        String select = "select Orders_ID_order, coalesce(sum(Orders_ID_order), 0) from delivery where Orders_ID_order = " + basket.getId_order() +
+                " GROUP BY (Orders_ID_order);";
+        System.out.println(select);
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(select);
+            rs.next();
+
+            amount = Integer.parseInt(rs.getString(2));
+            System.out.println(amount);
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+        }
+        return amount;
+    }
+
+
     private void information() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Delivery has been added successfully");
         alert.setContentText("Thanks for delivery in our Restaurant");
+        alert.showAndWait();
+    }
+
+    private void warning() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("This order is already in the delivery service.");
+        alert.setContentText("You cannot order delivery for the same order more than once.");
         alert.showAndWait();
     }
 
