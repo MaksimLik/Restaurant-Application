@@ -16,10 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,7 +49,6 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
     private TableColumn<Orders, String> table_product;
     @FXML
     private TableColumn<Orders, String> table_additions;
-
     ObservableList<Orders> listOrd;
     private Orders orders;
 
@@ -65,11 +61,22 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
         });
 
         doneButton.setOnAction(event -> {
-            //TODO
+            try {
+                orders = table_orders.getSelectionModel().getSelectedItem();
+                String select = "update orders set order_status = 'done' where id_order = " + orders.getId() + ";";
+
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+                preparedStatement.execute();
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                errorAlarm();
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            initData();
         });
 
         deleteButton.setOnAction(event -> {
-
             try {
                 orders = table_orders.getSelectionModel().getSelectedItem();
                 String select = "delete from orders where id_order = " + orders.getId() + ";";

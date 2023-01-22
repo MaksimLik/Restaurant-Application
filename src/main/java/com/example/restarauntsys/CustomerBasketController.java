@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -43,24 +40,43 @@ public class CustomerBasketController extends DB_Handler {
 
     @FXML
     private TableColumn<Basket, Integer> table_id;
+    @FXML
+    private ChoiceBox<String> choiceBox;
+    private String choice [] = {"NOT needed", "Needed"};
     public int amount;
-
     @FXML
     public void initialize() {
         initDataBasket();
+        choiceBox.getItems().addAll(choice);
 
         deliveryButton.setOnAction(event -> {
-            amount();
-            changesFunction();
+            try{
+                finalFuction();
+            } catch (NullPointerException e) {
+                warning2();
+            }
         });
 
     }
 
-    protected void changesFunction() {
-        if (amount >= 1) {
-            warning();
+    protected void finalFuction() {
+        amount();
+        if(choiceBox.getValue().equals("NOT needed")){
+            if (amount >= 1) {
+                warning();
+            } else {
+                addDelivery();
+            }
+
+        } else if (choiceBox.getValue().equals("Needed")) {
+            if (amount >= 1) {
+                warning();
+            } else {
+                addDelivery2();
+            }
+
         } else {
-            addDelivery();
+            warning2();
         }
     }
 
@@ -81,7 +97,24 @@ public class CustomerBasketController extends DB_Handler {
         try {
             basket = table_basket.getSelectionModel().getSelectedItem();
             String select = "insert into delivery (date, invoice, Orders_ID_order, Orders_Customers_Users_ID_user) " +
-                    "values (current_time(), 'nie wymagam'," + basket.getId_order() +", " + CustID + ");";
+                    "values (current_time(), 'NOT needed'," + basket.getId_order() +", " + CustID + ");";
+            System.out.println(select);
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+            preparedStatement.execute();
+
+            information();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addDelivery2() {
+        try {
+            basket = table_basket.getSelectionModel().getSelectedItem();
+            String select = "insert into delivery (date, invoice, Orders_ID_order, Orders_Customers_Users_ID_user) " +
+                    "values (current_time(), 'Needed'," + basket.getId_order() +", " + CustID + ");";
             System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
@@ -135,21 +168,11 @@ public class CustomerBasketController extends DB_Handler {
         alert.showAndWait();
     }
 
-    private void InitWindow(String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
-        Parent windowPane = null;
-
-        try {
-            windowPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.setTitle("Restaurant Application");
-        stage.setScene(new Scene(windowPane));
-        stage.showAndWait();
+    private void warning2() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, choose product from table and click him, choose INVOICE or NOT and click button.");
+        alert.setContentText("Choose product, click him and click button");
+        alert.showAndWait();
     }
 }
