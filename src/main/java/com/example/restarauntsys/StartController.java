@@ -22,7 +22,6 @@ public class StartController extends DB_Handler {
     private CheckBox checkButton;
     @FXML
     private TextField nick_name;
-
     @FXML
     private PasswordField password;
     @FXML

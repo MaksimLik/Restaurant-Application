@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
 import static com.example.restarauntsys.StartController.CustID;
 
 public class CustomerOrderController extends DB_Handler {
@@ -49,21 +48,6 @@ public class CustomerOrderController extends DB_Handler {
             menu = table_menu.getSelectionModel().getSelectedItem();
             String select = "insert into orders (date_of_order, order_status, Customers_Users_ID_user, Menu_ID_food) " +
                     "values (current_date(), 'in progress', " + CustID + ", " + menu.getId() + ");";
-            System.out.println(select);
-
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
-            preparedStatement.execute();
-
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void addDelivery() {
-        try {
-            menu = table_menu.getSelectionModel().getSelectedItem();
-            String select = "insert into delivery (date, invoice, Orders_ID_order) values (current_time(), 'nie wymagam');";
             System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);

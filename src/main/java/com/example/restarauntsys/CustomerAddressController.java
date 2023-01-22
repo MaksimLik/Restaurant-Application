@@ -1,14 +1,27 @@
 package com.example.restarauntsys;
 
 import com.example.restarauntsys.mysql.DB_Handler;
+import com.example.restarauntsys.tables.Additions;
 import com.example.restarauntsys.tables.Address;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
-public class CustomerAddressController {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import static com.example.restarauntsys.StartController.CustID;
+
+public class CustomerAddressController extends DB_Handler {
+    @FXML
+    private Label questionLableNegative;
+    @FXML
+    private Label questionLablePositive;
     @FXML
     private TextField indexField;
     @FXML
@@ -17,12 +30,25 @@ public class CustomerAddressController {
     private TextField streetField;
     @FXML
     private Button save_button;
-
+    public int amount_addr;
     @FXML
     void initialize() {
+        amount();
+        checkAddress();
         save_button.setOnAction(event -> {
             addAddress();
         });
+    }
+    private void checkAddress() {
+        if (amount_addr < 1) {
+            questionLableNegative.setText("Your address hasn't registration");
+            questionLableNegative.setTextFill(Color.web("red"));
+            questionLablePositive.setVisible(false);
+            } else {
+            questionLablePositive.setText("Your address has registration");
+            questionLablePositive.setTextFill(Color.web("green"));
+            questionLableNegative.setVisible(false);
+        }
     }
     public void addAddress(){
         DB_Handler db_handler = new DB_Handler();
@@ -39,6 +65,27 @@ public class CustomerAddressController {
         } else {
             warningRegistration();
         }
+    }
+
+    private int amount(){
+        ResultSet rs = null;
+        Statement stmt = null;
+        String select = "select * from adress_customer where Customers_Users_ID_user = " + CustID + ";";
+        System.out.println(select);
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(select);
+            rs.next();
+
+            amount_addr = Integer.parseInt(rs.getString(2));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+        }
+        return amount_addr;
     }
     private void successRegistration(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
