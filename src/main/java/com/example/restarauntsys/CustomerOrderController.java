@@ -60,6 +60,20 @@ public class CustomerOrderController extends DB_Handler {
 
     }
 
+    private void addDelivery() {
+        try {
+            menu = table_menu.getSelectionModel().getSelectedItem();
+            String select = "insert into delivery (date, invoice, Orders_ID_order) values (current_time(), 'nie wymagam');";
+            System.out.println(select);
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+            preparedStatement.execute();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initData() {
         DB_Handler db_handler = new DB_Handler();
 

@@ -1,5 +1,6 @@
 package com.example.restarauntsys;
 
+import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Basket;
 import com.example.restarauntsys.tables.Orders;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,7 +20,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static com.example.restarauntsys.StartController.CustID;
 
@@ -27,7 +31,6 @@ public class CustomerBasketController extends DB_Handler {
     @FXML
     private Button deliveryButton;
     private Basket basket;
-    private Orders orders;
     ObservableList<Basket> listB;
     @FXML
     private TableView<Basket> table_basket;
@@ -42,12 +45,14 @@ public class CustomerBasketController extends DB_Handler {
 
     @FXML
     private TableColumn<Basket, Integer> table_id;
+    public int amountOrder;
 
     @FXML
     public void initialize() {
         initDataBasket();
 
         deliveryButton.setOnAction(event -> {
+           // delivery.getAmount();
             addDelivery();
             //initDataBasket();
         });
@@ -70,15 +75,25 @@ public class CustomerBasketController extends DB_Handler {
     private void addDelivery() {
         try {
             basket = table_basket.getSelectionModel().getSelectedItem();
-            String select = "insert into delivery (date, invoice, Orders_ID_order) values (current_time(), 'nie wymagam'," + orders.getId() + ");";
+            String select = "insert into delivery (date, invoice, Orders_ID_order, Orders_Customers_Users_ID_user) " +
+                    "values (current_time(), 'nie wymagam'," + basket.getId_order() +", " + CustID + ");";
             System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
+            information();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void information() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("Delivery has been added successfully");
+        alert.setContentText("Thanks for delivery in our Restaurant");
+        alert.showAndWait();
     }
 
     private void InitWindow(String window) {
@@ -98,6 +113,4 @@ public class CustomerBasketController extends DB_Handler {
         stage.setScene(new Scene(windowPane));
         stage.showAndWait();
     }
-
-
 }

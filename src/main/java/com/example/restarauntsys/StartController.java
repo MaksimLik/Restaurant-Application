@@ -107,7 +107,6 @@ public class StartController extends DB_Handler implements Initializable {
             counter++;
         }
         if(counter >= 1){
-            //openNewScene("CustomerStartMenu.fxml");
             openCustomerWindow();
         } else {
             alertLOGIN();
