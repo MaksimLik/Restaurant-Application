@@ -44,11 +44,6 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Text fill="WHITE" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Index:">
-                     <font>
-                        <Font name="System Bold Italic" size="26.0" />
-                     </font>
-                  </Text>
                   <Text fx:id="index" fill="WHITE" layoutX="92.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font name="System Bold Italic" size="26.0" />

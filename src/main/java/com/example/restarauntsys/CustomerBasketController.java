@@ -136,7 +136,6 @@ public class CustomerBasketController extends DB_Handler {
             rs.next();
 
             amount = Integer.parseInt(rs.getString(2));
-            System.out.println(amount);
 
             rs.close();
             stmt.close();

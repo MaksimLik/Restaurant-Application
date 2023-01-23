@@ -113,7 +113,6 @@ public class DB_Handler extends Configurations {
                 Constants.ADDITIONS_NAME + "," +
                 Constants.ADDITIONS_PRICE + ")" +
                 "VALUES(?, ?)";
-        System.out.println(insert);
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
@@ -133,7 +132,6 @@ public class DB_Handler extends Configurations {
                 Constants.MENU_KCAL + "," +
                 Constants.MENU_PRICE + ")" +
                 "VALUES(?, ?, ?, ?)";
-        System.out.println(insert);
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
@@ -223,7 +221,6 @@ public class DB_Handler extends Configurations {
         Statement stmt = null;
         String selectQuery = "SELECT id_comment, name_food, comment, nick_name FROM (comments INNER JOIN menu ON comments.Menu_ID_food = menu.ID_food) " +
                 "INNER JOIN Customers ON  comments.Customers_Users_ID_user = Customers.Users_ID_user;";
-        System.out.println(selectQuery);
 
         try {
             stmt = getDbConnection().createStatement();
@@ -248,7 +245,6 @@ public class DB_Handler extends Configurations {
         String selectQuery = "select id_order, name, name_food, order_status, date_of_order from (orders " +
                 "left outer join additions on orders.Additions_ID_addition = additions.ID_addition) " +
                 "left join menu on orders.Menu_ID_food = menu.ID_food where Customers_Users_ID_user = " + CustID + ";";
-        System.out.println(selectQuery);
 
         try {
             stmt = getDbConnection().createStatement();
@@ -296,7 +292,7 @@ public class DB_Handler extends Configurations {
         Statement stmt = null;
         String selectQuery = "select idSupplier, Delivery_ID_dilivery, nick_name from supplier inner join employees on " +
                 "Employees_Users_ID_user = Users_ID_user;";
-        System.out.println(selectQuery);
+
         try {
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(selectQuery);

@@ -69,7 +69,6 @@ public class EmployeesDeliveryController extends DB_Handler{
         try {
             delivery = table_delivery.getSelectionModel().getSelectedItem();
             String select = "insert into supplier (Delivery_ID_dilivery, Employees_Users_ID_user) values (" + delivery.getId() + ", " + EmpID + ")";
-            System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
@@ -85,7 +84,6 @@ public class EmployeesDeliveryController extends DB_Handler{
         delivery = table_delivery.getSelectionModel().getSelectedItem();
         String select = "select coalesce(sum(Delivery_ID_dilivery), 0) from supplier " +
                 "where Delivery_ID_dilivery = " + delivery.getId() + ";";
-        System.out.println(select);
 
         try {
             stmt = getDbConnection().createStatement();
@@ -93,7 +91,6 @@ public class EmployeesDeliveryController extends DB_Handler{
             rs.next();
 
             amountDev = Integer.parseInt(rs.getString(1));
-            System.out.println(amountDev);
 
             rs.close();
             stmt.close();

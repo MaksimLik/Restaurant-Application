@@ -30,7 +30,6 @@ public class CustomerCommentsController extends DB_Handler {
     private TableColumn<Menu, String> table_description;
     ObservableList<Menu> listM;
     private Menu menu;
-
     @FXML
     public void initialize() {
         initData();
@@ -39,7 +38,6 @@ public class CustomerCommentsController extends DB_Handler {
             addFunction();
         });
     }
-
     private void addFunction() {
         try {
             String comment = commentArea.getText().trim();

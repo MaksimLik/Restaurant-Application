@@ -11,10 +11,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import static com.example.restarauntsys.StartController.CustID;
-
-public class CustomerStartController extends CustomerBasketController {
-
+public class CustomerStartController {
     @FXML
     private Button commentButton;
     @FXML
@@ -28,6 +25,7 @@ public class CustomerStartController extends CustomerBasketController {
     private Button showBasketButton;
     @FXML
     private Button additionsButton;
+
     public void setFirstScene(Scene scene) {
         firstScene = scene;
     }

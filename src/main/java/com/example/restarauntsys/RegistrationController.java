@@ -1,8 +1,5 @@
 package com.example.restarauntsys;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.User;
@@ -42,8 +39,8 @@ public class RegistrationController {
         String nick_name = signUPnick_name.getText();
         String password = signUPpassword.getText();
 
-
         if (!name.equals("") && !surname.equals("") && !nick_name.equals("") && !password.equals("")) {
+
             User user = new User(name, surname, nick_name, password);
             db_handler.registrationUsers(user);
             signUPnewCustomer();
@@ -78,7 +75,6 @@ public class RegistrationController {
         alert.setContentText("Please check information in all fields, this information is mandatory");
         alert.showAndWait();
     }
-
     private void clearField() {
         signUPname.clear();
         singUPsurname.clear();

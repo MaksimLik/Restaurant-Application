@@ -62,7 +62,6 @@ public class ChangesMenuController extends DB_Handler {
         try {
             menu = table_menu.getSelectionModel().getSelectedItem();
             String select = "delete from menu where id_food = " + menu.getId();
-            System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();

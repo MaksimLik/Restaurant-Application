@@ -1,13 +1,10 @@
 package com.example.restarauntsys;
 
-import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
-import com.example.restarauntsys.tables.Basket;
 import com.example.restarauntsys.tables.Comments;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,12 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class EmployeesShowController extends DB_Handler {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button deleteButton;

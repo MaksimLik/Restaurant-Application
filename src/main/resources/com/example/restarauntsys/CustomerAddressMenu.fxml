@@ -26,7 +26,7 @@
                                 <Image url="C:\Users\Admin\Desktop\RestarauntSys\src\main\resources\com\example\restarauntsys\pictures\user_account.png" />
                             </image>
                         </ImageView>
-                  <Button fx:id="save_button" layoutX="337.0" layoutY="284.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: green;" text="SAVE">
+                  <Button fx:id="save_button" layoutX="383.0" layoutY="284.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: green;" text="SAVE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -76,11 +76,6 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="delete_button" layoutX="428.0" layoutY="284.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: RED;" text="DELETE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
                   <Label layoutX="14.0" layoutY="276.0" text="If you have address and you want change him">
                      <font>
                         <Font name="System Bold" size="12.0" />

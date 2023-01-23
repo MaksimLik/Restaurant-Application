@@ -16,8 +16,6 @@ public class CustomerOrderController extends DB_Handler {
     @FXML
     private Button addButton;
     @FXML
-    private CheckBox deliveryButton;
-    @FXML
     private TableView<Menu> table_menu;
     @FXML
     private TableColumn<Menu, Double> kcal_table;
@@ -37,10 +35,6 @@ public class CustomerOrderController extends DB_Handler {
         initData();
         addButton.setOnAction(event -> {
             addFunction();
-        });
-
-        deliveryButton.setOnAction(event -> {
-
         });
     }
     private void addFunction() {
