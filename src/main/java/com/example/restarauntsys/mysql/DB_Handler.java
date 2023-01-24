@@ -171,7 +171,7 @@ public class DB_Handler extends Configurations {
         ObservableList<Menu> list = FXCollections.observableArrayList();
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select * from menu";
+        String selectQuery = "call display_menu;";
 
         try {
             stmt = getDbConnection().createStatement();
@@ -194,8 +194,7 @@ public class DB_Handler extends Configurations {
         ObservableList<Delivery> list = FXCollections.observableArrayList();
         ResultSet rs = null;
         Statement stmt = null;
-        String selectQuery = "select id_dilivery, date, invoice, Orders_ID_order, nick_name " +
-                "from delivery inner join customers on Orders_Customers_Users_ID_user = Users_ID_user;";
+        String selectQuery = "call display_delivery();";
 
         try {
             stmt = getDbConnection().createStatement();

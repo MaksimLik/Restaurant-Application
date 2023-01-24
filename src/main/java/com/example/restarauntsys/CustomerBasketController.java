@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,8 @@ public class CustomerBasketController extends DB_Handler {
     @FXML
     private Button deliveryButton;
     private Basket basket;
+    @FXML
+    private Label fullPrice;
     ObservableList<Basket> listB;
     @FXML
     private TableView<Basket> table_basket;
@@ -38,11 +41,13 @@ public class CustomerBasketController extends DB_Handler {
     private ChoiceBox<String> choiceBox;
     private String choice [] = {"NOT needed", "Needed"};
     public int amount;
+    public int fullCosts;
     @FXML
     public void initialize() {
         initDataBasket();
+        fullCost();
+        checkBasket();
         choiceBox.getItems().addAll(choice);
-
         deliveryButton.setOnAction(event -> {
             try{
                 finalFuction();
@@ -50,9 +55,18 @@ public class CustomerBasketController extends DB_Handler {
                 warning2();
             }
         });
-
     }
 
+
+    private void checkBasket() {
+        if (fullCosts < 1) {
+            fullPrice.setText("You don't have a product in shop-basket");
+            fullPrice.setTextFill(Color.web("red"));
+        } else {
+            fullPrice.setText(String.valueOf(fullCosts) + "[$]");
+            fullPrice.setTextFill(Color.web("green"));
+        }
+    }
     protected void finalFuction() {
         amount();
         if(choiceBox.getValue().equals("NOT needed")){
@@ -87,12 +101,33 @@ public class CustomerBasketController extends DB_Handler {
         table_basket.setItems(listB);
     }
 
+    private int fullCost() {
+        ResultSet rs = null;
+        Statement stmt = null;
+
+        String select = "select how_much(" + CustID + ");";
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(select);
+            rs.next();
+
+            fullCosts = Integer.parseInt(rs.getString(1));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+
+        }
+    return fullCosts;
+    }
+
     private void addDelivery() {
         try {
             basket = table_basket.getSelectionModel().getSelectedItem();
             String select = "insert into delivery (date, invoice, Orders_ID_order, Orders_Customers_Users_ID_user) " +
                     "values (current_time(), 'NOT needed'," + basket.getId_order() +", " + CustID + ");";
-            System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
@@ -109,7 +144,6 @@ public class CustomerBasketController extends DB_Handler {
             basket = table_basket.getSelectionModel().getSelectedItem();
             String select = "insert into delivery (date, invoice, Orders_ID_order, Orders_Customers_Users_ID_user) " +
                     "values (current_time(), 'Needed'," + basket.getId_order() +", " + CustID + ");";
-            System.out.println(select);
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
@@ -128,7 +162,6 @@ public class CustomerBasketController extends DB_Handler {
         String select = "select Orders_ID_order, coalesce(sum(Orders_ID_order), 0) from delivery where Orders_ID_order = " + basket.getId_order() +
                 " and Orders_Customers_Users_ID_user = " + CustID +
                 " GROUP BY (Orders_ID_order);";
-        System.out.println(select);
 
         try {
             stmt = getDbConnection().createStatement();
@@ -141,6 +174,7 @@ public class CustomerBasketController extends DB_Handler {
             stmt.close();
 
         } catch (SQLException | ClassNotFoundException e) {
+
         }
         return amount;
     }

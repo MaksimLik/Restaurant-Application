@@ -39,6 +39,16 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Label layoutX="34.0" layoutY="338.0" text="Full price of products:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="fullPrice" layoutX="88.0" layoutY="370.0" text="lable" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
             </children></AnchorPane>
     </children>
 </VBox>
