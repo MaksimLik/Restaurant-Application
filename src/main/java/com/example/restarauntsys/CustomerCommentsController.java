@@ -2,18 +2,26 @@ package com.example.restarauntsys;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static com.example.restarauntsys.StartController.CustID;
 
 public class CustomerCommentsController extends DB_Handler {
-
+    @FXML
+    private Button updateButton;
     @FXML
     private TextArea commentArea;
     @FXML
@@ -37,6 +45,10 @@ public class CustomerCommentsController extends DB_Handler {
         commentButton.setOnAction(event -> {
             addFunction();
         });
+
+        updateButton.setOnAction(event -> {
+            InitWindow("CustomerCommentsUpdate.fxml");
+        });
     }
     private void addFunction() {
         try {
@@ -52,6 +64,8 @@ public class CustomerCommentsController extends DB_Handler {
             commentArea.clear();
 
 
+        } catch (MysqlDataTruncation e) {
+            warning();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
@@ -85,5 +99,30 @@ public class CustomerCommentsController extends DB_Handler {
         alert.setHeaderText("You must choose product from table, write comment on text area and press button (comment)");
         alert.setContentText("Text area cannot is empty");
         alert.showAndWait();
+    }
+
+    private void warning() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("Your comment is too long, please reduce comment to 250 characters");
+        alert.setContentText("Reduce comment");
+        alert.showAndWait();
+    }
+    private void InitWindow (String window) {
+        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
+        Parent windowPane = null;
+
+        try {
+            windowPane = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.setTitle("Restaurant Application");
+        stage.setScene(new Scene(windowPane));
+        stage.showAndWait();
     }
 }

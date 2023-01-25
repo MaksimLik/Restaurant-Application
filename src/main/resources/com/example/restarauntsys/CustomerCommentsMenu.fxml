@@ -52,6 +52,7 @@
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
                   </Label>
+                  <Button fx:id="updateButton" layoutX="247.0" layoutY="440.0" mnemonicParsing="false" text="Update" />
                     </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="194.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">

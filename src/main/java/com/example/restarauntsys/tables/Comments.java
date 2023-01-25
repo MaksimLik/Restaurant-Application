@@ -13,6 +13,12 @@ public class Comments {
         this.nick_name = nick_name;
     }
 
+    public Comments(int id_comment, String name_food, String comment) {
+        this.id_comment = id_comment;
+        this.name_food = name_food;
+        this.comment = comment;
+    }
+
     public int getId() {
         return id_comment;
     }

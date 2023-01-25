@@ -33,8 +33,8 @@ public class CustomerStartController extends DB_Handler {
     private Button showBasketButton;
     @FXML
     private Button additionsButton;
-
-
+    @FXML
+    private Button updateButton;
     public void setFirstScene(Scene scene) {
         firstScene = scene;
     }
@@ -85,7 +85,7 @@ public class CustomerStartController extends DB_Handler {
             e.printStackTrace();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        } 
     }
 
     private void InitWindow (String window) {
