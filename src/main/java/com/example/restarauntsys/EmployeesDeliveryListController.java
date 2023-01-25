@@ -46,6 +46,8 @@ public class EmployeesDeliveryListController extends DB_Handler {
                 errorAlarm();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                warning2();
             }
             initData();
         });
@@ -66,6 +68,13 @@ public class EmployeesDeliveryListController extends DB_Handler {
         alert.setTitle("ERROR");
         alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
         alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
+        alert.showAndWait();
+    }
+    private void warning2() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, choose product from table and click him and click button.");
+        alert.setContentText("Choose product, click him and click button");
         alert.showAndWait();
     }
 

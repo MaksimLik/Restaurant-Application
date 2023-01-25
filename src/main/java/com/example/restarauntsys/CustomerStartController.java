@@ -85,7 +85,7 @@ public class CustomerStartController extends DB_Handler {
             e.printStackTrace();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     private void InitWindow (String window) {
