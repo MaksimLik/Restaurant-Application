@@ -1,6 +1,5 @@
 package com.example.restarauntsys.tables;
 
-import com.example.restarauntsys.mysql.Constants;
 import com.example.restarauntsys.mysql.DB_Handler;
 
 import java.sql.ResultSet;
@@ -9,6 +8,7 @@ import java.sql.Statement;
 
 public class Address extends DB_Handler {
     public static int address_id_max;
+    public static int address_id_max2;
     public String street;
     public String room_number;
     public String postal_index;
@@ -61,9 +61,28 @@ public class Address extends DB_Handler {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         return address_id_max;
+    }
 
+    public int getIDadr2() {
+        ResultSet rs = null;
+        Statement stmt = null;
+        String selectQuery = "select max(ID_address) from address;";
+
+        try {
+            stmt = getDbConnection().createStatement();
+            rs = stmt.executeQuery(selectQuery);
+            rs.next();
+
+            address_id_max2 = Integer.parseInt(rs.getString(1));
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return address_id_max2;
     }
 }
 

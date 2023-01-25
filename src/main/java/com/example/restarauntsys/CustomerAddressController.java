@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import java.sql.*;
 
 import static com.example.restarauntsys.StartController.CustID;
+import static com.example.restarauntsys.tables.Address.address_id_max;
+import static com.example.restarauntsys.tables.Address.address_id_max2;
 
 public class CustomerAddressController extends DB_Handler {
     @FXML
@@ -65,9 +67,13 @@ public class CustomerAddressController extends DB_Handler {
 
         if (!street.equals("") && !room.equals("") && !index.equals("")) {
             Address address = new Address(street, room, index);
+            address.getIDadr();
             db_handler.registrationAddress(address);
-            db_handler.registrationCustomerAddress(address);
-            successRegistration();
+            address.getIDadr2();
+                if(address_id_max != address_id_max2)   {
+                db_handler.registrationCustomerAddress(address);
+                successRegistration();
+            }
 
         } else {
             warningRegistration();

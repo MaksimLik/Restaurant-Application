@@ -1,8 +1,10 @@
 package com.example.restarauntsys.mysql;
 
 import com.example.restarauntsys.tables.*;
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 
@@ -81,7 +83,6 @@ public class DB_Handler extends Configurations {
             preparedStatement.setInt(1, address.getIDadr());
             preparedStatement.setInt(2, CustID);
 
-            System.out.println(address.getIDadr());
             System.out.println(CustID);
 
             preparedStatement.executeUpdate();
@@ -104,6 +105,8 @@ public class DB_Handler extends Configurations {
             preparedStatement.setString(3, address.getPostal_index());
 
             preparedStatement.executeUpdate();
+        } catch (MysqlDataTruncation e) {
+            alarm();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -352,5 +355,12 @@ public class DB_Handler extends Configurations {
         }
 
         return resultSet;
+    }
+    private void alarm() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("Your information is too long or you use forbidden characters");
+        alert.setContentText("Please, write correct information");
+        alert.showAndWait();
     }
 }
