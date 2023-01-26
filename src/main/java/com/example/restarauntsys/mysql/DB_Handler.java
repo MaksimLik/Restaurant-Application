@@ -44,8 +44,8 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.close();
 
-
-
+        } catch (MysqlDataTruncation e) {
+         alarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -67,6 +67,8 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+        } catch (MysqlDataTruncation e) {
+            alarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -87,6 +89,8 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+        } catch (MysqlDataTruncation e) {
+            alarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -124,6 +128,8 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+        } catch (MysqlDataTruncation e) {
+            alarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -145,6 +151,8 @@ public class DB_Handler extends Configurations {
 
             preparedStatement.executeUpdate();
 
+        } catch (MysqlDataTruncation e) {
+            alarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -164,6 +172,8 @@ public class DB_Handler extends Configurations {
 
             resultSet = preparedStatement.executeQuery();
 
+        } catch (MysqlDataTruncation e) {
+            alarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -384,6 +394,13 @@ public class DB_Handler extends Configurations {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("Your information is too long or you use forbidden characters");
+        alert.setContentText("Please, write correct information");
+        alert.showAndWait();
+    }
+    private void alarm2() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Information in field is too long");
         alert.setContentText("Please, write correct information");
         alert.showAndWait();
     }
