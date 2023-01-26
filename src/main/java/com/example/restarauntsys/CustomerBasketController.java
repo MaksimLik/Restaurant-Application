@@ -119,6 +119,8 @@ public class CustomerBasketController extends DB_Handler {
 
         } catch (SQLException | ClassNotFoundException e) {
 
+        } catch (NumberFormatException e) {
+            warning3();
         }
     return fullCosts;
     }
@@ -201,6 +203,14 @@ public class CustomerBasketController extends DB_Handler {
         alert.setTitle("WARNING");
         alert.setHeaderText("Please, choose product from table and click him, choose INVOICE or NOT and click button.");
         alert.setContentText("Choose product, click him and click button");
+        alert.showAndWait();
+    }
+
+    private void warning3() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Your basket is empty");
+        alert.setContentText("Please, buy a product if you can see your basket-shop");
         alert.showAndWait();
     }
 }

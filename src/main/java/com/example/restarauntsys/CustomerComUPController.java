@@ -47,8 +47,8 @@ public class CustomerComUPController extends DB_Handler {
         DB_Handler db_handler = new DB_Handler();
 
         table_id.setCellValueFactory(new PropertyValueFactory<Comments, Integer>("id"));
-        table_comment.setCellValueFactory(new PropertyValueFactory<Comments, String>("comment"));
-        table_food.setCellValueFactory(new PropertyValueFactory<Comments, String>("name_food"));
+        table_comment.setCellValueFactory(new PropertyValueFactory<Comments, String>("name_food"));
+        table_food.setCellValueFactory(new PropertyValueFactory<Comments, String>("comment"));
 
         listC = db_handler.getComment2();
         table_comments.setItems(listC);

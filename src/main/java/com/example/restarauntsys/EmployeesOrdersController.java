@@ -72,6 +72,8 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
                 errorAlarm();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+
             }
             initData();
         });
@@ -89,6 +91,8 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
                 errorAlarm();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                warning();
             }
             initData();
         });
@@ -132,5 +136,12 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
         stage.setTitle("Restaurant Application");
         stage.setScene(new Scene(windowPane));
         stage.showAndWait();
+    }
+    private void warning() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, choose product from table and click him and click button.");
+        alert.setContentText("Choose product, click him and click button");
+        alert.showAndWait();
     }
 }

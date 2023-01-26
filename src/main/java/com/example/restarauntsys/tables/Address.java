@@ -1,6 +1,7 @@
 package com.example.restarauntsys.tables;
 
 import com.example.restarauntsys.mysql.DB_Handler;
+import javafx.scene.control.Alert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,6 +61,8 @@ public class Address extends DB_Handler {
 
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } catch (NumberFormatException e){
+            //TODO;
         }
         return address_id_max;
     }
@@ -84,5 +87,6 @@ public class Address extends DB_Handler {
         }
         return address_id_max2;
     }
+
 }
 

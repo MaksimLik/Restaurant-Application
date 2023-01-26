@@ -56,7 +56,6 @@ public class EmployeesDeliveryController extends DB_Handler{
 
     private void checkFunction(){
         amount();
-        System.out.println(amountDev);
         if(amountDev < 1){
             addDelivery();
             information();
@@ -75,17 +74,19 @@ public class EmployeesDeliveryController extends DB_Handler{
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+
         }
     }
 
     private int amount() {
         ResultSet rs = null;
         Statement stmt = null;
-        delivery = table_delivery.getSelectionModel().getSelectedItem();
-        String select = "select coalesce(sum(Delivery_ID_dilivery), 0) from supplier " +
-                "where Delivery_ID_dilivery = " + delivery.getId() + ";";
 
         try {
+            delivery = table_delivery.getSelectionModel().getSelectedItem();
+            String select = "select coalesce(sum(Delivery_ID_dilivery), 0) from supplier " +
+                    "where Delivery_ID_dilivery = " + delivery.getId() + ";";
             stmt = getDbConnection().createStatement();
             rs = stmt.executeQuery(select);
             rs.next();
@@ -96,6 +97,8 @@ public class EmployeesDeliveryController extends DB_Handler{
             stmt.close();
 
         } catch (SQLException | ClassNotFoundException e) {
+        } catch (NullPointerException e) {
+            warning2();
         }
         return amountDev;
     }
@@ -143,6 +146,13 @@ public class EmployeesDeliveryController extends DB_Handler{
         alert.setTitle("WARNING");
         alert.setHeaderText("This order is already in the delivery service.");
         alert.setContentText("You cannot order delivery for the same order more than once.");
+        alert.showAndWait();
+    }
+    private void warning2() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, choose a object in the table and re-click on button");
+        alert.setContentText("You don't choose a product if you don't have a product please wait");
         alert.showAndWait();
     }
 

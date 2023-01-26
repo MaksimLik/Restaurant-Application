@@ -53,6 +53,8 @@ public class EmployeesShowController extends DB_Handler {
                 errorAlarm();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                warning1();
             }
             initTable();
         });
@@ -76,6 +78,14 @@ public class EmployeesShowController extends DB_Handler {
 
         listC = db_handler.getComment();
         table_comments.setItems(listC);
+    }
+
+    private void warning1() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, choose product from table and click him and click button.");
+        alert.setContentText("Choose product, click him and click button");
+        alert.showAndWait();
     }
 
 }

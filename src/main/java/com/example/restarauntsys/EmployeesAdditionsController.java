@@ -93,6 +93,8 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
             errorAlarm2();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            warning1();
         }
         initData();
     }
@@ -116,8 +118,15 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
     private void warningAlarm () {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("WARNING");
-        alert.setHeaderText("Please, if you can use float number you must use comma (.)");
-        alert.setContentText("Please, use COMMA");
+        alert.setHeaderText("Please, if you can use float number you must use comma (.) and write all fields");
+        alert.setContentText("Please, use COMMA in number and write all fields");
+        alert.showAndWait();
+    }
+    private void warning1() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Please, choose product from table and click him and click button.");
+        alert.setContentText("Choose product, click him and click button");
         alert.showAndWait();
     }
 }
