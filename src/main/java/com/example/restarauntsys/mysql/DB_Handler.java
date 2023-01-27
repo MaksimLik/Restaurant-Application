@@ -46,6 +46,8 @@ public class DB_Handler extends Configurations {
 
         } catch (MysqlDataTruncation e) {
          alarm2();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            alarm3();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -69,6 +71,8 @@ public class DB_Handler extends Configurations {
 
         } catch (MysqlDataTruncation e) {
             alarm2();
+        } catch (SQLIntegrityConstraintViolationException e) {
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -404,4 +408,12 @@ public class DB_Handler extends Configurations {
         alert.setContentText("Please, write correct information");
         alert.showAndWait();
     }
+    private void alarm3() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("This account is registration");
+        alert.setContentText("Please, change nick_name");
+        alert.showAndWait();
+    }
+
 }
