@@ -1,25 +1,21 @@
 package com.example.restarauntsys;
 
+import com.example.restarauntsys.mysql.Alerts;
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 
-public class RegistrationController {
-
+public class RegistrationController extends Alerts {
     @FXML
     private TextField signUPname;
-
     @FXML
     private TextField signUPnick_name;
-
     @FXML
     private TextField signUPpassword;
-
     @FXML
     private TextField singUPsurname;
     @FXML
@@ -44,12 +40,11 @@ public class RegistrationController {
             User user = new User(name, surname, nick_name, password);
             db_handler.registrationUsers(user);
             signUPnewCustomer();
-            successRegistration();
+            alertSuccessReg();
             clearField();
         } else {
-            warningRegistration();
+            alertWarningIsEmpty();
         }
-
     }
 
     private void signUPnewCustomer() {
@@ -61,20 +56,6 @@ public class RegistrationController {
         db_handler.registrationCustomer(customers);
     }
 
-    private void successRegistration(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Successfully.");
-        alert.setContentText("You have been registered successfully.");
-        alert.showAndWait();
-    }
-    public void warningRegistration(){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("WARNING!");
-        alert.setContentText("Please check information in all fields, this information is mandatory");
-        alert.showAndWait();
-    }
     private void clearField() {
         signUPname.clear();
         singUPsurname.clear();

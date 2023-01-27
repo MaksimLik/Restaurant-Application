@@ -52,7 +52,7 @@ public class CustomerBasketController extends DB_Handler {
             try{
                 finalFuction();
             } catch (NullPointerException e) {
-                warning2();
+                alertProcedureOfAction();
             }
         });
     }
@@ -71,20 +71,20 @@ public class CustomerBasketController extends DB_Handler {
         amount();
         if(choiceBox.getValue().equals("NOT needed")){
             if (amount >= 1) {
-                warning();
+                alertSimilarProduct();
             } else {
                 addDelivery();
             }
 
         } else if (choiceBox.getValue().equals("Needed")) {
             if (amount >= 1) {
-                warning();
+                alertSimilarProduct();
             } else {
                 addDelivery2();
             }
 
         } else {
-            warning2();
+            alertProcedureOfAction();
         }
     }
 
@@ -134,7 +134,7 @@ public class CustomerBasketController extends DB_Handler {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
-            information();
+            alertSuccessReg();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -150,7 +150,7 @@ public class CustomerBasketController extends DB_Handler {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
-            information();
+            alertSuccessReg();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -179,31 +179,6 @@ public class CustomerBasketController extends DB_Handler {
 
         }
         return amount;
-    }
-
-
-    private void information() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Delivery has been added successfully");
-        alert.setContentText("Thanks for delivery in our Restaurant");
-        alert.showAndWait();
-    }
-
-    private void warning() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("This order is already in the delivery service.");
-        alert.setContentText("You cannot order delivery for the same order more than once.");
-        alert.showAndWait();
-    }
-
-    private void warning2() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please, choose product from table and click him, choose INVOICE or NOT and click button.");
-        alert.setContentText("Choose product, click him and click button");
-        alert.showAndWait();
     }
 
 }

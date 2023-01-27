@@ -58,9 +58,9 @@ public class EmployeesDeliveryController extends DB_Handler{
         amount();
         if(amountDev < 1){
             addDelivery();
-            information();
+            alertSuccessReg();
         } else {
-            warning();
+            alertSimilarProduct();
         }
     }
 
@@ -113,20 +113,5 @@ public class EmployeesDeliveryController extends DB_Handler{
 
         listD = db_handler.getDelivery();
         table_delivery.setItems(listD);
-    }
-    private void information() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Delivery has been added successfully");
-        alert.setContentText("Thanks for delivery in our Restaurant");
-        alert.showAndWait();
-    }
-
-    private void warning() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("This order is already in the delivery service.");
-        alert.setContentText("You cannot order delivery for the same order more than once.");
-        alert.showAndWait();
     }
 }

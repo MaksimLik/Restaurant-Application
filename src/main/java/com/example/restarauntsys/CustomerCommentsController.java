@@ -60,7 +60,7 @@ public class CustomerCommentsController extends DB_Handler {
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
-            information();
+            alertSuccessReg();
             commentArea.clear();
 
 
@@ -83,12 +83,5 @@ public class CustomerCommentsController extends DB_Handler {
 
         listM = db_handler.getMenu();
         table_menu.setItems(listM);
-    }
-    private void information() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Comment has been added successfully");
-        alert.setContentText("Thanks for comments of our products");
-        alert.showAndWait();
     }
 }

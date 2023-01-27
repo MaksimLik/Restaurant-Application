@@ -72,7 +72,7 @@ public class CustomerAddressController extends DB_Handler {
             address.getIDadr2();
                 if(address_id_max != address_id_max2)   {
                 db_handler.registrationCustomerAddress(address);
-                successRegistration();
+                alertSuccessReg();
             }
 
         } else {
@@ -99,12 +99,4 @@ public class CustomerAddressController extends DB_Handler {
         }
         return amount_addr;
     }
-    private void successRegistration(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Successfully.");
-        alert.setContentText("Your address have been registered successfully.");
-        alert.showAndWait();
-    }
-
 }

@@ -73,7 +73,7 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
                 name_field.clear();
                 price_field.clear();
             } else {
-                errorAlarm();
+                alertWarningIsEmpty();
             }
         } catch (NumberFormatException e) {
             alertWarningIsEmpty();
@@ -97,13 +97,5 @@ public class EmployeesAdditionsController extends DB_Handler implements Initiali
             alertProcedureOfAction();
         }
         initData();
-    }
-
-    private void errorAlarm () {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("Field with name or price is empty!");
-        alert.setContentText("Please, write all information about addition");
-        alert.showAndWait();
     }
 }

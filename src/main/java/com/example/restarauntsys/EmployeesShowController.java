@@ -8,7 +8,6 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Comments;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -45,7 +44,7 @@ public class EmployeesShowController extends DB_Handler {
                 preparedStatement.execute();
 
             } catch (SQLIntegrityConstraintViolationException e) {
-                errorAlarm();
+                alertWarningDelete();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
@@ -54,15 +53,6 @@ public class EmployeesShowController extends DB_Handler {
             initTable();
         });
     }
-    private void errorAlarm() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
-        alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
-        alert.showAndWait();
-    }
-
-
     protected void initTable() {
         DB_Handler db_handler = new DB_Handler();
 

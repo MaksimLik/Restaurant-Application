@@ -1,6 +1,5 @@
 package com.example.restarauntsys;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,12 +8,9 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Customers;
 import com.example.restarauntsys.tables.Employees;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class StartController extends DB_Handler {
@@ -61,24 +57,16 @@ public class StartController extends DB_Handler {
                 loginEmployees(loginText, loginPassword);
                 getEmpID();
             } else
-                alertWarning();
+                alertNotFoundInformation();
 
         } else  {
             if (!loginText.equals("") && !loginPassword.equals("")) {
                 getCustID();
                 loginCustomer(loginText, loginPassword);
             } else
-                alertWarning();
+                alertNotFoundInformation();
 
         }
-    }
-
-    private void alertWarning() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please check your username and/or password.");
-        alert.setContentText("Maybe you are not registered.");
-        alert.showAndWait();
     }
     private void loginCustomer(String loginText, String loginPassword) {
         DB_Handler db_handler = new DB_Handler();
@@ -100,9 +88,8 @@ public class StartController extends DB_Handler {
         if(counter >= 1){
             openCustomerWindow();
         } else {
-            alertLOGIN();
+            alertNotFoundInformation();
         }
-
     }
 
     private void loginEmployees(String loginText, String loginPassword){
@@ -125,16 +112,8 @@ public class StartController extends DB_Handler {
         if(counter >= 1){
             openEmployeeWindow();
         } else {
-            alertLOGIN();
+            alertNotFoundInformation();
         }
-
-    }
-    private void alertLOGIN(){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Not found information about your account!");
-        alert.setContentText("Please, check your nick-name and password.");
-        alert.showAndWait();
     }
     private void openCustomerWindow() {
         loginButton.setOnMouseClicked(event -> {
@@ -142,7 +121,6 @@ public class StartController extends DB_Handler {
             primaryStage.setScene(thirdScene);
         });
     }
-
     private void openEmployeeWindow() {
         loginButton.setOnMouseClicked(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

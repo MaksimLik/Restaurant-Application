@@ -37,10 +37,34 @@ public abstract class Alerts {
     }
 
     protected void alertTooLongTxt() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("ERROR");
         alert.setHeaderText("Your text in field is too long!");
         alert.setContentText("Please, reduce your text to normal amount of characters");
+        alert.showAndWait();
+    }
+    protected void alertSuccessReg() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("Successfully.");
+        alert.setContentText("Your information have been registered successfully. " +
+                "Thanks for delivery in our Restaurant");
+        alert.showAndWait();
+    }
+
+    protected void alertSimilarProduct() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("This order is already.");
+        alert.setContentText("You cannot add each-other function for the same order more than once.");
+        alert.showAndWait();
+    }
+
+    protected void alertNotFoundInformation() {
+        alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
+        alert.setHeaderText("Not found information about You!");
+        alert.setContentText("Please, check your nick-name and password. Maybe you are not registered.");
         alert.showAndWait();
     }
 
