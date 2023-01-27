@@ -82,28 +82,9 @@ public class CustomerStartController extends DB_Handler {
             preparedStatement.execute();
 
         } catch (SQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            alertWarningDelete();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-
-    private void InitWindow (String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
-        Parent windowPane = null;
-
-        try {
-            windowPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.setTitle("Restaurant Application");
-        stage.setScene(new Scene(windowPane));
-        stage.showAndWait();
-    }
-
 }

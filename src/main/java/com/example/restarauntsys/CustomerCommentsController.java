@@ -65,11 +65,11 @@ public class CustomerCommentsController extends DB_Handler {
 
 
         } catch (MysqlDataTruncation e) {
-            warning();
+            alertTooLongTxt();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-            error();
+            alertProcedureOfAction();
         }
     }
 
@@ -84,45 +84,11 @@ public class CustomerCommentsController extends DB_Handler {
         listM = db_handler.getMenu();
         table_menu.setItems(listM);
     }
-
     private void information() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Comment has been added successfully");
         alert.setContentText("Thanks for comments of our products");
         alert.showAndWait();
-    }
-
-    private void error() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("You must choose product from table, write comment on text area and press button (comment)");
-        alert.setContentText("Text area cannot is empty");
-        alert.showAndWait();
-    }
-
-    private void warning() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("Your comment is too long, please reduce comment to 250 characters");
-        alert.setContentText("Reduce comment");
-        alert.showAndWait();
-    }
-    private void InitWindow (String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
-        Parent windowPane = null;
-
-        try {
-            windowPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.setTitle("Restaurant Application");
-        stage.setScene(new Scene(windowPane));
-        stage.showAndWait();
     }
 }

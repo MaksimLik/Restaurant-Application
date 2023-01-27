@@ -1,21 +1,15 @@
 package com.example.restarauntsys;
 
 import com.example.restarauntsys.mysql.DB_Handler;
-import com.example.restarauntsys.tables.Additions;
-import com.example.restarauntsys.tables.Delivery;
 import com.example.restarauntsys.tables.Supplier;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
-
-import static com.example.restarauntsys.StartController.CustID;
-
 public class EmployeesDeliveryListController extends DB_Handler {
     @FXML
     private Button deliveryButton;
@@ -43,11 +37,11 @@ public class EmployeesDeliveryListController extends DB_Handler {
                 preparedStatement.execute();
 
             } catch (SQLIntegrityConstraintViolationException e) {
-                errorAlarm();
+                alertWarningDelete();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
-                warning2();
+                alertProcedureOfAction();
             }
             initData();
         });
@@ -63,19 +57,4 @@ public class EmployeesDeliveryListController extends DB_Handler {
         listS = db_handler.getSupplier();
         table_delivery.setItems(listS);
     }
-    private void errorAlarm () {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
-        alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
-        alert.showAndWait();
-    }
-    private void warning2() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please, choose product from table and click him and click button.");
-        alert.setContentText("Choose product, click him and click button");
-        alert.showAndWait();
-    }
-
 }

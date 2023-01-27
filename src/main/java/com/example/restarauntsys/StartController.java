@@ -196,22 +196,4 @@ public class StartController extends DB_Handler {
 
         return EmpID;
     }
-
-    private void InitWindow(String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
-        Parent windowPane = null;
-
-        try {
-            windowPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.setTitle("Restaurant Application");
-        stage.setScene(new Scene(windowPane));
-        stage.showAndWait();
-    }
 }

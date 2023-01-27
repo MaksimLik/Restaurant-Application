@@ -1,6 +1,6 @@
 package com.example.restarauntsys.mysql;
 
-public class Configurations {
+public class Configurations extends Alerts {
 
     protected String dbHost = "localhost";
     protected String dbPort = "3306";

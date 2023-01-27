@@ -64,11 +64,11 @@ public class CustomerComUPController extends DB_Handler {
             preparedStatement.execute();
 
         } catch (SQLIntegrityConstraintViolationException e) {
-            errorAlarm();
+            alertWarningDelete();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-            warning2();
+            alertProcedureOfAction();
         }
 
     }
@@ -83,26 +83,11 @@ public class CustomerComUPController extends DB_Handler {
             preparedStatement.execute();
 
         } catch (SQLIntegrityConstraintViolationException e) {
-            errorAlarm();
+            alertWarningDelete();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-            warning2();
+            alertProcedureOfAction();
         }
     }
-    private void warning2() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please, choose product from table and click him, write comment on text area and click button.");
-        alert.setContentText("Choose product, click him, write comment and click button");
-        alert.showAndWait();
-    }
-    private void errorAlarm() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("You cannot delete this product if it is ordered or commented on by the customer.");
-        alert.setContentText("Please, check if this product is ordered, awaiting delivery, or commented.");
-        alert.showAndWait();
-    }
-
 }

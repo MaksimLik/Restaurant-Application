@@ -120,7 +120,7 @@ public class CustomerBasketController extends DB_Handler {
         } catch (SQLException | ClassNotFoundException e) {
 
         } catch (NumberFormatException e) {
-            warning3();
+          //  alertWarningIsEmpty();
         }
     return fullCosts;
     }
@@ -206,11 +206,4 @@ public class CustomerBasketController extends DB_Handler {
         alert.showAndWait();
     }
 
-    private void warning3() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Your basket is empty");
-        alert.setContentText("Please, buy a product if you can see your basket-shop");
-        alert.showAndWait();
-    }
 }

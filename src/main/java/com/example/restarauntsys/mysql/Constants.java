@@ -1,6 +1,6 @@
 package com.example.restarauntsys.mysql;
 
-public class Constants {
+public class Constants extends Alerts {
     public  static final String USER_TABLE = "users";
     public  static final String CUSTOMERS_TABLE = "customers";
     public  static final String EMPLOYEES_TABLE = "employees";
@@ -33,4 +33,5 @@ public class Constants {
     public static final String ADDITIONS_TABLE = "additions";
     public static final String ADDITIONS_NAME = "name";
     public static final String ADDITIONS_PRICE = "price";
+
 }

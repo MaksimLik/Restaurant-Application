@@ -60,16 +60,7 @@ public class CustomerAdditionsController extends DB_Handler {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-            warning2();
+            alertProcedureOfAction();
         }
-
-
-    }
-    private void warning2() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please, choose product from table and click him and click button.");
-        alert.setContentText("Choose product, click him and click button");
-        alert.showAndWait();
     }
 }

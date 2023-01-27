@@ -75,7 +75,7 @@ public class EmployeesDeliveryController extends DB_Handler{
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-
+            alertProcedureOfAction();
         }
     }
 
@@ -98,7 +98,7 @@ public class EmployeesDeliveryController extends DB_Handler{
 
         } catch (SQLException | ClassNotFoundException e) {
         } catch (NullPointerException e) {
-            warning2();
+            alertProcedureOfAction();
         }
         return amountDev;
     }
@@ -114,25 +114,6 @@ public class EmployeesDeliveryController extends DB_Handler{
         listD = db_handler.getDelivery();
         table_delivery.setItems(listD);
     }
-
-    private void InitWindow(String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
-        Parent windowPane = null;
-
-        try {
-            windowPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.setTitle("Restaurant Application");
-        stage.setScene(new Scene(windowPane));
-        stage.showAndWait();
-    }
-
     private void information() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("INFORMATION");
@@ -148,14 +129,4 @@ public class EmployeesDeliveryController extends DB_Handler{
         alert.setContentText("You cannot order delivery for the same order more than once.");
         alert.showAndWait();
     }
-    private void warning2() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please, choose a object in the table and re-click on button");
-        alert.setContentText("You don't choose a product if you don't have a product please wait");
-        alert.showAndWait();
-    }
-
-
-
 }

@@ -1,11 +1,9 @@
 package com.example.restarauntsys;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ResourceBundle;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 
@@ -13,7 +11,6 @@ import com.example.restarauntsys.tables.Orders;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,14 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class EmployeesOrdersController extends DB_Handler implements Initializable {
-
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
-    @FXML
-    private Button logoutButton;
+public class EmployeesOrdersController extends DB_Handler {
     @FXML
     private Button deliveryButton;
     @FXML
@@ -52,8 +42,7 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
     ObservableList<Orders> listOrd;
     private Orders orders;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         initData();
 
         deliveryButton.setOnAction(event -> {
@@ -88,11 +77,11 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
                 preparedStatement.execute();
 
             } catch (SQLIntegrityConstraintViolationException e) {
-                errorAlarm();
+                alertWarningDelete();
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
-                warning();
+                alertProcedureOfAction();
             }
             initData();
         });
@@ -118,30 +107,5 @@ public class EmployeesOrdersController extends DB_Handler implements Initializab
 
         listOrd = db_handler.getOrder();
         table_orders.setItems(listOrd);
-    }
-
-    private void InitWindow (String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
-        Parent windowPane = null;
-
-        try {
-            windowPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.setTitle("Restaurant Application");
-        stage.setScene(new Scene(windowPane));
-        stage.showAndWait();
-    }
-    private void warning() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("Please, choose product from table and click him and click button.");
-        alert.setContentText("Choose product, click him and click button");
-        alert.showAndWait();
     }
 }

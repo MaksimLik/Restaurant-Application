@@ -76,7 +76,7 @@ public class CustomerAddressController extends DB_Handler {
             }
 
         } else {
-            warningRegistration();
+            alertWarningIsEmpty();
         }
     }
 
@@ -107,11 +107,4 @@ public class CustomerAddressController extends DB_Handler {
         alert.showAndWait();
     }
 
-    private void warningRegistration() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("WARNING");
-        alert.setHeaderText("WARNING!");
-        alert.setContentText("Please check information in all fields, this information is mandatory");
-        alert.showAndWait();
-    }
 }
