@@ -16,7 +16,7 @@ public abstract class Alerts {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("Please fill all fields and use COMMA.");
-        alert.setContentText("All fields are mandatory and use COMMA, don't use ',' !");
+        alert.setContentText("All fields are mandatory and use COMMA, don't use ',' when you write decimal numbers!");
         alert.showAndWait();
     }
 
@@ -70,6 +70,7 @@ public abstract class Alerts {
     }
 
     protected void InitWindow(String window) {
+        //żeby program wiedział skąd ma probrać te dane - to najlepiej wpisać główną klasę
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(window));
         //    FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
         Parent windowPane = null;

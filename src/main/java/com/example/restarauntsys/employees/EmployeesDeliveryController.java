@@ -4,18 +4,11 @@ import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Delivery;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,7 +51,6 @@ public class EmployeesDeliveryController extends DB_Handler{
         amount();
         if(amountDev < 1){
             addDelivery();
-            alertSuccessReg();
         } else {
             alertSimilarProduct();
         }
@@ -71,6 +63,8 @@ public class EmployeesDeliveryController extends DB_Handler{
 
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
+
+            alertSuccessReg();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -97,8 +91,9 @@ public class EmployeesDeliveryController extends DB_Handler{
             stmt.close();
 
         } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         } catch (NullPointerException e) {
-            alertProcedureOfAction();
+            //jest to obsługiwano wyżej dlatego nie ma sens dodawać alert jeszcze tu;
         }
         return amountDev;
     }

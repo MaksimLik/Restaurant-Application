@@ -36,6 +36,8 @@ public class EmployeesDeliveryListController extends DB_Handler {
                 PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
                 preparedStatement.execute();
 
+                
+
             } catch (SQLIntegrityConstraintViolationException e) {
                 alertWarningDelete();
             } catch (SQLException | ClassNotFoundException e) {

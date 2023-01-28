@@ -34,8 +34,6 @@ public class EmployeesChangesMenuController extends DB_Handler {
     private TableColumn<Menu, String> name_table;
     @FXML
     private TableColumn<Menu, String> table_description;
-
-
     ObservableList<Menu> listM;
     private Menu menu;
 

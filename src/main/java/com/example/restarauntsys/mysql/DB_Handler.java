@@ -4,7 +4,6 @@ import com.example.restarauntsys.tables.*;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
 
 import java.sql.*;
 
