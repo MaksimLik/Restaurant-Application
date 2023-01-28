@@ -1,4 +1,4 @@
-package com.example.restarauntsys;
+package com.example.restarauntsys.customers;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Comments;

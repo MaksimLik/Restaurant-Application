@@ -1,4 +1,4 @@
-package com.example.restarauntsys;
+package com.example.restarauntsys.employees;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

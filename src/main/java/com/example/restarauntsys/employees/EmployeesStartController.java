@@ -1,4 +1,4 @@
-package com.example.restarauntsys;
+package com.example.restarauntsys.employees;
 
 import com.example.restarauntsys.mysql.Alerts;
 import javafx.fxml.FXML;
@@ -26,7 +26,7 @@ public class EmployeesStartController extends Alerts {
     @FXML
     public void initialize() {
         changesPanelButton.setOnAction(event -> {
-            InitWindow("changesMenu.fxml");
+            InitWindow("EmployeesChangesMenu.fxml");
         });
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

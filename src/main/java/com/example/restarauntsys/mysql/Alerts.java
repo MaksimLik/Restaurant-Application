@@ -1,5 +1,6 @@
 package com.example.restarauntsys.mysql;
 
+import com.example.restarauntsys.MainApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -69,7 +70,8 @@ public abstract class Alerts {
     }
 
     protected void InitWindow(String window) {
-        FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(window));
+        //    FXMLLoader fxmlLoader  = new FXMLLoader(getClass().getResource(window));
         Parent windowPane = null;
 
         try {

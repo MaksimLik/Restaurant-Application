@@ -14,5 +14,9 @@ module com.example.restarauntsys {
 
     exports com.example.restarauntsys;
     exports com.example.restarauntsys.tables;
+    exports com.example.restarauntsys.customers;
+    opens com.example.restarauntsys.customers to javafx.fxml;
+    exports com.example.restarauntsys.employees;
+    opens com.example.restarauntsys.employees to javafx.fxml;
 
 }

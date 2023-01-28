@@ -1,4 +1,4 @@
-package com.example.restarauntsys;
+package com.example.restarauntsys.employees;
 
 import java.sql.*;
 
@@ -9,8 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
-public class ChangesMenuController extends DB_Handler {
+public class EmployeesChangesMenuController extends DB_Handler {
     @FXML
     private TextField price_field;
     @FXML

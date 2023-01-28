@@ -1,5 +1,7 @@
 package com.example.restarauntsys;
 
+import com.example.restarauntsys.customers.CustomerStartController;
+import com.example.restarauntsys.employees.EmployeesStartController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
