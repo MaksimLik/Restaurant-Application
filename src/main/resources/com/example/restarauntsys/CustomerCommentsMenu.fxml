@@ -36,7 +36,7 @@
                                 <TableColumn fx:id="table_description" prefWidth="280.0" text="description" />
                             </columns>
                         </TableView>
-                  <Button fx:id="commentButton" layoutX="112.0" layoutY="434.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" text="Comment">
+                  <Button fx:id="commentButton" layoutX="51.0" layoutY="447.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" text="Comment">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -52,7 +52,10 @@
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
                   </Label>
-                  <Button fx:id="updateButton" layoutX="247.0" layoutY="440.0" mnemonicParsing="false" text="Update" />
+                  <Button fx:id="updateButton" layoutX="169.0" layoutY="448.0" mnemonicParsing="false" text="My comments">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                     </children>
                 </AnchorPane>
                 <Text fill="WHITE" layoutX="194.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaraunt Managment System">
