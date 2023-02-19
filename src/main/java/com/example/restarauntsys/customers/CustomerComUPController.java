@@ -74,20 +74,25 @@ public class CustomerComUPController extends DB_Handler {
     }
 
     private void updateComment() {
-        try {
-            comments = table_comments.getSelectionModel().getSelectedItem();
-            String select = "UPDATE comments set comment = '" + commentArea.getText() + "' where id_comment = " + comments.getId() + ";";
-            System.out.println(select);
+        String comment = commentArea.getText();
+        if(!comment.equals("")) {
+            try {
+                comments = table_comments.getSelectionModel().getSelectedItem();
+                String select = "UPDATE comments set comment = '" + commentArea.getText() + "' where id_comment = " + comments.getId() + ";";
+                System.out.println(select);
 
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
-            preparedStatement.execute();
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+                preparedStatement.execute();
 
-        } catch (SQLIntegrityConstraintViolationException e) {
-            alertWarningDelete();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            alertProcedureOfAction();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                alertWarningDelete();
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e) {
+                alertProcedureOfAction();
+            }
+        } else {
+            alertWarningIsEmpty();
         }
     }
 }

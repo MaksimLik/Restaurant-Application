@@ -2,18 +2,14 @@ package com.example.restarauntsys.customers;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
+import com.example.restarauntsys.tables.User;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -50,27 +46,33 @@ public class CustomerCommentsController extends DB_Handler {
             InitWindow("CustomerCommentsUpdate.fxml");
         });
     }
+    
     private void addFunction() {
-        try {
-            String comment = commentArea.getText().trim();
-            System.out.println(comment);
-            menu = table_menu.getSelectionModel().getSelectedItem();
-            String select = "insert into comments(comment, Customers_Users_ID_user, Menu_ID_food) " +
-                    "values ('" + comment + "'," + CustID + "," + menu.getId() + ");";
+        String comment = commentArea.getText().trim();
+        if(!comment.equals("")){
+            try {
+                System.out.println(comment);
+                menu = table_menu.getSelectionModel().getSelectedItem();
+                String select = "insert into comments(comment, Customers_Users_ID_user, Menu_ID_food) " +
+                        "values ('" + comment + "'," + CustID + "," + menu.getId() + ");";
 
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
-            preparedStatement.execute();
-            alertSuccessReg();
-            commentArea.clear();
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+                preparedStatement.execute();
+                alertSuccessReg();
+                commentArea.clear();
 
 
-        } catch (MysqlDataTruncation e) {
-            alertTooLongTxt();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            alertProcedureOfAction();
+            } catch (MysqlDataTruncation e) {
+                alertTooLongTxt();
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e) {
+                alertProcedureOfAction();
+            }
+        } else {
+            alertWarningIsEmpty();
         }
+
     }
 
     private void initData() {
