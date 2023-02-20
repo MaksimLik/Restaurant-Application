@@ -2,7 +2,6 @@ package com.example.restarauntsys.customers;
 
 import com.example.restarauntsys.mysql.DB_Handler;
 import com.example.restarauntsys.tables.Menu;
-import com.example.restarauntsys.tables.User;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

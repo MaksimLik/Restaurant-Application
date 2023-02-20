@@ -57,6 +57,8 @@ public class CustomerAdditionsController extends DB_Handler {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
+            alertSuccessReg();
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {

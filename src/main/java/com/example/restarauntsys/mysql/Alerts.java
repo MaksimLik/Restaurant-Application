@@ -48,8 +48,7 @@ public abstract class Alerts {
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Successfully.");
-        alert.setContentText("Your information have been registered successfully. " +
-                "Thanks for delivery in our Restaurant");
+        alert.setContentText("Your information have been registered successfully.");
         alert.showAndWait();
     }
 
