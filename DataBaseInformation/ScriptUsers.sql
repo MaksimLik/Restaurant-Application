@@ -43,7 +43,7 @@ CREATE FUNCTION how_much (
  RETURNS int DETERMINISTIC
 BEGIN
 declare cost int;
- SELECT sum(menu.price) as price
+ SELECT round(sum(menu.price) + sum(additions.price), 2) as price
  INTO cost
  FROM (orders left outer join additions on orders.Additions_ID_addition = additions.ID_addition) 
 left join menu on orders.Menu_ID_food = menu.ID_food
