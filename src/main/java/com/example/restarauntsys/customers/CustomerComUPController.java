@@ -74,7 +74,7 @@ public class CustomerComUPController extends DB_Handler {
     }
 
     private void updateComment() {
-        String comment = commentArea.getText();
+        String comment = commentArea.getText().trim();
         if(!comment.equals("")) {
             try {
                 comments = table_comments.getSelectionModel().getSelectedItem();
