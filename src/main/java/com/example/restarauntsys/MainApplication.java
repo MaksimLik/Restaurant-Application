@@ -18,11 +18,11 @@ public class MainApplication extends Application {
         Parent firstPane = firstPaneLoader.load();
         Scene firstscene = new Scene(firstPane, 600, 400);
 
-        FXMLLoader thirdPageLoader  = new FXMLLoader(MainApplication.class.getResource("CustomerStartMenu.fxml"));
+        FXMLLoader thirdPageLoader  = new FXMLLoader(MainApplication.class.getResource("customersWindows/CustomerStartMenu.fxml"));
         Parent thirdPane = thirdPageLoader.load();
         Scene thirdScene = new Scene(thirdPane, 600, 400);
 
-        FXMLLoader fourPageLoader  = new FXMLLoader(MainApplication.class.getResource("EmployeesStartMenu.fxml"));
+        FXMLLoader fourPageLoader  = new FXMLLoader(MainApplication.class.getResource("employeesWindows/EmployeesStartMenu.fxml"));
         Parent fourPane = fourPageLoader.load();
         Scene fourScene = new Scene(fourPane, 600, 400);
 

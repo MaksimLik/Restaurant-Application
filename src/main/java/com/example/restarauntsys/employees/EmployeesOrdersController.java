@@ -40,7 +40,7 @@ public class EmployeesOrdersController extends DB_Handler {
         initData();
 
         deliveryButton.setOnAction(event -> {
-            InitWindow("EmployeesDeliveryMenu.fxml");
+            InitWindow("employeesWindows/EmployeesDeliveryMenu.fxml");
         });
 
         doneButton.setOnAction(event -> {

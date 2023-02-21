@@ -40,7 +40,7 @@ public class EmployeesDeliveryController extends DB_Handler{
     void initialize() {
         initData();
         listButton.setOnAction(event -> {
-            InitWindow("EmployeesDeliveryList.fxml");
+            InitWindow("employeesWindows/EmployeesDeliveryList.fxml");
         });
         deliveryButton.setOnAction(event -> {
             checkFunction();

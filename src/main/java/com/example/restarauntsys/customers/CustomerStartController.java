@@ -38,23 +38,23 @@ public class CustomerStartController extends DB_Handler {
         });
 
         address_button.setOnAction(event -> {
-            InitWindow("CustomerAddressMenu.fxml");
+            InitWindow("customersWindows/CustomerAddressMenu.fxml");
         });
 
         order_button.setOnAction(event -> {
-            InitWindow("CustomerOrderMenu.fxml");
+            InitWindow("customersWindows/CustomerOrderMenu.fxml");
         });
 
         showBasketButton.setOnAction (event -> {
-            InitWindow("CustomerBasketMenu.fxml");
+            InitWindow("customersWindows/CustomerBasketMenu.fxml");
         });
 
         additionsButton.setOnAction(event -> {
-            InitWindow("CustomerAdditionsMenu.fxml");
+            InitWindow("customersWindows/CustomerAdditionsMenu.fxml");
         });
 
         commentButton.setOnAction(event -> {
-            InitWindow("CustomerCommentsMenu.fxml");
+            InitWindow("customersWindows/CustomerCommentsMenu.fxml");
         });
 
         deleteButton.setOnAction(event -> {

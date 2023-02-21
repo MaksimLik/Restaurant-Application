@@ -26,7 +26,7 @@ public class EmployeesStartController extends Alerts {
     @FXML
     public void initialize() {
         changesPanelButton.setOnAction(event -> {
-            InitWindow("EmployeesChangesMenu.fxml");
+            InitWindow("employeesWindows/EmployeesChangesMenu.fxml");
         });
         logoutButton.setOnAction(event -> {
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -34,15 +34,15 @@ public class EmployeesStartController extends Alerts {
         });
 
         showOrdersButton.setOnAction(event -> {
-            InitWindow("EmployeesOrdersMenu.fxml");
+            InitWindow("employeesWindows/EmployeesOrdersMenu.fxml");
         });
 
         additionsButton.setOnAction(event -> {
-            InitWindow("EmployeesAdditionsMenu.fxml");
+            InitWindow("employeesWindows/EmployeesAdditionsMenu.fxml");
         });
 
         commentsButton.setOnAction(event -> {
-            InitWindow("EmployeesShowComments.fxml");
+            InitWindow("employeesWindows/EmployeesShowComments.fxml");
         });
 
     }

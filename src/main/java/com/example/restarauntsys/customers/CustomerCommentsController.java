@@ -42,7 +42,7 @@ public class CustomerCommentsController extends DB_Handler {
         });
 
         updateButton.setOnAction(event -> {
-            InitWindow("CustomerCommentsUpdate.fxml");
+            InitWindow("customersWindows/CustomerCommentsUpdate.fxml");
         });
     }
     
