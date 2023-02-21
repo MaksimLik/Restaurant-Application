@@ -5,7 +5,7 @@ You can add products, additions for products, delete comments etc as employees.
 If you customer you can order products, additions and add products for delivery and write a comment, update comment etc.
 ####
 Information about orders, deliveries and ... is stored in the database.
-I choose MySQL, because this is popular system for managment and create a database and more intuitive to the developer. The database for this application has functions and stored procedures. DB has different queries(simple(standart select operation) and difficult(joins, groups etc.));
+I choosen MySQL, because this is popular system for managment and create a database and more intuitive to the developer. The database for this application has functions and stored procedures. DB has different queries(simple(standart select operation) and difficult(joins, groups etc.));
 ####
 This application have different folders:
 * Customers folder has classes for customers windows and functionality for these windows;
