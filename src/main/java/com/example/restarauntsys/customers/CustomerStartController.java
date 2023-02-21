@@ -70,6 +70,8 @@ public class CustomerStartController extends DB_Handler {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
             preparedStatement.execute();
 
+            preparedStatement.close();
+
         } catch (SQLIntegrityConstraintViolationException e) {
             alertWarningDelete();
         } catch (SQLException | ClassNotFoundException e) {

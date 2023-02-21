@@ -94,6 +94,7 @@ public class CustomerAddressController extends DB_Handler {
             rs.close();
             stmt.close();
 
+
         } catch (SQLException | ClassNotFoundException e) {
         }
         return amount_addr;

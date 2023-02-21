@@ -67,6 +67,7 @@ public class DB_Handler extends Configurations {
             preparedStatement.setInt(2, Integer.parseInt(String.valueOf(customers.getID())));
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
@@ -91,6 +92,7 @@ public class DB_Handler extends Configurations {
             System.out.println(CustID);
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
@@ -112,6 +114,8 @@ public class DB_Handler extends Configurations {
             preparedStatement.setString(3, address.getPostal_index());
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
+
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
         } catch (SQLException | ClassNotFoundException e) {
@@ -130,6 +134,7 @@ public class DB_Handler extends Configurations {
             preparedStatement.setDouble(2, additions.getPrice());
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
@@ -153,6 +158,7 @@ public class DB_Handler extends Configurations {
             preparedStatement.setDouble(4, menu.getPrice());
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
@@ -174,7 +180,7 @@ public class DB_Handler extends Configurations {
             preparedStatement.setString(2, customers.getPassword());
 
             resultSet = preparedStatement.executeQuery();
-
+            
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
         } catch (SQLException | ClassNotFoundException e) {

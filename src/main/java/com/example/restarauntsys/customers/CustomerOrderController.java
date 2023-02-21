@@ -49,6 +49,8 @@ public class CustomerOrderController extends DB_Handler {
 
             alertSuccessReg();
 
+            preparedStatement.close();
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {

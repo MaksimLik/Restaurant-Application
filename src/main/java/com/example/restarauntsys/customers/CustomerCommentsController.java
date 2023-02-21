@@ -60,6 +60,7 @@ public class CustomerCommentsController extends DB_Handler {
                 alertSuccessReg();
                 commentArea.clear();
 
+                preparedStatement.close();
 
             } catch (MysqlDataTruncation e) {
                 alertTooLongTxt();
