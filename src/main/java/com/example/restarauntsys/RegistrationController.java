@@ -36,8 +36,7 @@ public class RegistrationController extends Alerts {
         String password = signUPpassword.getText();
 
         if (!name.equals("") && !surname.equals("") && !nick_name.equals("") && !password.equals("")) {
-
-            User user = new User(name, surname, nick_name, password);
+            User user = new User(name, surname, password);
             db_handler.registrationUsers(user);
             signUPnewCustomer();
             alertSuccessReg();

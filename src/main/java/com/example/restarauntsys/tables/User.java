@@ -10,19 +10,13 @@ import java.sql.Statement;
 public class User extends DB_Handler {
     private String name;
     private String surname;
-    private String nick_name;
     private String password;
     public int currentUserId;
 
-    public User(String name, String surname, String nick_name, String password) {
+    public User(String name, String surname, String password) {
         this.name = name;
         this.surname = surname;
-        this.nick_name = nick_name;
         this.password = password;
-    }
-
-    public User(String nick_name) {
-        this.nick_name = nick_name;
     }
 
     public User() {
@@ -42,14 +36,6 @@ public class User extends DB_Handler {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getNick_name() {
-        return nick_name;
-    }
-
-    public void setNick_name(String nick_name) {
-        this.nick_name = nick_name;
     }
 
     public String getPassword() {

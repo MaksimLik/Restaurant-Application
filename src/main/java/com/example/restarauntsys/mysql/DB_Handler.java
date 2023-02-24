@@ -25,19 +25,17 @@ public class DB_Handler extends Configurations {
         return dbConnection;
     }
 
-    public void registrationUsers (User user) {
+    public void registrationUsers(User user) {
 
         String insert = "INSERT INTO " + Constants.USER_TABLE + "(" +
-                Constants.USER_NAME + "," + Constants.USER_SURNAME + "," + Constants.USER_NICK_NAME + "," +
-                Constants.USER_PASSWORD + ")" +
-                "VALUES(?, ?, ?, ?)";
+                Constants.USER_NAME + "," + Constants.USER_SURNAME + "," + Constants.USER_PASSWORD + ")" +
+                "VALUES(?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getSurname());
-            preparedStatement.setString(3, user.getNick_name());
-            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(3, user.getPassword());
 
             preparedStatement.executeUpdate();
 
@@ -180,7 +178,7 @@ public class DB_Handler extends Configurations {
             preparedStatement.setString(2, customers.getPassword());
 
             resultSet = preparedStatement.executeQuery();
-            
+
         } catch (MysqlDataTruncation e) {
             alertTooLongTxt();
         } catch (SQLException | ClassNotFoundException e) {
