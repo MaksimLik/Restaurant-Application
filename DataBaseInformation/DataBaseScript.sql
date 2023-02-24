@@ -24,10 +24,8 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`Users` (
   `ID_user` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
-  `nick_name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ID_user`),
-  UNIQUE INDEX `nick_name_UNIQUE` (`nick_name` ASC) VISIBLE)
+  PRIMARY KEY (`ID_user`))
 ENGINE = InnoDB;
 
 
