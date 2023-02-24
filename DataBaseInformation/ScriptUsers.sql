@@ -53,8 +53,8 @@ END; //
 
 select how_much(4);
 
-insert into users (name, surname, nick_name, password) values ('admin', 'admin', 'admin', 'admin');
-insert into users (name, surname, nick_name, password) values ('manager', 'manager', 'manager', 'manager');
+insert into users (name, surname, password) values ('admin', 'admin', 'admin');
+insert into users (name, surname, password) values ('manager', 'manager', 'manager');
 
 insert into employees (role, Users_ID_user, nick_name) values ('admin', 1, 'admin');
 insert into employees (role, Users_ID_user, nick_name) values ('manager', 2, 'manager');
