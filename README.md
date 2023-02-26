@@ -1,4 +1,4 @@
-# Restaraunt-System-Application
+# Restaurant-System-Application
 This application developed for management a restaurant.
 ####
 You can add products, additions for products, delete comments etc as employees.
